@@ -32,48 +32,48 @@ file display, programming language detection and syntax
 highlighting for source code file display.
 Also, it is not uncommon for computer science markers and instructors
 trying to put mathematical equations or formulas into their comments on
-students' assignments; The only two ways to do that with the Moodle
+students' assignments; the only two ways to do that with the Moodle
 Learning System are draw the equations or formulas by hand with the
-pointing device of the computer (i.e. computer mouse, trackpad), or write
+pointing device of the computer (i.e., computer mouse, trackpad), or write
 the equations or formulas in \emph{HTML} code. Both of these two ways are
 time-consuming and borderline unfeasible.
 Moreover, there are features in the Moodle Learning System that are rarely
 used by instructors and students (especially instructors and students in
-computer science department), features like \emph{PoodLL Recorder},
-\emph{Tags} and \emph{Marking Allocation},
-these features increased the
+computer science departments), features like \emph{PoodLL Recorder},
+\emph{Tags} and \emph{Marking Allocation};
+those features increased the
 complexity of the system and resulted in the fact that an easy task 
 often takes a longer time to finish than it was supposed to. This phenomenon
 is known to be a ``Feature Creep''  (Boram Lee and Woohun Lee, 2015 
 \cite{featureCreep}), the Microsoft Office Suite is generally
 considered to be an example of this phenomenon (Des Traynor 
 \cite{msFeatureCreep}).
-In short, the Moodle Learning System lack of features that are essential
+In short, the Moodle Learning System lacks of features that are essential
 to computer science students and instructors, at the same time could slow
 down the process of submitting and evaluating assignments with complexity of
 the system.
 
 \medskip
 
-The \emph{Course2000} course system designed by Dr. Rick Giles is a good choice
+The \emph{Course2000} course system designed by Dr.~Rick Giles is a good choice
 of alternative LMS to the Moodle Learning System, in fact it has been the
 default LMS for one computer science course, \emph{COMP 2103: Programming 3},
-for over a decade, with the \emph{Visual Mark} module designed by former
-student Tim Cooper integrated, the \emph{Course2000} system has proven itself
+for over a decade, with the \emph{Visual Mark} module designed and integrated
+by former student Tim Cooper, the \emph{Course2000} system has proven itself
 to be very capable of handling computer science assignment. However, with more
-and more modifications had applied to the system over the years, maintaining
+and more modifications applied to the system over the years, maintaining
 this system has become more and more difficult.
 
 \section{Course2018}
 Influenced by the \emph{Course2000} system, the goal of this project is to
 develop a secure and dynamic LMS with functionalities designed specifically for
 computer science instructors and students, functionalities that mainly focus on
-providing informative feedbacks on programming assignments to both students
+providing informative feedback on programming assignments to both students
 and instructors for the purpose of easing the process of learning as well as
 evaluation, while maintaining the simplicity of
 the overall system design to make sure every task the system needs to
 perform can be done efficiently for both the users and the server, also to make
-sure that the future development and maintenance will not be too difficult.
+sure that future development and maintenance will not be too difficult.
 
 \subsection{Key features}
 The \emph{Course2018} LMS is mainly characterized by the functionalities
@@ -85,31 +85,32 @@ their source code more efficiently and more professionally, abilities like
 source code version control, namely, students and instructors are now able
 to view the history of every source code file, and more importantly, compare
 the changes between different versions of each file.
-This is achieved by integrating one greatest open-source version control system,
+This is achieved by integrating a great open-source version control system,
 \emph{Git}, which was originally developed by \emph{Linus Torvalds} 
 (Anthony Scopatz \& Kathryn D. Huff, 2015 \cite{git}),
 creator and principal developer of the \emph{Linux} operating system kernel
 (Linus Torvalds \& David Diamond, 2001 \cite{lTorvalds}), as well as 
-\emph{GitLab}, an open-source Git-repository manager developed by GitLab Inc
-\cite{gitlab}.
+\emph{GitLab}, an open-source Git-repository manager developed by GitLab
+Inc.~\cite{gitlab}.
 
 \subsubsection{Souce code display}
 A good source code display system with syntax highlighting and line numbering
 can significantly improve the readability of source code files and thereby ease
-the process of evaluating. In \emph{Course2018} LMS, this is achieved with two
-steps: the first step is programming language detection using a \emph{Unix} library
-called \emph{libmagic} \cite{libmagic}, once the programming language is
-determined, a highlighted text will be generated with one most widely used
-syntax highlighter, \emph{Pygments} \cite{pygments}, in an \emph{HTML} format.
+the process of assignment evaluation. In \emph{Course2018} LMS, this is
+achieved with two steps: the first step is programming language detection
+using a \emph{Unix} library called \emph{libmagic} \cite{libmagic}, once the
+programming language is determined, a highlighted text will be generated
+with one widely used syntax highlighter, \emph{Pygments} \cite{pygments},
+in an \emph{HTML} format.
 
 \subsubsection{Auto testing programming assignments}
 When a programming assignment is submitted by a student with \emph{Course2018},
-the source code files will be pushed to a remote \emph{GitLab} instance, then
-those files will be built (if required) and executed immediately by one script
-defined by
-the instructor prior to the assignment was published that contains test data
-like sample input and output, time limit and sample program return code
+the source code files will be pushed to a remote \emph{GitLab} instance; then
+the program will be built (if required) and executed immediately by a script
 in a \emph{GitLab} subsystem, \emph{Gitlab CI/CD} \cite{gitlabci},
+this script is defined by the instructor prior to the time when the assignment
+was published, it contains test data like sample input and output, time limit,
+and sample program return code;
 finally, an informative test report
 will be available for the student who submitted the assignment, markers, and
 the instructor after the execution is finished.
