@@ -6,10 +6,23 @@
 \chapter{Introduction}
 \label{chap:INTRO}
 
+Many courses in computer science involves programming in several programming
+languages.
+The nature of programming assignments evaluation
+involves process like code testing, debugging, comments, code styles.
+Which makes the evaluation process of a programming computer science assignment
+very different than any conventional course assignments.
+Also, it would surely motivates students to hand in a higher quality assignment
+if more information were provided shortly after their assignments were
+submitted.
+Therefore, a learning management system (LMS) that can auto-test the
+submitted assignments and have the results provided for both the markers and
+the students is desired.
+
 \section{Background}
 
 Acadia University currently uses Moodle Learning System (also known as 
-Acorn) as the default learning management system (LMS).
+Acorn) as the default LMS.
 This system works well for most of the courses, however, it gets
 shorthanded when it comes to computer science programming assignments due to
 the nature of programming source code files and the lack of certain
@@ -34,7 +47,7 @@ considered to be an example of this phenomenon (Des Traynor
 \cite{msFeatureCreep}).
 In short, the Moodle Learning System lack of features that are essential
 to computer science students and instructors, at the same time could slow
-down the process of submitting and grading assignments with degree of 
+down the process of submitting and evaluating assignments with degree of 
 complexity of the system.
 
 \medskip
@@ -54,7 +67,7 @@ develop a secure and dynamic LMS with functionalities designed specifically for
 computer science instructors and students, functionalities that mainly focus on
 providing informative feedbacks on programming assignments to both students
 and instructors for the purpose of easing the process of learning as well as
-marking, while maintaining the simplicity of
+evaluation, while maintaining the simplicity of
 the overall system design to make sure every task the system needs to
 perform can be done efficiently for both the users and the server, also to make
 sure that the future development and maintenance will not be too difficult.
@@ -80,7 +93,7 @@ creator and principal developer of the \emph{Linux} operating system kernel
 \subsubsection{Souce code display}
 A good source code display system with syntax highlighting and line numbering
 can significantly improve the readability of source code files and thereby ease
-the process of marking. In \emph{Course2018} LMS, this is achieved with two
+the process of evaluating. In \emph{Course2018} LMS, this is achieved with two
 steps: the first step is programming language detection using a \emph{Unix} library
 called \emph{libmagic} \cite{libmagic}, once the programming language is
 determined, a highlighted text will be generated with one most widely used
