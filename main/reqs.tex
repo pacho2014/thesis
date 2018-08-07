@@ -33,7 +33,7 @@ with the system to have a task accomplished. \cite{useCase}
 
 \medskip 
 
-Use cases in this thesis are composed with the following elements:
+Use cases in this thesis are composed of the following elements:
 
 \begin{itemize}
 
@@ -78,7 +78,7 @@ such as user login, and permission checking for restricted contents.
     A user wishes to have access to some restricted contents, therefore, she
     first need to login to the system.
 \item Preconditions:
-    User is on the login interface, whose login credential
+    The user is on the login interface, whose login credential
     (namely, username and password) is input the corresponding fields.
 \item Postconditions:
     \begin{itemize}
@@ -95,8 +95,8 @@ such as user login, and permission checking for restricted contents.
             account database.
         \item If a match is found in the database, an interface with the user's
             information will be returned and the user will have access to
-            some restricted contents to which she is authorized; otherwise a
-            login interface with error message will be return.
+            some restricted contents to which she is authorized; otherwise, a
+            login interface with error messages will be returned.
     \end{enumerate}
 \end{itemize}
 
@@ -109,8 +109,8 @@ such as user login, and permission checking for restricted contents.
     permission.
 \item Preconditions:
     \begin{itemize}
-        \item The user has logged-in to the system.
-        \item The user has the request url to the content typed into the
+        \item The user has logged in to the system.
+        \item The user has the request URL to the content typed into the
             browser.
     \end{itemize}
 \item Postconditions:
@@ -123,9 +123,9 @@ such as user login, and permission checking for restricted contents.
 \item Triggers: The user confirms the request.
 \item Basic flow:
     \begin{enumerate}
-        \item The request (i.e., the url) of the user is sent to the server.
+        \item The request (i.e., the URL) of the user is sent to the server.
         \item The server checks if the request is valid, namely, if the user
-            has logged-in and if the user has permission to the requested
+            has logged in and if the user has permission to the requested
             content.
         \item If the request is valid, an interface with the requested content will
             be returned; otherwise, an interface with an error message indicates
@@ -147,7 +147,7 @@ and modify) their courses.
     \item User story: The user wishes to create a course.
     \item Preconditions: 
         \begin{itemize}
-            \item The user has logged-in to the system.
+            \item The user has logged in to the system.
             \item The user is on the create course interface where a form with
                 course information related fields is presented to the user.
             \item The user has filled in all the fields with data that may, or
@@ -171,7 +171,7 @@ and modify) their courses.
                 and conflicts (such as course with the same identifier  
                 already exists in that academic year).
             \item If the validation failed, the same create course interface
-                with error messages will be return; otherwise the server will
+                with error messages will be returned; otherwise, the server will
                 execute the routines to create a course with the submitted 
                 information and have the summary interface of that course prepared
                 and returned.
@@ -184,13 +184,13 @@ and modify) their courses.
     \item User story: The user wishes to update the information of one course
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged-in to the system.
+            \item The user has logged in to the system.
             \item The user has previously created a course.
             \item The user is on the manage course interface for the course she
                 wishes to modify, where a form with
                 the course's existing information pre-filled is presented to
                 her.
-            \item The user has update some fields with some new data that may,
+            \item The user has updated some fields with some new data that may,
                 or may not be invalid.
         \end{itemize}
     \item Postconditions:
@@ -212,7 +212,7 @@ and modify) their courses.
                 and conflicts (such as course with the same identifier  
                 already exists in that academic year).
             \item If the validation failed, the same create course interface
-                with error messages will be return; otherwise the server will
+                with error messages will be returned; otherwise, the server will
                 execute the routines to update the course with the submitted 
                 information and have the new manage course interface with the
                 updated course data prepared and returned.
@@ -225,7 +225,7 @@ and modify) their courses.
     \item User story: The user wishes removed a course from the system
     \item Preconditions:
         \begin{enumerate}
-            \item The user has logged-in to the system.
+            \item The user has logged in to the system.
             \item The user has previously created a course.
             \item The user is on the manage course interface for the course
                 she wishes to remove.
@@ -242,7 +242,7 @@ and modify) their courses.
         \begin{enumerate}
             \item A delete request with the course identifier is encrypted
                 and sent to the server.
-            \item The server examines the request and make sure the user is
+            \item The server examines the request and makes sure the user is
                 authorized to perform such an activity.
             \item If the request is valid, the course along with all its
                 relevant data will be removed from the system database.
@@ -264,13 +264,13 @@ students to view and submit those assignments.
     \item User story: The user wishes to create an assignment.
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged-in to the system.
+            \item The user has logged in to the system.
             \item The user has previously created a course.
             \item The user is on the create assignment interface where a form
                 with several basic assignment information related fields is
                 presented to the user.
             \item The user has filled in all the fields with data that may,
-                or may noy be invalid.
+                or may not be invalid.
         \end{itemize}
     \item Postconditions:
         \begin{itemize}
@@ -290,7 +290,7 @@ students to view and submit those assignments.
                 and conflicts (such as assignment with the same number already
                 exists in the course).
             \item If the validation failed, the same create assignment interface
-                with error messages will be returned; otherwise the server will
+                with error messages will be returned; otherwise, the server will
                 execute the routines to create an assignment with the submitted
                 information and have the summary interface of that assignment
                 prepared and returned.
@@ -304,7 +304,7 @@ students to view and submit those assignments.
         assignment.
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged-in to the system.
+            \item The user has logged in to the system.
             \item The user has previously created a course.
             \item The user has previously created an assignment for that course.
             \item the user is on the summary interface of the assignment she
@@ -325,7 +325,7 @@ students to view and submit those assignments.
             \item The server validates the form data for the same errors
                 mentioned in the previous use case.
             \item If the validation failed, the same create assignment interface
-                with error messages will be returned; otherwise the server will
+                with error messages will be returned; otherwise, the server will
                 execute the routines to update the assignment with the submitted
                 information and have the new summary interface with the updated
                 information prepared and returned.
@@ -338,7 +338,7 @@ students to view and submit those assignments.
     \item User story: The user wishes to have one assignment removed.
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged-in to the system.
+            \item The user has logged in to the system.
             \item The user has previously created a course.
             \item The user has previously created an assignment for that course.
             \item the user is on the summary interface of the assignment she
@@ -356,7 +356,7 @@ students to view and submit those assignments.
         \begin{enumerate}
             \item A delete request with the assignment identifier is encrypted
                 and sent to the server.
-            \item The server examines the request and make sure the user is
+            \item The server examines the request and makes sure the user is
                 authorized to perform such an activity.
             \item If the request is valid, the assignment along with all its
                 relevant data will be removed from the system database.
@@ -367,10 +367,10 @@ students to view and submit those assignments.
 \begin{itemize}
     \item Primary actor: A registered student
     \item User story: The user wishes to view the information of an assignment
-     (such as assignment descriptions and attachments) .
+     (such as assignment descriptions and attachments).
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged-in to the system.
+            \item The user has logged in to the system.
             \item The user is registered in the course whose instructor has
                 prepared some assignments.
         \end{itemize}
@@ -381,7 +381,7 @@ students to view and submit those assignments.
         \begin{enumerate}
             \item A request with the assignment identifier is encrypted and
                 sent to the server.
-            \item The server examines the request and make sure the user has
+            \item The server examines the request and makes sure the user has
                 permission to access the requested content (i.e., the user is
                 registered in the course to which the assignment belongs).
             \item If the request is valid, an interface with the requested
@@ -403,7 +403,7 @@ files when they need to (such as submit assignments and upload attachments).
     \item User story: The user wishes to submit an assignment.
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged-in to the system.
+            \item The user has logged in to the system.
             \item The user is registered in the course for which he wishes to
                 submit an assignment.
             \item The user is on the submit assignment interface where an
@@ -430,8 +430,8 @@ files when they need to (such as submit assignments and upload attachments).
         \begin{enumerate}
             \item The files that the user wished to submit are encrypted and
                 sent to the server.
-            \item The server save the files to file system and creates database
-                records for those files.
+            \item The server saves the files to the file system and creates
+                database records for those files.
             \item An interface with links to those files will be prepared and
                 returned.
         \end{enumerate}
@@ -443,7 +443,7 @@ files when they need to (such as submit assignments and upload attachments).
     \item User story: The user wishes to view a file in his assignment
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged-in to the system.
+            \item The user has logged in to the system.
             \item The user has previously submitted some files for an
                 assignment.
             \item The user is on an interface where a list of file names
@@ -465,12 +465,12 @@ files when they need to (such as submit assignments and upload attachments).
     \item Basic flow:
         \begin{enumerate}
             \item The request with the file name is sent to the server.
-            \item The server examines the request, and make sure the user
+            \item The server examines the request and makes sure the user
                 has permission to view the requested file.
             \item If the file can be displayed, the system will prepare the
-                file (such as syntax highlighting for plain text file) and
-                have the interface with that file returned; otherwise a download
-                url to that file will be returned.
+                file (such as syntax highlighting for plain text files) and
+                have the interface with that file returned; otherwise, a download
+                URL to that file will be returned.
         \end{enumerate}
 \end{itemize}
 \end{enumerate}
@@ -491,7 +491,7 @@ assignment.
         submissions of his assignment.
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged-in to the system.
+            \item The user has logged in to the system.
             \item The user has made at least two submissions on one source code
                 file.
             \item The user is on the file display interface of the file he
@@ -507,7 +507,7 @@ assignment.
         \begin{enumerate}
             \item A view changes request with the file identifier is sent
                 to the server.
-            \item The server examines the request and make sure the user has
+            \item The server examines the request and makes sure the user has
                 permission to view the requested file.
             \item If the request is valid, the server will have the current
                 version of the source code compared with the previous version,
@@ -532,7 +532,7 @@ assignment is submitted.
         assignment.
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged-in to the system.
+            \item The user has logged in to the system.
             \item The user has previously created a course.
             \item The user has previously created a programming assignment for
                 that course.
@@ -562,9 +562,9 @@ assignment is submitted.
                 will be displayed if the validation failed.
             \item If the validation was successful, the configuration data is
                 serialized into a block of \emph{JSON} \cite{JSON} formatted text and
-                encapsulated in a request which then be encrypted and sent to
+                encapsulated in a request which then is encrypted and sent to
                 the server.
-            \item The server examines the request and make sure the user has
+            \item The server examines the request and makes sure the user has
                 permission to enable and configure an automated test.
             \item The server has the \emph{JSON} text decoded and saved to the
                 system database.
@@ -582,7 +582,7 @@ assignment is submitted.
         assignment.
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged-in to the system.
+            \item The user has logged in to the system.
             \item The user has submitted a programming assignment whose
                 automated test had been enabled prior to the submission.
         \end{itemize}
@@ -594,9 +594,9 @@ assignment is submitted.
     \item Basic flow:
         \begin{enumerate}
             \item A request for the test result is sent to the server.
-            \item The server examines the request and make sure the user has
+            \item The server examines the request and makes sure the user has
                 permission to view the requested test result.
-            \item The server fetch the test result and have it prepared for
+            \item The server fetches the test result and has it prepared for
                 syntax highlighting.
             \item An interface with the test result is returned.
         \end{enumerate}
@@ -612,10 +612,10 @@ the students' assignment.
 \item Grade assignments
 \begin{itemize}
     \item Primary actor: A registered student
-    \item User story: The user wishes grade an assignment.
+    \item User story: The user wishes to grade an assignment.
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged-in to the system.
+            \item The user has logged in to the system.
             \item The user is registered as a teaching assistant in the course
                 to which the assignment belongs.
             \item The user is on the teaching assistant interface where there
@@ -632,17 +632,17 @@ the students' assignment.
         assignments.
     \item Basic flow:
         \begin{enumerate}
-            \item A marking interface composed with two sections, 
+            \item A marking interface composed of two sections, 
                 files (that the student submitted) display section and
                 comments section, is presented to the user.
-            \item The user checks the files and edit his comments and the
+            \item The user checks the files and edits his comments and the
                 grade to this assignment until he is satisfied.
             \item The user selects the \emph{Save} button.
-            \item The comments and grade is encapsulated in a request which
-                then be encrypted and sent to the server.
-            \item The server examines the request and make sure the user has
+            \item The comments and grade are encapsulated in a request which
+                then is encrypted and sent to the server.
+            \item The server examines the request and makes sure the user has
                 permission to grade this assignment.
-            \item The server save the grade and the feedback to the system
+            \item The server saves the grade and the feedback to the system
                 database.
             \item A success message is returned to the user.
         \end{enumerate}
@@ -668,13 +668,13 @@ or other common forms of cyber attacks \cite{cyberAttacks}).
 \subsection{Maintainability}
 It is highly possible that future developments will be made to the system by
 developers other than the original author, therefore, this system shall be
-well designed and constructed with high quality programming codes to improve 
+well designed and constructed with high-quality programming codes to improve 
 maintainability.
 
-\subsection{Cross platform availability}
-To provide a better cross platform availability, this system shall be a
+\subsection{Cross-platform availability}
+To provide a better cross-platform availability, this system shall be a
 web-based application.
 
 \subsection{Deployment}
 The process of deployment of this system shall not be too complicated and
-preferably with less packages required for the host operating system.
+preferably with fewer packages required for the host operating system.
