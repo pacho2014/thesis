@@ -491,6 +491,7 @@ assignment.
         submissions of his assignment.
     \item Preconditions:
         \begin{itemize}
+            \item The user has logged-in to the system.
             \item The user has made at least two submissions on one source code
                 file.
             \item The user is on the file display interface of the file he
@@ -517,42 +518,163 @@ assignment.
 \end{enumerate}
 
 \subsection{Automatic code testing}
+For programming assignments, the system shall have some routines to build and
+run the students' programs automatically with sample data provided by the
+instructor, and have the test result available for the users shortly after an
+assignment is submitted.
+
 \subsubsection{Use cases}
 \begin{enumerate}
-\item 
+\item Configure automated tests for an assignment
 \begin{itemize}
-    \item Primary actor:
-    \item User story:
+    \item Primary actor: A registered instructor
+    \item User story: The user wishes to enable automated tests for an
+        assignment.
     \item Preconditions:
+        \begin{itemize}
+            \item The user has logged-in to the system.
+            \item The user has previously created a course.
+            \item The user has previously created a programming assignment for
+                that course.
+            \item The user is on the summary interface of the assignment for
+                which she wishes to enable and configure automated tests.
+        \end{itemize}
     \item Postconditions:
+        \begin{itemize}
+            \item An automated test scheme will be created.
+            \item Any future submissions will be tested with the scheme.
+        \end{itemize}
     \item Triggers:
+        \begin{itemize}
+            \item The user enables and configures (such as compile commands, 
+                time limit, and
+                test cases) the automated tests with a dynamic form (a form
+                with fields that can be changed accordingly with the previously
+                input data) on the
+                interface.
+            \item The \emph{Save} button at the end of the form is selected by
+                the user.
+        \end{itemize}
     \item Basic flow:
         \begin{enumerate}
-            \item 
+            \item The form data is validated (basic input validation)
+                immediately on the client side of the system. Error messages
+                will be displayed if the validation failed.
+            \item If the validation was successful, the configuration data is
+                serialized into a block of \emph{JSON} \cite{JSON} formatted text and
+                encapsulated in a request which then be encrypted and sent to
+                the server.
+            \item The server examines the request and make sure the user has
+                permission to enable and configure an automated test.
+            \item The server has the \emph{JSON} text decoded and saved to the
+                system database.
+            \item The server creates a \emph{shell script} \cite{shellScript}
+                for the automated test using the configuration data from the
+                system database.
+            \item A success message is returned to the user.
+        \end{enumerate}
+\end{itemize}
+
+\item View automated test result
+\begin{itemize}
+    \item Primary actor: A registered student
+    \item User story: The user wishes to view the automated test result of his
+        assignment.
+    \item Preconditions:
+        \begin{itemize}
+            \item The user has logged-in to the system.
+            \item The user has submitted a programming assignment whose
+                automated test had been enabled prior to the submission.
+        \end{itemize}
+    \item Postconditions:
+        An interface with the automated test result will be presented to the
+        user.
+    \item Triggers: 
+        The \emph{Test Result} button is selected by the user.
+    \item Basic flow:
+        \begin{enumerate}
+            \item A request for the test result is sent to the server.
+            \item The server examines the request and make sure the user has
+                permission to view the requested test result.
+            \item The server fetch the test result and have it prepared for
+                syntax highlighting.
+            \item An interface with the test result is returned.
         \end{enumerate}
 \end{itemize}
 \end{enumerate}
 
 \subsection{Assignment Marking}
+The system shall provide tools for instructors and teaching assistants to grade
+the students' assignment.
+
 \subsubsection{Use cases}
 \begin{enumerate}
-\item 
+\item Grade assignments
 \begin{itemize}
-    \item Primary actor:
-    \item User story:
+    \item Primary actor: A registered student
+    \item User story: The user wishes grade an assignment.
     \item Preconditions:
+        \begin{itemize}
+            \item The user has logged-in to the system.
+            \item The user is registered as a teaching assistant in the course
+                to which the assignment belongs.
+            \item The user is on the teaching assistant interface where there
+                is a table displaying all the submitted assignments.
+        \end{itemize}
     \item Postconditions:
+        \begin{itemize}
+            \item The grade and feedback from the user will be saved and be
+                available for the student who submitted the assignment as soon
+                as the instructor releases the grades.
+        \end{itemize}
     \item Triggers:
+        The user selected the \emph{Mark} button on one of the submitted
+        assignments.
     \item Basic flow:
         \begin{enumerate}
-            \item 
+            \item A marking interface composed with two sections, 
+                files (that the student submitted) display section and
+                comments section, is presented to the user.
+            \item The user checks the files and edit his comments and the
+                grade to this assignment until he is satisfied.
+            \item The user selects the \emph{Save} button.
+            \item The comments and grade is encapsulated in a request which
+                then be encrypted and sent to the server.
+            \item The server examines the request and make sure the user has
+                permission to grade this assignment.
+            \item The server save the grade and the feedback to the system
+                database.
+            \item A success message is returned to the user.
         \end{enumerate}
 \end{itemize}
 \end{enumerate}
 
+\pagebreak
 
 \section{Non-functional requirements}
+Following is a list of non-functional requirements ordered by their priorities.
+
+\subsection{Development time}
+The process of development of this project shall be in no longer than three
+months (starting from May 1, 2018).
+
 \subsection{Security}
+The system shall provide a reasonable degree of security measurement, 
+be able to
+prevent sensible information (such as student information, grades, and
+submitted files) being accessed from illegal activities (such as SQL injection 
+or other common forms of cyber attacks \cite{cyberAttacks}).
+
 \subsection{Maintainability}
+It is highly possible that future developments will be made to the system by
+developers other than the original author, therefore, this system shall be
+well designed and constructed with high quality programming codes to improve 
+maintainability.
+
 \subsection{Cross platform availability}
+To provide a better cross platform availability, this system shall be a
+web-based application.
+
 \subsection{Deployment}
+The process of deployment of this system shall not be too complicated and
+preferably with less packages required for the host operating system.
