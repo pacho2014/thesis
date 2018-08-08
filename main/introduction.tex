@@ -6,12 +6,12 @@
 \chapter{Introduction}
 \label{chap:INTRO}
 
-Many courses in computer science involve programming in several programming
+Many courses in computer science involve programming in one or more programming
 languages.
 The nature of programming assignment evaluation
-involves process like code testing, debugging, commenting, and code styles
+involves processes like code testing, debugging, commenting, and code style
 checking.
-Which makes the evaluation process of a programming computer science assignment
+This makes the evaluation process of a programming computer science assignment
 very different than assignments in many other disciplines.
 Also, it would surely motivate students to hand in a higher quality assignment
 if more information were provided shortly after their assignments were
@@ -27,13 +27,13 @@ Acadia University as Acorn) as the default LMS.
 This system works well for most of the courses, however, it has shortcomings
 when it comes to computer science programming assignments due to
 the nature of programming source code files and the lack of certain
-features, including, but not limited to monospace text font for plain text
+features, including, but not limited to, monospace text font for plain text
 file display, programming language detection, and syntax
 highlighting for source code file display.
 Also, it is not uncommon for computer science markers and instructors
-trying to put mathematical equations or formulas into their comments on
+to want to put mathematical equations or formulas into their comments on
 students' assignments; the only two ways to do that with the Moodle
-Learning System are draw the equations or formulas by hand with the
+Learning System are to draw the equations or formulas by hand with the
 pointing device of the computer (i.e., computer mouse, trackpad), or write
 the equations or formulas in \emph{HTML} code. Both of these two ways are
 time-consuming and borderline unfeasible.
@@ -41,11 +41,11 @@ Moreover, there are features in the Moodle Learning System that are rarely
 used by instructors and students (especially instructors and students in
 computer science departments), features like \emph{PoodLL Recorder},
 \emph{Tags} and \emph{Marking Allocation};
-those features increased the
-complexity of the system and resulted in the fact that an easy task 
+those features increase the
+complexity of the system and result in the fact that an easy task 
 often takes a longer time to finish than it was supposed to. This phenomenon
 is known to be a ``Feature Creep''  (Boram Lee and Woohun Lee, 2015 
-\cite{featureCreep}), the Microsoft Office Suite is generally
+\cite{featureCreep}); the Microsoft Office Suite is generally
 considered to be an example of this phenomenon (Des Traynor 
 \cite{msFeatureCreep}).
 In short, the Moodle Learning System lacks features that are essential
@@ -55,15 +55,23 @@ of the system.
 
 \medskip
 
-The \emph{Course2000} course system designed by Dr.~Rick Giles is a good choice
-of alternative LMS to the Moodle Learning System. As a matter of fact, it has
-been the
+The \emph{Course2000} course system, designed by former Acadia computer science
+professor Dr.~Rick Giles, is a good choice
+of alternative LMS to the Moodle Learning System.
+As a matter of fact, it has been the
 default LMS for one computer science course, \emph{COMP 2103: Programming 3},
-for over a decade, with the \emph{Visual Mark} module designed and integrated
-by former student Tim Cooper, the \emph{Course2000} system has proven itself
-to be very capable of handling computer science assignment. However, with more
+for 16 years.
+With a recent addition to the system,
+the \emph{Visual Mark} module,
+designed and integrated by former student Tim Cooper,
+the \emph{Course2000} system has proven itself
+to be very capable of handling computer science assignments.
+However, with more
 and more modifications applied to the system over the years, maintaining
 this system has become more and more difficult.
+Further, the amount of work required to add new features (especially the key
+features this thesis intends to achieve, see 1.2.1) to the system
+has increased dramatically.
 
 \section{Course2018}
 Influenced by the \emph{Course2000} system, the goal of this project is to
@@ -82,8 +90,8 @@ described below.
 
 \subsubsection{Source code management}
 The \emph{Course2018} LMS provides the abilities for students to manage
-their source code more efficiently and more professionally, abilities like 
-source code version control, namely, students and instructors are now able
+their source code more efficiently and more professionally. With abilities such
+as source code version control, students and instructors are now able
 to view the history of every source code file, and more importantly, compare
 the changes between different versions of each file.
 
@@ -92,17 +100,18 @@ Source code display is one fundamental feature of the \emph{Course2018} LMS,
 to provide a better readability of source code files for the users,
 a syntax highlighter is included in the system to enable syntax
 highlighting \cite{syntaxHighlighting} for over 300 programming
-languages \cite{pygmentsLangs}.
+languages~\cite{pygmentsLangs}.
 
 \subsubsection{Auto testing programming assignments}
 When a programming assignment is submitted by a student with \emph{Course2018},
-a program associates with the submitted source code files will be built
+a program associated with the submitted source code file(s) will be built
 (if required); this program
-will then be executed with the sample input data provided by the instructor;
+will then be executed with the sample input data provided to the system
+by the instructor;
 as soon as the execution is finished, 
-the output of the program will be compared with the sample output data~(which
-also is provided by the instructor) to
-provide an informative test result for the relevant parties (i.e., the student
+the output of the program will be compared with the sample output data~(also
+provided by the instructor) to
+generate an informative test result for the relevant parties (i.e., the student
 who submitted the assignment, the markers, and the instructor).
 
 \subsubsection{Informative assignment feedback}
@@ -111,10 +120,10 @@ science assignments (especially programming assignments) is to make sure the
 comments are well formatted.
 Therefore, an easy-to-use plain text markup language called \emph{Markdown}
 is introduced to the \emph{Course2018} marking system. This markup language was
-designed in a way that it can be converted to an \emph{HTML} format, which
-very much suits the needs of this project;
+designed in a way that it can be automatically converted to \emph{HTML} format,
+which very much suits the needs of this project;
 also, it has been
-widely used by famous websites including \emph{GitHub} \cite{gitHubMarkdown}
+widely used by well-known websites including \emph{GitHub} \cite{gitHubMarkdown}
 and \emph{Stack Overflow} \cite{stackOverflowMarkdown}.
 Moreover, an improvement has been made for the purpose of supporting mixed
 input of \emph{Markdown} and \TeX\ mathematical notation.
