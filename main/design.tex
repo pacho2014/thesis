@@ -113,3 +113,21 @@ is required to be allocated for these instances which makes them much more
 flexible than a conventional VM. Further, with the same hardware system and
 OS kernel as the host system being used, the overhead of a container is
 generally considered to be next to nothing (compared to conventional VMs).
+
+\pagebreak
+
+Following are the results of the \texttt{uname} command
+(a command to show the kernel version of a Unix or Unix-like OS)
+on an \emph{Arch Linux} host system, a container on the host system
+with a \emph{Debian} image, and a \emph{kernel-based VM} (KVM) on the host
+system with \emph{macOS 10.13.4} installed.
+
+\begin{centering}
+\lstinputlisting[caption=uname command on a \emph{Arch Linux} host system,
+label=lst:UNAME_HOST, numbers=none]{./examples/uname-host.txt}
+\lstinputlisting[caption=uname command in a containerized \emph{Debian}
+environment,
+label=lst:UNAME_HOST, numbers=none]{./examples/uname-host.txt}
+\lstinputlisting[caption=uname command in a \emph{macOS} KVM,
+label=lst:UNAME_HOST, numbers=none]{./examples/uname-kvm.txt}
+\end{centering}
