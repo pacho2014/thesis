@@ -119,8 +119,8 @@ generally considered to be next to nothing (compared to conventional VMs).
 Following are the results of the \texttt{uname} command
 (a command to show the kernel version of a Unix or Unix-like OS)
 on an \emph{Arch Linux} host system, a container on the host system
-with a \emph{Debian} image, and a \emph{kernel-based VM} (KVM) on the host
-system with \emph{macOS 10.13.4} installed.
+with a \emph{Debian}~\cite{debian} image, and a \emph{kernel-based VM} (KVM)
+on the host system with \emph{macOS 10.13.4} installed.
 
 \begin{centering}
 \lstinputlisting[caption=uname command on a \emph{Arch Linux} host system,
@@ -131,3 +131,21 @@ label=lst:UNAME_HOST, numbers=none]{./examples/uname-host.txt}
 \lstinputlisting[caption=uname command in a \emph{macOS} KVM,
 label=lst:UNAME_HOST, numbers=none]{./examples/uname-kvm.txt}
 \end{centering}
+
+\subsubsection{Docker}
+The \emph{Course2018} LMS is encapsulated in a container based on a
+\emph{Debian} image, using a container management system called \emph{Docker},
+an open-source implementation of \emph{OS-level~VM} developed by
+\emph{Docker Inc}.
+
+\medskip
+
+With \emph{Docker}, the finished product of the
+\emph{Course2018} LMS, along with all its dependencies, can be packed, shipped
+and ran on any host system with the exact environment as it was on the
+developer's computer system. Therefore, the deployment process of the
+\emph{Course2018} LMS will be as simple as one command.
+
+
+
+\section{System modules}
