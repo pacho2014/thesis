@@ -7,10 +7,10 @@
 \label{chap:REQS}
 
 The first step of this project is performing an overall requirements analysis
-in order to determine the general needs of the \emph{Course2018} LMS.
+in order to determine the general needs of the \emph{Course2018} LMS.\ \ 
 In this chapter, some key requirements will be investigated for their
 feasibility and expectations.
-Depends on the specifications of the requirements, they are categorized into
+Depending on the specifications of the requirements, they are categorized into
 two categories, functional requirements and non-functional requirements.
 
 \section{Terminologies}
@@ -20,16 +20,16 @@ A functional requirement defines a task the system needs to accomplish,
 as well as the behavior of the task, which is captured and described in detail
 with its use cases.
 These requirements will be further analyzed to design a system components
-model.~\cite{functionalReqs}
+model~\cite{functionalReqs}.
 
 \subsection{Non-functional requirement}
 As opposed to functional requirements, non-functional requirements describe
 non-behavioral specifications such as system performance, security, and system
 environments.
 
-\subsection{Use case}
+\subsection{Use cases}
 A use case is a series of actions performed by one or more actors interact
-with the system to have a task accomplished
+with the system to accomplished a task
 (Alistair Cockburn, 2011 \cite{useCase}).
 
 \medskip 
@@ -38,25 +38,25 @@ Use cases in this thesis are composed of the following elements:
 
 \begin{itemize}
 
-\item \textbf{Primary actor}
-The main user (could be a person of an external system) who interacts with the
+\item \textbf{Primary actor}:
+The main user (could be a person or an external system) who interacts with the
 system.
 
-\item \textbf{User story}
+\item \textbf{User story}:
 A brief description of the task that the primary actor wishes to accomplish.
 
-\item \textbf{Preconditions}
+\item \textbf{Preconditions}:
 Prerequisites to the test case;
-states or conditions that must be satisfied prior to the start of the workflow.
+conditions or states that must be satisfied prior to the start of the workflow.
 
-\item \textbf{Postconditions}
-States or conditions that must be satisfied after the workflow is finished.
+\item \textbf{Postconditions}:
+Conditions or states that must be satisfied after the workflow is finished.
 
-\item \textbf{Triggers}
+\item \textbf{Triggers}:
 An event (or a series of events) that starts the execution of the workflow.
 
-\item \textbf{Basic flow}
-A step-by-step description of the detail interactions between the actor and
+\item \textbf{Basic flow}:
+A step-by-step description of the detailed interactions between the actor and
 the system, as well as the activities performed by the system.
 
 \end{itemize}
@@ -66,71 +66,73 @@ the system, as well as the activities performed by the system.
 \subsection{User authentication}
 
 The system shall provide routines to handle activities related to user accounts
-such as user login, and permission checking for restricted contents.
+such as user login, user logout, and permission checking for restricted
+content.
 
 \subsubsection{Use cases}
 
 \begin{enumerate}
-\item User login
+\item User login:
 \begin{itemize}
 \item Primary actor:
-    A registered user of the \emph{Course2018} LMS
+    A registered user of the \emph{Course2018} LMS.
 \item User story:
-    A user wishes to have access to some restricted contents, therefore, she
-    first need to login to the system.
+    A user wishes to have access to some restricted content, therefore, he
+    first needs to login to the system.
 \item Preconditions:
-    The user is on the login interface, whose login credential
-    (namely, username and password) is input the corresponding fields.
+    The user is at the login interface, whose login credentials
+    (namely, username and password) are input into the corresponding fields.
 \item Postconditions:
     \begin{itemize}
-        \item On success: An interface with the user's information (such as courses
+        \item On success: an interface with the user's information (such as courses
             in which this user is registered) will be presented to the user.
-        \item On failure: A login interface with an error message will be
+        \item On failure: a login interface with an error message will be
             presented to the user.
     \end{itemize}
-\item Triggers: The \emph{Login} button is selected.
+\item Triggers: the \emph{Login} button is clicked.
 \item Basic flow:
     \begin{enumerate}
-        \item User's login credential is encrypted and sent to the server.
-        \item The server has the user's login credential compared against the
+        \item The user's login credentials are encrypted and sent to the
+            server.
+        \item The server compares the user's login credentials against the
             account database.
         \item If a match is found in the database, an interface with the user's
             information will be returned and the user will have access to
-            some restricted contents to which she is authorized; otherwise, a
+            some restricted content to which he is authorized; otherwise, a
             login interface with error messages will be returned.
     \end{enumerate}
 \end{itemize}
 
-\item Permission checking
+\item Permission checking:
 \begin{itemize}
 \item Primary actor: 
     A registered user of the \emph{Course2018} LMS
 \item User story:
-    The user request for accessing content to which she may, or may not have
+    The user request for accessing content for which he may or may not have
     permission.
+\need 1 in
 \item Preconditions:
     \begin{itemize}
-        \item The user has logged in to the system.
-        \item The user has the request URL to the content typed into the
-            browser.
+        \item The user is logged into the system.
     \end{itemize}
 \item Postconditions:
     \begin{itemize}
-        \item On success: An interface with the requested content will be presented
+        \item On success: an interface with the requested content will be presented
             to the user.
-        \item On failure: An interface indicates that the user is unauthorized will
+        \item On failure: n interface indicates that the user is unauthorized will
             be presented to the user.
     \end{itemize}
-\item Triggers: The user confirms the request.
+\item Triggers: the user types the request URL to the browser location field
+    or clicks on a link to the URL.
 \item Basic flow:
     \begin{enumerate}
-        \item The request (i.e., the URL) of the user is sent to the server.
+        \item The request (i.e., the desired URL) of the user is sent to the server.
         \item The server checks if the request is valid, namely, if the user
-            has logged in and if the user has permission to the requested
+            is logged in and if the user has permission to access the requested
             content.
         \item If the request is valid, an interface with the requested content will
-            be returned; otherwise, an interface with an error message indicates
-            the request is unauthorized will be returned.
+            be returned; otherwise, an interface with an error message 
+            indicating the request is unauthorized will be returned.
     \end{enumerate}
 \end{itemize}
 
@@ -138,40 +140,41 @@ such as user login, and permission checking for restricted contents.
 
 
 \subsection{Course information handling}
-The system shall provide instructors abilities to manage (i.e., create, remove,
+The system shall provide instructors with abilities to manage (i.e., create, remove,
 and modify) their courses.
 \subsubsection{Use cases}
 \begin{enumerate}
-\item Create courses
+\item Create a course:
 \begin{itemize}
-    \item Primary actor: A registered instructor
-    \item User story: The user wishes to create a course.
+    \item Primary actor: a registered instructor.
+    \item User story: the user wishes to create a course.
+    \need 2 in
     \item Preconditions: 
         \begin{itemize}
-            \item The user has logged in to the system.
-            \item The user is on the create course interface where a form with
+            \item The user is logged in to the system.
+            \item The user is at the create course interface where a form with
                 course information related fields is presented to the user.
-            \item The user has filled in all the fields with data that may, or
+            \item The user fills in all the fields with data that may or
                 may not be invalid.
         \end{itemize}
     \item Postconditions:
         \begin{itemize}
-            \item On success: A summary interface of the course the user created
+            \item On success: a summary interface of the course the user created
                 will be presented.
-            \item On failure: The same create course interface with error
+            \item On failure: the same create course interface with error
                 messages indicating which fields were filled with invalid data
                 will be presented.
         \end{itemize}
-    \item Triggers: The \emph{Create} button is selected.
+    \item Triggers: the \emph{Create} button is clicked.
     \item Basic flow:
         \begin{enumerate}
             \item The form with the update course information is encrypted and
                 sent to the server.
             \item The server validates the form data for errors including,
-                but not limited to invalid input format, number out-of-range,
-                and conflicts (such as course with the same identifier  
+                but not limited to, invalid input format, numbers out-of-range,
+                and conflicts (such as a course with the same identifier  
                 already exists in that academic year).
-            \item If the validation failed, the same create course interface
+            \item If the validation fails, the same create course interface
                 with error messages will be returned; otherwise, the server will
                 execute the routines to create a course with the submitted 
                 information and have the summary interface of that course prepared
@@ -181,36 +184,36 @@ and modify) their courses.
 
 \item Update course information
 \begin{itemize}
-    \item Primary actor: A registered instructor
-    \item User story: The user wishes to update the information of one course
+    \item Primary actor: a registered instructor.
+    \item User story: the user wishes to update the information of one course
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged in to the system.
+            \item The user is logged in to the system.
             \item The user has previously created a course.
-            \item The user is on the manage course interface for the course she
+            \item The user is at the manage course interface for the course he
                 wishes to modify, where a form with
                 the course's existing information pre-filled is presented to
-                her.
-            \item The user has updated some fields with some new data that may,
+                him.
+            \item The user has updated some fields with some new data that may
                 or may not be invalid.
         \end{itemize}
     \item Postconditions:
         \begin{itemize}
-            \item On success: A manage course interface where a form with
+            \item On success: a manage course interface where a form with
                 the course's updated information pre-filled will be presented
                 to the user.
-            \item On failure: A manage course interface with error messages
+            \item On failure: a manage course interface with error messages
                 indicating which fields were filled with invalid data will be
                 presented to the user.
         \end{itemize}
-    \item Triggers: The \emph{Save Changes} button is selected.
+    \item Triggers: the \emph{Save Changes} button is clicked.
     \item Basic flow:
         \begin{enumerate}
-            \item The form with course related data is encrypted and sent to
+            \item The form with course-related data is encrypted and sent to
                 the server.
             \item The server validates the form data for errors including,
-                but not limited to invalid input format, number out-of-range,
-                and conflicts (such as course with the same identifier  
+                but not limited to, invalid input format, numbers out-of-range,
+                and conflicts (such as a course with the same identifier  
                 already exists in that academic year).
             \item If the validation failed, the same create course interface
                 with error messages will be returned; otherwise, the server will
@@ -220,28 +223,28 @@ and modify) their courses.
         \end{enumerate}
 \end{itemize}
 
-\item Remove a course
+\item Remove a course:
 \begin{itemize}
-    \item Primary actor: A registered instructor
-    \item User story: The user wishes removed a course from the system
+    \item Primary actor: a registered instructor.
+    \item User story: the user wishes to remove a course from the system.
     \item Preconditions:
         \begin{enumerate}
-            \item The user has logged in to the system.
+            \item The user is logged in to the system.
             \item The user has previously created a course.
-            \item The user is on the manage course interface for the course
-                she wishes to remove.
-            \item The user selected the \emph{Delete Course} button and a
-                confirmation dialogue is presented to her.
+            \item The user is at the manage course interface for the course
+                he wishes to remove.
+            \item The user clicked the \emph{Delete Course} button and a
+                confirmation dialogue is presented to him.
         \end{enumerate}
     \item Postconditions:
         The course, along with all relevant data (such as registered students,
         assignments, and student grades) will be removed from the system
         database.
-    \item Triggers: The \emph{Confirm} button on the confirmation dialogue is
-        selected.
+    \item Triggers: the \emph{Confirm} button on the confirmation dialogue is
+        clicked.
     \item Basic flow:
         \begin{enumerate}
-            \item A delete request with the course identifier is encrypted
+            \item A \emph{delete} request with the course identifier is encrypted
                 and sent to the server.
             \item The server examines the request and makes sure the user is
                 authorized to perform such an activity.
@@ -253,43 +256,43 @@ and modify) their courses.
 \end{enumerate}
 
 \subsection{Assignment information handling}
-The system shall provide abilities for instructors to manage (i.e., create,
-remove, and modify) the assignments of their courses, as well as abilities for
-students to view and submit those assignments.
+The system shall provide the ability for instructors to manage (i.e., create,
+remove, and modify) the assignments of their courses, as well as the ability for
+students to submit and view those assignments.
 
 \subsubsection{Use cases}
 \begin{enumerate}
-\item Create assignments
+\item Create an assignments:
 \begin{itemize}
-    \item Primary actor: A registered instructor
-    \item User story: The user wishes to create an assignment.
+    \item Primary actor: a registered instructor.
+    \item User story: the user wishes to create an assignment.
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged in to the system.
+            \item The user is logged in to the system.
             \item The user has previously created a course.
-            \item The user is on the create assignment interface where a form
-                with several basic assignment information related fields is
+            \item The user is at the create assignment interface where a form
+                with several assignment-information related fields is
                 presented to the user.
-            \item The user has filled in all the fields with data that may,
+            \item The user has filled in all the fields with data that may
                 or may not be invalid.
         \end{itemize}
     \item Postconditions:
         \begin{itemize}
-            \item On success: An summary interface of the assignment the user
+            \item On success: an summary interface of the assignment the user
                 created will be presented.
-            \item On failure: The same create assignment interface with error
+            \item On failure: the same create assignment interface with error
                 messages indicating which fields were filled with invalid data
                 will be presented.
         \end{itemize}
-    \item Triggers: The \emph{Create} button is selected.
+    \item Triggers: the \emph{Create} button is clicked.
     \item Basic flow:
         \begin{enumerate}
-            \item The form with assignments related data is encrypted and sent
-                to the server.
+            \item The form with the assignment-related data is encrypted and
+                sent to the server.
             \item The server validates the form data for errors  including,
-                but not limited to invalid input format,  number out-of-range,
-                and conflicts (such as assignment with the same number already
-                exists in the course).
+                but not limited to, invalid input format, numbers out-of-range,
+                and conflicts (such as, an assignment with the same
+                number already exists in the course).
             \item If the validation failed, the same create assignment interface
                 with error messages will be returned; otherwise, the server will
                 execute the routines to create an assignment with the submitted
@@ -300,32 +303,32 @@ students to view and submit those assignments.
 
 \item Update assignment information
 \begin{itemize}
-    \item Primary actor: A registered instructor
-    \item User story: The user wishes to update the information of one
+    \item Primary actor: a registered instructor.
+    \item User story: the user wishes to update the information of one
         assignment.
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged in to the system.
+            \item The user is logged in to the system.
             \item The user has previously created a course.
             \item The user has previously created an assignment for that course.
-            \item the user is on the summary interface of the assignment she
+            \item The user is at the summary interface of the assignment he
                 wishes to modify, where a form with the assignment's existing
-                information pre-filled is presented to her.
+                information pre-filled is presented to him.
         \end{itemize}
     \item Postconditions:
-        \item On success: The same assignment summary interface with the updated
+        \item On success: the same assignment summary interface with the updated
             information will be presented to the user.
-        \item On failure: The same assignment summary interface with error
+        \item On failure: the same assignment summary interface with error
             messages indicating which fields were filled with invalid data will
             be presented to the user.
-    \item Triggers: The \emph{Save Changes} button is selected.
+    \item Triggers: the \emph{Save Changes} button is clicked.
     \item Basic flow:
         \begin{enumerate}
             \item The form with the updated assignment information is encrypted
                 and sent to the server.
             \item The server validates the form data for the same errors
                 mentioned in the previous use case.
-            \item If the validation failed, the same create assignment interface
+            \item If the validation failed, the same assignment summary interface
                 with error messages will be returned; otherwise, the server will
                 execute the routines to update the assignment with the submitted
                 information and have the new summary interface with the updated
@@ -333,51 +336,52 @@ students to view and submit those assignments.
         \end{enumerate}
 \end{itemize}
 
-\item Remove an assignment
+\item Remove an assignment:
 \begin{itemize}
-    \item Primary actor: A registered instructor
-    \item User story: The user wishes to have one assignment removed.
+    \item Primary actor: a registered instructor.
+    \item User story: the user wishes to have one assignment removed.
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged in to the system.
+            \item The user is logged in to the system.
             \item The user has previously created a course.
             \item The user has previously created an assignment for that course.
-            \item the user is on the summary interface of the assignment she
+            \item The user is at the summary interface of the assignment he
                 wishes to remove.
-            \item The user selected the \emph{Delete Assignment} button and a
-                confirmation dialogue is presented to her.
+            \item The user clicked the \emph{Delete Assignment} button and a
+                confirmation dialogue is presented to him.
         \end{itemize}
     \item Postconditions:
         The assignment, along with all the relevant data (such as assignment
         attachments, student grades and marker comments) will be removed from
         the system database.
-    \item Triggers: The \emph{Confirm} button on the confirmation dialogue is
-        selected.
+    \item Triggers: the \emph{Confirm} button on the confirmation dialogue is
+        clicked.
     \item Basic flow:
         \begin{enumerate}
-            \item A delete request with the assignment identifier is encrypted
+            \item A \emph{delete} request with the assignment identifier is encrypted
                 and sent to the server.
             \item The server examines the request and makes sure the user is
                 authorized to perform such an activity.
-            \item If the request is valid, the assignment along with all its
-                relevant data will be removed from the system database.
+            \item If the request is valid, the assignment, along with all its
+                relevant data, will be removed from the system database.
         \end{enumerate}
 \end{itemize}
 
-\item View assignment
+\item View an assignment:
 \begin{itemize}
-    \item Primary actor: A registered student
-    \item User story: The user wishes to view the information of an assignment
+    \item Primary actor: a registered student.
+    \item User story: the user wishes to view the information of an assignment
      (such as assignment descriptions and attachments).
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged in to the system.
-            \item The user is registered in the course whose instructor has
+            \item The user is logged in to the system.
+            \item The user is registered in a course whose instructor has
                 prepared some assignments.
         \end{itemize}
-    \item Postconditions: An interface with the assignment information the user
+    \item Postconditions: an interface with the assignment information the user
         wishes to view will be presented.
-    \item Triggers: The user selected a link to the assignment detail interface.
+    \item Triggers: the user clicked a link to the assignment detail interface.
+    \need 1 in
     \item Basic flow:
         \begin{enumerate}
             \item A request with the assignment identifier is encrypted and
@@ -398,23 +402,24 @@ files when they need to (such as submit assignments and upload attachments).
 \subsubsection{Use cases}
 \begin{enumerate}
 
-\item Upload files
+\item Upload files:
 \begin{itemize}
-    \item Primary actor: A registered student
-    \item User story: The user wishes to submit an assignment.
+    \item Primary actor: a registered student.
+    \item User story: the user wishes to submit an assignment.
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged in to the system.
+            \item The user is logged in to the system.
             \item The user is registered in the course for which he wishes to
                 submit an assignment.
-            \item The user is on the submit assignment interface where an
+            \item The user is at the submit assignment interface where an
                 \emph{Upload} button is presented to him.
         \end{itemize}
     \item Postconditions:
         \begin{itemize}
-            \item The files the user submitted will be saved to the system.
-            \item Theses files can be view immediately by all relevant parties
-                (the student submitted the files, the instructor,
+            \item The files the user submitted will be uploaded and saved to the
+                \emph{Course2018}'s file system.
+            \item Theses files can be viewed immediately by all relevant parties
+                (the student who submitted the files, the instructor,
                 and the markers).
             \item An interface, with links from which the user can
                 download the files he submitted, will be presented
@@ -422,10 +427,10 @@ files when they need to (such as submit assignments and upload attachments).
         \end{itemize}
     \item Triggers:
         \begin{itemize}
-            \item The \emph{Upload} button is selected by the user.
+            \item The \emph{Upload} button is clicked by the user.
             \item A file submit interface is presented to the user.
-            \item The user selected some files he wishes to submit from his
-                local hard drive and then selected the \emph{Submit} button.
+            \item The user selects some files he wishes to submit from his
+                local computer and then clicks the \emph{Submit} button.
         \end{itemize}
     \item Basic flow:
         \begin{enumerate}
@@ -433,39 +438,39 @@ files when they need to (such as submit assignments and upload attachments).
                 sent to the server.
             \item The server saves the files to the file system and creates
                 database records for those files.
-            \item An interface with links to those files will be prepared and
+            \item An interface with links to those files is prepared and
                 returned.
         \end{enumerate}
 \end{itemize}
 
-\item View files
+\item View files:
 \begin{itemize}
-    \item Primary actor: A registered student
-    \item User story: The user wishes to view a file in his assignment
+    \item Primary actor: a registered student.
+    \item User story: the user wishes to view a file in his assignment.
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged in to the system.
+            \item The user is logged in to the system.
             \item The user has previously submitted some files for an
                 assignment.
-            \item The user is on an interface where a list of file names
-                corresponding to the files he submitted is displayed on a table,
-                each file name is followed by a series of buttons, one of which
-                is the \emph{View} button.
+            \item The user is at an interface where a list of file names
+                corresponding to the files he submitted is displayed in a table,
+                and each file name is followed by a series of buttons,
+                one of which is the \emph{View} button.
         \end{itemize}
     \item Postconditions:
         \begin{itemize}
-            \item File can be displayed (such as plain text or pdf file): 
+            \item The file can be displayed (such as a plain text or PDF file): 
                 An interface with the requested file
                 displayed will be presented to the user.
-            \item File cannot be displayed (binary file such as an executable
-                file): A download dialogue for that file will be presented to
+            \item The file cannot be displayed (e.g., a binary file such as an executable
+                file): a download dialogue for that file will be presented to
                 the user.
         \end{itemize}
     \item Triggers: 
-        One of \emph{View} button is selected
+        One of the \emph{View} button is clicked.
     \item Basic flow:
         \begin{enumerate}
-            \item The request with the file name is sent to the server.
+            \item The request with the file name is encrypted and sent to the server.
             \item The server examines the request and makes sure the user
                 has permission to view the requested file.
             \item If the file can be displayed, the system will prepare the
@@ -479,34 +484,35 @@ files when they need to (such as submit assignments and upload attachments).
 
 \subsection{Assignment source code control}
 The system shall provide abilities for students to keep track of their
-assignment source code, that is, keeping a changing log to each source code
-file so that students can compare the changes every time they submit an
-assignment.
+assignment source code, that is, keeping a change log for each source code
+file so that students can compare the changes every time they submit a new
+version of an assignment file.
 
 \subsubsection{Use cases}
 \begin{enumerate}
-\item View changes
+\item View changes:
 \begin{itemize}
-    \item Primary actor: A registered student
-    \item User story: The user wishes to see the changes between two
+    \item Primary actor: a registered student.
+    \item User story: the user wishes to see the changes between two
         submissions of his assignment.
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged in to the system.
+            \item The user is logged in to the system.
             \item The user has made at least two submissions on one source code
                 file.
-            \item The user is on the file display interface of the file he
+            \item The user is at the file display interface of the file for
+                which he
                 wishes to view the changes, where there is a \emph{View Changes}
                 button on the interface.
         \end{itemize}
     \item Postconditions:
-        An interface with changes on that file displayed is presented to the
-        user.
+        An interface, with changes on the last two versions of that file
+        displayed, is presented to the user.
     \item Triggers:
-        The \emph{View Changes} button is selected.
+        The \emph{View Changes} button is clicked.
     \item Basic flow:
         \begin{enumerate}
-            \item A view changes request with the file identifier is sent
+            \item A \emph{view changes} request with the file identifier is sent
                 to the server.
             \item The server examines the request and makes sure the user has
                 permission to view the requested file.
@@ -526,19 +532,19 @@ assignment is submitted.
 
 \subsubsection{Use cases}
 \begin{enumerate}
-\item Configure automated tests for an assignment
+\item Configure automated tests for an assignment:
 \begin{itemize}
-    \item Primary actor: A registered instructor
-    \item User story: The user wishes to enable automated tests for an
+    \item Primary actor: a registered instructor.
+    \item User story: the user wishes to enable automated tests for an
         assignment.
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged in to the system.
+            \item The user is logged in to the system.
             \item The user has previously created a course.
             \item The user has previously created a programming assignment for
                 that course.
-            \item The user is on the summary interface of the assignment for
-                which she wishes to enable and configure automated tests.
+            \item The user is at the summary interface of the assignment for
+                which he wishes to enable and configure automated tests.
         \end{itemize}
     \item Postconditions:
         \begin{itemize}
@@ -550,25 +556,26 @@ assignment is submitted.
             \item The user enables and configures (such as compile commands, 
                 time limit, and
                 test cases) the automated tests with a dynamic form (a form
-                with fields that can be changed accordingly with the previously
+                with fields that automatically change according to the previous
                 input data) on the
                 interface.
-            \item The \emph{Save} button at the end of the form is selected by
+            \item The \emph{Save} button at the end of the form is clicked by
                 the user.
         \end{itemize}
     \item Basic flow:
         \begin{enumerate}
             \item The form data is validated (basic input validation)
-                immediately on the client side of the system. Error messages
+                immediately on the client side of the system (because it is a
+                dynamic form). Error messages
                 will be displayed if the validation failed.
-            \item If the validation was successful, the configuration data is
+            \item If the validation is successful, the configuration data is
                 serialized into a block of \emph{JSON} \cite{JSON} formatted text and
                 encapsulated in a request which then is encrypted and sent to
                 the server.
             \item The server examines the request and makes sure the user has
                 permission to enable and configure an automated test.
-            \item The server has the \emph{JSON} text decoded and saved to the
-                system database.
+            \item The server decodes the \emph{JSON} text and saves the data to
+                the system database.
             \item The server creates a \emph{shell script} 
                 (Brian Kernighan and Rob Pike, \cite{shellScript})
                 for the automated test using the configuration data from the
@@ -577,14 +584,14 @@ assignment is submitted.
         \end{enumerate}
 \end{itemize}
 
-\item View automated test result
+\item View automated test result:
 \begin{itemize}
-    \item Primary actor: A registered student
-    \item User story: The user wishes to view the automated test result of his
+    \item Primary actor: a registered student.
+    \item User story: the user wishes to view the automated test result of his
         assignment.
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged in to the system.
+            \item The user is logged in to the system.
             \item The user has submitted a programming assignment whose
                 automated test had been enabled prior to the submission.
         \end{itemize}
@@ -592,14 +599,15 @@ assignment is submitted.
         An interface with the automated test result will be presented to the
         user.
     \item Triggers: 
-        The \emph{Test Result} button is selected by the user.
+        The \emph{Test Result} button is clicked by the user.
     \item Basic flow:
         \begin{enumerate}
-            \item A request for the test result is sent to the server.
+            \item A request for the test result is encrypted and sent to the
+                server.
             \item The server examines the request and makes sure the user has
                 permission to view the requested test result.
-            \item The server fetches the test result and has it prepared for
-                syntax highlighting.
+            \item The server fetches the test result and performs syntax
+                highlighting for it.
             \item An interface with the test result is returned.
         \end{enumerate}
 \end{itemize}
@@ -611,16 +619,16 @@ the students' assignment.
 
 \subsubsection{Use cases}
 \begin{enumerate}
-\item Grade assignments
+\item Grade assignments:
 \begin{itemize}
-    \item Primary actor: A registered student
-    \item User story: The user wishes to grade an assignment.
+    \item Primary actor: a registered student.
+    \item User story: he user wishes to grade an assignment.
     \item Preconditions:
         \begin{itemize}
-            \item The user has logged in to the system.
+            \item The user is logged in to the system.
             \item The user is registered as a teaching assistant in the course
                 to which the assignment belongs.
-            \item The user is on the teaching assistant interface where there
+            \item The user is at the teaching assistant interface where there
                 is a table displaying all the submitted assignments.
         \end{itemize}
     \item Postconditions:
@@ -630,13 +638,13 @@ the students' assignment.
                 as the instructor releases the grades.
         \end{itemize}
     \item Triggers:
-        The user selected the \emph{Mark} button on one of the submitted
+        The user clicked the \emph{Mark} button on one of the submitted
         assignments.
     \item Basic flow:
         \begin{enumerate}
             \item A marking interface composed of two sections, 
-                files (that the student submitted) display section and
-                comments section, is presented to the user.
+                a files (that the student submitted) display section and
+                a comments section, is presented to the user.
             \item The user checks the files and edits his comments and the
                 grade to this assignment until he is satisfied.
             \item The user selects the \emph{Save} button.
@@ -657,20 +665,20 @@ the students' assignment.
 Following is a list of non-functional requirements ordered by their priorities.
 
 \subsection{Development time}
-The process of development of this project shall be in no longer than three
+The process of development of this project shall be no longer than three
 months (starting from May 1, 2018).
 
 \subsection{Security}
-The system shall provide a reasonable degree of security measurement, 
-be able to
-prevent sensible information (such as student information, grades, and
-submitted files) being accessed from illegal activities (such as SQL injection 
-or other common forms of cyber attacks \cite{cyberAttacks}).
+The system shall provide a reasonable degree of security.
+That is, reasonable efforts will be made to prevent the release of 
+sensitive information (such as student information, grades, and
+submitted files) to unauthorized parties utilizing \emph{SQL Injection} 
+and/or other forms of cyber attacks \cite{cyberAttacks}.
 
 \subsection{Maintainability}
 It is highly possible that future developments will be made to the system by
 developers other than the original author, therefore, this system shall be
-well designed and constructed with high-quality programming codes to improve 
+well designed and constructed with high-quality program code to provide
 maintainability.
 
 \subsection{Cross-platform availability}
@@ -679,4 +687,5 @@ web-based application.
 
 \subsection{Deployment}
 The process of deployment of this system shall not be too complicated and
-preferably with fewer packages required for the host operating system.
+preferably with as few packages required as possible for the host operating
+system.
