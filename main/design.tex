@@ -161,4 +161,45 @@ to provide
 basic functionalities related to user authentication activities, such as
 user registration, user account management and user login/logout.
 Each user account is attached with a profile containing the \emph{role}
-(i.e., student or instructor) of the user, 
+(i.e., student or instructor) of the user, this \emph{role} attribute helps
+the system to perform permission control, such as to
+decide whether or not a user has permission to access content
+that does not belong to him (e.g., instructor can view all students' assignment
+files, but students can only view the files belong to them).
+
+\medskip
+
+It is worth mentioning that there is no such a role as a \emph{teaching
+assistant} (TA), since all users can be defined as either a student or an
+instructor without the knowledge of the courses in which they are registered,
+but TAs are bounded with courses. Therefore, in \emph{Course2018} LMS, TA is
+considered to be a \emph{many to many} relationship between users and courses.
+
+\subsection{File management}
+The \emph{Django} official documentation recommends to store files in what is
+called a ``\emph{Media directory}'', this directory will then be served by the
+\emph{HTTP} server \cite{djangoManagingFiles}
+(such as \emph{Apache} and \emph{Nginx}). However, this method does not allow
+\emph{Django} to perform permission control on each individual file.
+
+\medskip
+
+To overcome this, the \emph{Course2018} LMS manages all users' files without
+involving the \emph{HTTP} server by implementing a routine to provide file
+download service to the users. Whenever a user requests access to a file, the system
+will always perform a permission check before invoking that routine
+(see Chap. 4 for more detail).
+
+\medskip
+
+In comparison with
+involving the \emph{HTTP} server (which is implemented in \emph{C}) to provide
+the file download service,
+implementing the same service in \emph{Python} is suboptimal in terms of
+performance, 
+but considering the fact that most of the course-related
+files have relatively small file sizes, the performance difference will
+not be significant.
+
+\subsection{Course management}
+This module is design primarily for instructor to 
