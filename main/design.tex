@@ -7,16 +7,17 @@
 \label{chap:SYSDES}
 
 With all the key requirements being laid out in the previous chapter, it is
-time to analyze them and have a system design model in an abstract
-level drawn. 
+time to analyze them and draw a system design model in an abstract
+level. 
 
 \section{Specifications}
 Non-functional requirements will be investigated first to decide the
 non-behavioral specifications of the system, specifications like the
-programming language and framework that powers the system, choice of database,
+programming language and framework that powers the system, choice of database
+management system (DBMS),
 and environment in which the system will be running.
 
-\subsection{Framework}
+\subsection{Frameworks}
 Debate on whether or not it is better to use a framework is never failed to be
 a popular topic in the developer communities. On one hand, many developers
 believe that a framework puts a lot of constrains to a project which limits the
@@ -30,7 +31,7 @@ an architectural pattern (such as the \emph{model-view-controller} pattern
 \medskip
 
 Given the development time frame, requirements for
-security and maintainability (see 2.3.1, 2.3.2 and 2.3.3),
+security and maintainability (see Sec.~2.3.1, 2.3.2 and 2.3.3),
 as well as the scale of the this project,
 it is not unjustifiable for this project to use a web framework to achieve a
 better result.
@@ -59,12 +60,12 @@ records),
 making the possibility of having \emph{SQL Injection} vulnerabilities next
 to zero.
 
-\subsection{Database}
+\subsection{DBMS}
 The \emph{Course2018} LMS uses \emph{PostgreSQL} as the default database
 management system, primarily because its extendibility (such as direct
 support of inheritance and document data types), which can be used for
-development in the future of more advanced features without worrying the
-limitations of the database management system~\cite{postgres}.
+development in the future of more advanced features without worrying about the
+limitations of the DBMS~\cite{postgres}.
 
 \medskip
 
@@ -72,11 +73,11 @@ Furthermore, if future developments really require a change of database
 management system,
 with the \emph{Django} framework's database libraries,
 switching between different database management systems only requires
-modification of a few lines of code in the setting file.
+modification of a few lines of code in the settings file.
 
 \subsection{Environment}
-With the amount of functional requirements (see 2.2), it is not difficult for
-one to forsee that there will be some external packages introduced to the
+With the amount of functional requirements (see Sec.~2.2), it is not difficult for
+one to foresee that there will be some external packages introduced to the
 \emph{Course2018} LMS.
 Additionally, it is highly possible that this system will be hosted
 on a server along with other existing services, thus, to avoid packages that
@@ -85,7 +86,7 @@ isolated environment for this system is desired.
 
 \medskip
 The \emph{Django} project official guide~\cite{djangoGuide} recommends using
-a tool called \emph{virtualenv} to create an isolated environment, however,
+a tool called \texttt{virtualenv} to create an isolated environment, however,
 this tool is only capable of isolating \emph{Python} packages, and the
 \emph{Course2018} LMS most likely need to have some system packages (such as
 compilers) isolated as well.
@@ -95,18 +96,18 @@ compilers) isolated as well.
 Conventional virtualization (i.e., hardware virtualization, a method for a
 host computer system to simulate a hardware environment on which the guest
 application can be ran completely independent from the environment of the host
-system, with dedicated resources from the host system~\citep[chap. 16]{os}),
+system, with dedicated resources from the host system~\citep[Chap.~16]{os}),
 a \emph{virtual machine} (VM), could be a simple and easy solution to solve
 this, but the overhead of a VM and the changes need to be applied to the host
 system for an efficient VM (such as 
 \emph{kernel-based virtual machine}~\cite{kvm}) is overwhelming;
-besides, there is no easy way for the host system to provide a flexible
+moreover, there is no easy way for the host system to provide a flexible
 resource allocation for any VM.
 
 \subsubsection{Containerization}
 \emph{Operating-system-level virtualization}, also known as
 \emph{containerization}, is an operating system (OS) feature offered by the
-kernel of the OS allowing multiple isolated user-space~\citep[chap. 1.5.1]{os}
+kernel of the OS allowing multiple isolated user-space~\citep[Sec.~1.5.1]{os}
 instances exist at the same time~(John~Fink~\cite{docker}),
 each of these instances is called a \emph{container}, and no dedicated resource
 is required to be allocated for these instances which makes them much more
@@ -119,16 +120,16 @@ generally considered to be next to nothing (compared to conventional VMs).
 Following are the results of the \texttt{uname} command
 (a command to show the kernel version of a Unix or Unix-like OS)
 on an \emph{Arch Linux} host system, a container on the host system
-with a \emph{Debian}~\cite{debian} image, and a \emph{kernel-based VM} (KVM)
-on the host system with \emph{macOS 10.13.4} installed.
+with a \emph{Debian 8}~\cite{debian} image, and a \emph{kernel-based VM} (KVM)
+on the host system with \emph{Debian 8} installed.
 
 \begin{centering}
-\lstinputlisting[caption=uname command on a \emph{Arch Linux} host system,
+\lstinputlisting[caption=\texttt{uname} command on a \emph{Arch Linux} host system,
 label=lst:UNAME_HOST, numbers=none]{./examples/uname-host.txt}
-\lstinputlisting[caption=uname command in a containerized \emph{Debian}
+\lstinputlisting[caption=\texttt{uname} command in a containerized \emph{Debian}
 environment,
-label=lst:UNAME_HOST, numbers=none]{./examples/uname-host.txt}
-\lstinputlisting[caption=uname command in a \emph{macOS} KVM,
+label=lst:UNAME_HOST, numbers=none]{./examples/uname-container.txt}
+\lstinputlisting[caption=\texttt{uname} command in a \emph{Debian} KVM,
 label=lst:UNAME_HOST, numbers=none]{./examples/uname-kvm.txt}
 \end{centering}
 
@@ -142,7 +143,7 @@ an open-source implementation of \emph{OS-level~VM} developed by
 
 With \emph{Docker}, the finished product of the
 \emph{Course2018} LMS, along with all its dependencies, can be packed, shipped
-and ran on any host system with the exact environment as it was on the
+and run on any host system with the exact environment as it was on the
 developer's computer system. Therefore, the deployment process of the
 \emph{Course2018} LMS will be as simple as typing just one command.
 
