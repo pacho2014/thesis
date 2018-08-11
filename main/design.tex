@@ -88,7 +88,7 @@ isolated environment for this system is desired.
 The \emph{Django} project official guide~\cite{djangoGuide} recommends using
 a tool called \texttt{virtualenv} to create an isolated environment, however,
 this tool is only capable of isolating \emph{Python} packages, and the
-\emph{Course2018} LMS most likely need to have some system packages (such as
+\emph{Course2018} LMS may need to have some system packages (such as
 compilers) isolated as well.
 
 \medskip
@@ -147,6 +147,15 @@ and run on any host system with the exact environment as it was on the
 developer's computer system. Therefore, the deployment process of the
 \emph{Course2018} LMS will be as simple as typing just one command.
 
+\need 1 in
 
 
 \section{System modules}
+
+As per requirements in Sec. 2.2, the \emph{Course2018} LMS is composed of the
+following modules
+
+\subsection{User authentication}
+The \emph{Course2018} LMS uses the \emph{Django User Model} to provide all the
+basic functionalities related to user authentication activities, such as
+user registration, user account management and user login/logout. 
