@@ -44,10 +44,9 @@ computer science departments), features like \emph{PoodLL Recorder},
 those features increase the
 complexity of the system and result in the fact that an easy task 
 often takes a longer time to finish than it was supposed to. This phenomenon
-is known to be a ``Feature Creep''  (Boram Lee and Woohun Lee, 2015 
-\cite{featureCreep}); the Microsoft Office Suite is generally
-considered to be an example of this phenomenon (Des Traynor 
-\cite{msFeatureCreep}).
+is known to be a ``Feature Creep''~\cite{featureCreep};
+the Microsoft Office Suite is generally
+considered to be an example of this phenomenon~\cite{msFeatureCreep}.
 In short, the Moodle Learning System lacks features that are essential
 to computer science students and instructors, at the same time could slow
 down the process of submitting and evaluating assignments due to the complexity
@@ -60,7 +59,7 @@ professor Dr.~Rick Giles, is a good choice
 of alternative LMS to the Moodle Learning System.
 As a matter of fact, it has been the
 default LMS for one computer science course, \emph{COMP 2103: Programming 3},
-for 16 years.
+for over 16 years.
 With a recent addition to the system,
 the \emph{Visual Mark} module,
 designed and integrated by former student Tim Cooper,
@@ -70,21 +69,25 @@ However, with more
 and more modifications applied to the system over the years, maintaining
 this system has become more and more difficult.
 Further, the amount of work required to add new features (especially the key
-features this thesis intends to achieve, see 1.2.1) to the system
+features this thesis intends to achieve, see section~\ref{FEATURES}) to the system
 has increased dramatically.
 
 \section{Course2018}
 Influenced by the \emph{Course2000} system, the goal of this project is to
 develop a secure and dynamic LMS with functionalities designed specifically for
-computer science instructors and students, functionalities that mainly focus on
+computer science instructors and students.
+Those functionalities are mainly focused on
 providing informative feedback on programming assignments to both students
 and instructors for the purpose of easing the process of learning as well as
-evaluation, while maintaining the simplicity of
-the overall system design to make sure every task the system needs to
-perform can be done efficiently for both the users and the server, also to make
-sure that future development and maintenance will not be too difficult.
+evaluation.
+In the meantime, maintaining the simplicity of the overall system design 
+is an important goal of this project as well,
+so that every task the system needs to
+perform can be done efficiently for both the users and the server,
+and the future development as well as maintenance will not be too difficult.
 
 \subsection{Key features}
+\label{FEATURES}
 The \emph{Course2018} LMS is mainly characterized by the functionalities
 described below.
 
@@ -102,7 +105,7 @@ a syntax highlighter is included in the system to enable syntax
 highlighting \cite{syntaxHighlighting} for over 300 programming
 languages~\cite{pygmentsLangs}.
 
-\subsubsection{Auto testing programming assignments}
+\subsubsection{Automated tests for programming assignments}
 When a programming assignment is submitted by a student with \emph{Course2018},
 a program associated with the submitted source code file(s) will be built
 (if required); this program
@@ -122,7 +125,7 @@ Therefore, an easy-to-use plain text markup language called \emph{Markdown}
 is introduced to the \emph{Course2018} marking system. This markup language was
 designed in a way that it can be automatically converted to \emph{HTML} format,
 which very much suits the needs of this project;
-also, it has been
+also, it is
 widely used by well-known websites including \emph{GitHub} \cite{gitHubMarkdown}
 and \emph{Stack Overflow} \cite{stackOverflowMarkdown}.
 Moreover, an improvement has been made for the purpose of supporting mixed

@@ -9,7 +9,7 @@
 \section{Methodology}
 The most important point in the development process of the \emph{Course2018}
 LMS is the idea of \emph{continuous integration} (CI), meaning that every new
-develop feature is tested and integrate to the existing server seamlessly.
+develop feature is tested and integrated to the existing server seamlessly.
 
 \medskip
 This is achieved by using a development tool called \emph{GitLab CI}
@@ -21,12 +21,13 @@ project.
 
 This toolchain offers abilities to a developer so that every time
 the developer finishes programming of a feature and pushes the code to the
-\emph{GitLab} project repository, the \emph{GitLab} server then invokes some
+\emph{GitLab} project repository, the \emph{GitLab} server automatically
+invokes some
 routines to test the new code with a test scheme also defined by the developer
-prior to the time when the code was pushed; finally, if all tests are passed, 
-the \emph{GitLab} server deploys the new version of the project by simply
+prior to the time when the code was pushed; if all tests are passed, 
+the \emph{GitLab} server then deploys the new version of the project by simply
 building a new container that has the latest code in it, and has the old
-container replaced with the new one.
+container replaced with the new one. 
 
 \section{Deployment}
 In the development process of this project, the deployment stage is defined

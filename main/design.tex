@@ -18,12 +18,13 @@ management system (DBMS),
 and the environment in which the system will be running.
 
 \subsection{Frameworks}
-Debate on whether or not it is better to use a framework is never failed to be
+Debate on whether or not it is better to use a framework never fails to be
 a popular topic in the developer communities. On one hand, many developers
-believe that a framework puts a lot of constraints to a project which limits the
+believe that a framework imposes a lot of constraints to a project which limits the
 overall control of the project (especially core behaviors) \cite{frameworks};
-on the other hand, a framework offers a better degree of efficiency and better
-measurements of security to a project, while keeping the simplicity and
+on the other hand, there are also many developers believe that a framework
+offers a better degree of efficiency and a better
+measure of security to a project, while keeping the simplicity and
 the architectural clarity of the project by enforcing the developers to apply
 an architectural pattern (such as the \emph{model-view-controller} pattern
 \cite{mvc}) to their code.
@@ -31,7 +32,8 @@ an architectural pattern (such as the \emph{model-view-controller} pattern
 \medskip
 
 Given the development time frame, requirements for
-security and maintainability (see Sec.~2.3.1, 2.3.2 and 2.3.3),
+security and maintainability (see section~\ref{TIMEFRAME},
+\ref{SECURITY}, and \ref{MAINTAINABILITY}),
 as well as the scale of this project,
 it is not unjustifiable for this project to use a web framework to achieve a
 better result.
@@ -41,24 +43,24 @@ better result.
 The framework this project uses is called \emph{Django}, an open-source web
 framework written in \emph{Python}. \emph{Django} was originally developed by
 the web programming team at the \emph{Lawrence Journal-World} newspaper in 2003,
-dedicated for the company to deliver their contents as fast as possible
-(James Bennett, 2008 \cite{django}). With more than a decade of improvements
-being made to the framework, it is now among one of the most popular web
-frameworks in the world, used by large companies and organizations like the
-\emph{Washington Post} (Adrian Holovaty, 2005 \cite{djangoWashingtonPost})
-and \emph{Instagram} (Instagram Engineering, 2011 \cite{djangoInstagram}).
+designed for the company to deliver their contents as fast as possible~\cite{django}.
+With more than a decade of improvements
+having been made to the framework, it is now among one of the most popular web
+frameworks in the world, used by well-known companies and organizations like the
+\emph{Washington Post}~\cite{djangoWashingtonPost}
+and \emph{Instagram}~\cite{djangoInstagram}.
 \medskip
 
 The \emph{Django} framework provides a set of libraries to handle most basic
 aspects of web application development. One good example of those libraries is
-the \emph{object-relational mapper}, the framework has the capability to create
+the \emph{object-relational mapper}. This framework has the capability to create
 relational database schemas based on the \emph{Python} data model classes
-written by the developer, so that no raw SQL query is required
-(James Bennett, 2008 \cite{django}) for most of the
+written by the developer, so that no raw SQL query is required~\cite{django}
+for most of the
 database operations (such as select, filter, remove, and insert database
-records),
-making the possibility of having \emph{SQL Injection} vulnerabilities next
-to zero.
+records).
+This helps ensure that the possibility of having \emph{SQL Injection}
+vulnerabilities is next to zero.
 
 \subsection{DBMS}
 The \emph{Course2018} LMS uses \emph{PostgreSQL} as the default database
@@ -73,45 +75,49 @@ Furthermore, if future developments really require a change of database
 management system,
 with the \emph{Django} framework's database libraries,
 switching between different database management systems only requires
-modification of a few lines of code in the settings file.
+modification of a few lines of code in the project's settings file.
 
 \subsection{Environment}
-With the number of functional requirements (see Sec.~2.2), it is not difficult for
+With the number of functional requirements (see section~\ref{FUNCREQS}), it is not difficult for
 one to foresee that there will be some external packages introduced to the
 \emph{Course2018} LMS.
 Additionally, it is highly possible that this system will be hosted
-on a server along with other existing services, thus, to avoid packages that
+on a server along with other existing services; thus, to avoid packages that
 are required for this system conflict with those existing services, an
 isolated environment for this system is desired.
 
 \medskip
 The \emph{Django} project official guide~\cite{djangoGuide} recommends using
-a tool called \texttt{virtualenv} to create an isolated environment, however,
+a tool called \texttt{virtualenv} to create an isolated environment. However,
 this tool is only capable of isolating \emph{Python} packages, and the
 \emph{Course2018} LMS may need to have some system packages (such as
 compilers) isolated as well.
 
 \medskip
 
-Conventional virtualization (i.e., hardware virtualization, a method for a
+Conventional virtualization (i.e., hardware virtualization) is a method for a
 host computer system to simulate a hardware environment on which the guest
 application can be run completely independent from the environment of the host
-system, with dedicated resources from the host system~\citep[Chap.~16]{os}),
-a \emph{virtual machine} (VM), could be a simple and easy solution to solve
-this, but the overhead of a VM and the changes need to be applied to the host
-system for an efficient VM (such as 
-\emph{kernel-based virtual machine}~\cite{kvm}) is overwhelming;
+system, with dedicated resources from the host system~\citep[chapter 16]{os}.
+A \emph{virtual machine} (VM) could be a straightforward solution to solve
+this,
+but an efficient VM
+(e.g., a \emph{kernel-based virtual machine}~\cite{kvm}) 
+often places undesirable requirements to the host system 
+(including a rebuild of the operating system kernel);
 moreover, there is no easy way for the host system to provide a flexible
 resource allocation for any VM.
 
 \subsubsection{Containerization}
 \emph{Operating-system-level virtualization}, also known as
 \emph{containerization}, is an operating system (OS) feature offered by the
-kernel of the OS allowing multiple isolated user-space~\citep[Sec.~1.5.1]{os}
-instances exist at the same time~(John~Fink~\cite{docker}),
-each of these instances is known to be a \emph{container}, and no dedicated resource
-is required to be allocated for these instances, which makes them much more
-flexible than a conventional VM. Further, with the same hardware system and
+kernel of the OS allowing multiple isolated user-space~\citep[section 1.5.1]{os}
+instances to exist simultaneously~\cite{docker},
+each of these instances is known as a \emph{container}, and no dedicated resource
+is required to be allocated for these instances.
+This makes them much more
+flexible than a conventional VM.
+Further, with the same hardware system and
 OS kernel as the host system being used, the overhead of a container is
 generally considered to be next to nothing (compared to conventional VMs).
 
@@ -119,31 +125,38 @@ generally considered to be next to nothing (compared to conventional VMs).
 
 Following are the results of the \texttt{uname} command
 (a command to show the kernel version of a Unix or Unix-like OS)
-on an \emph{Arch Linux} host system, a container on the host system
-with a \emph{Debian 8}~\cite{debian} image, and a \emph{kernel-based VM} (KVM)
-on the host system with \emph{Debian 8} installed.
+on an \emph{Arch Linux} host system (listing~\ref{lst:UNAME_HOST}),
+a container on the host system with a \emph{Debian 8}~\cite{debian} image
+(listing~\ref{lst:UNAME_CONT}),
+and a \emph{kernel-based VM} (KVM) on the host system with \emph{Debian 8} installed
+(listing~\ref{lst:UNAME_KVM}),
+showing that containers share the same OS kernel with the host system whereas
+VMs do not.
+
 
 \begin{centering}
 \lstinputlisting[caption=\texttt{uname} command on a \emph{Arch Linux} host system,
 label=lst:UNAME_HOST, numbers=none]{./examples/uname-host.txt}
 \lstinputlisting[caption=\texttt{uname} command in a containerized \emph{Debian}
 environment,
-label=lst:UNAME_HOST, numbers=none]{./examples/uname-container.txt}
+label=lst:UNAME_CONT, numbers=none]{./examples/uname-container.txt}
 \lstinputlisting[caption=\texttt{uname} command in a \emph{Debian} KVM,
-label=lst:UNAME_HOST, numbers=none]{./examples/uname-kvm.txt}
+label=lst:UNAME_KVM, numbers=none]{./examples/uname-kvm.txt}
 \end{centering}
 
 \subsubsection{Docker}
 The \emph{Course2018} LMS is encapsulated in a container based on a
-\emph{Debian} image, using a container management system called \emph{Docker},
-an open-source implementation of \emph{OS-level~VM} developed by
+\emph{Debian} image, using a container management system called \emph{Docker}
+which is an open-source implementation of \emph{OS-level~VM} developed by
 \emph{Docker Inc}.
 
 \medskip
 
 With \emph{Docker}, the finished product of the
 \emph{Course2018} LMS, along with all its dependencies, can be packed, shipped
-and run on any host system with the exact environment as it was on the
+and run on any host system with almost the same environment
+(except for the OS kernel and the hardware environment)
+as it was on the
 developer's computer system. Therefore, the deployment process of the
 \emph{Course2018} LMS will be as simple as typing just one command.
 
@@ -152,32 +165,37 @@ developer's computer system. Therefore, the deployment process of the
 
 \section{System modules}
 
-As per requirements in Sec. 2.2, the \emph{Course2018} LMS is composed of the
-following modules
+As per requirements in section~\ref{FUNCREQS}, the \emph{Course2018} LMS is composed of the
+following modules.
 
 \subsection{User authentication}
+\label{sec:USRAUTH}
 The \emph{Course2018} LMS uses the \emph{Django User Model} \cite{djangoUser}
 to provide
 basic functionalities related to user authentication activities, such as
 user registration, user account management and user login/logout.
 Each user account is attached with a profile containing the \emph{role}
-(i.e., student or instructor) of the user, this \emph{role} attribute helps
-the system to perform permission control, such as to
+(i.e., student or instructor) of the user. This \emph{role} attribute helps
+the system perform permission control, such as to
 decide whether or not a user has permission to access content
-that does not belong to him (e.g., an instructor can view all students' assignment
-files, but students can only view the files belong to them).
+that does not belong to him; e.g., an instructor can view all students' assignment
+files, but students can only view the files belong to them.
 
 \medskip
 
-It is worth mentioning that there is no such a role as a \emph{teaching
-assistant} (TA), since all users can be defined as either a student or an
-instructor without the knowledge of the courses in which they are registered,
-but TAs are bounded with courses. Therefore, in \emph{Course2018} LMS, TA is
-considered to be a \emph{many to many} relationship between users and courses.
+It is worth mentioning that there is no such a role choice as a \emph{teaching
+assistant}~(TA) defined in the profile model,
+the reason behind this design is that all users can be defined as either a
+student or an instructor without the knowledge of the courses in which they are
+registered, but TAs are bounded with courses; i.e., a user
+can be a student or instructor to the \emph{Course2018} LMS, but he can only
+be a TA to some specific courses.
+Therefore, in the \emph{Course2018} LMS, the role TA is
+reflected by a \emph{many to many} relationship between users and courses.
 
 \subsection{File management}
-The \emph{Django} official documentation recommends to store files in what is
-called a ``\emph{Media directory}'', this directory will then be served by the
+The \emph{Django} official documentation recommends storing files in what is
+called a ``\emph{Media directory}''. This directory will then be served by the
 \emph{HTTP} server \cite{djangoManagingFiles}
 (such as \emph{Apache} and \emph{Nginx}). However, this method does not allow
 \emph{Django} to perform permission control on each individual file.
@@ -188,7 +206,7 @@ To overcome this, the \emph{Course2018} LMS manages all users' files without
 involving the \emph{HTTP} server by implementing a routine to provide file
 download service to the users. Whenever a user requests access to a file, the system
 will always perform a permission check before invoking that routine
-(see Chap. 4 for more detail).
+(see chapter \ref{chap:DEV} for more detail).
 
 \medskip
 
@@ -205,17 +223,18 @@ not be significant.
 Every time the \emph{Course2018} LMS receives a \emph{view file} request,
 it invokes routines in the \emph{file management} module to locate the
 requested file, then invokes this module to determine whether or not the
-requested file can be displayed (i.e., PDF file and plaintext file); also,
+requested file can be displayed (i.e., PDF file and plaintext file). Also,
 if the requested file is a plaintext file, this module will try to determine
 the programming language of the file and provide syntax highlighting for the
 user.
 
 \subsection{Course management}
 This module is designed primarily for instructors to manage their courses, 
-that is, to provide features such as create courses, modify courses information,
+that is, to provide features such as create courses, modify course information,
 register students/TAs, and upload course materials.
 
 \subsection{Assignment management}
+\label{sec:ASNMAN}
 This module handles all the assignment-related activities, such activities are
 divided into three categories: \emph{instructor activities}, 
 \emph{marker activities}, and \emph{student activities}.
@@ -223,26 +242,28 @@ divided into three categories: \emph{instructor activities},
 \medskip 
 
 Note that users who have permission to view and grade the students' assignments
+(i.e., instructors and TAs)
 are defined in the \emph{Course2018} LMS as \emph{markers}, the reason behind
 this design is that such activities (view and grade assignments) can be
 performed by both the instructor and the TAs of a course, and the implementation
-of the permission check for markers is different than permission checks for
-instructors and students.
+of the permission check for the \emph{marker}'s views involves checking both
+of the roles, which is different than the permission check for views that are
+designed solely for instructors or students.
 
 \medskip
 
 \subsubsection{Instructor activities}
 \begin{itemize}
     \item Create, delete, modify assignments
-    \item Assign TAs to assignments
-    \item Release assignments
+    \item Assign grading tasks to TAs
+    \item Release assignments grades
 \end{itemize}
 
 \subsubsection{Student activities}
 \begin{itemize}
     \item View assignment requirements
     \item Submit assignments
-    \item View submitted files
+    \item View submitted files (including version difference)
     \item View grade and marker's feedback
 \end{itemize}
 
@@ -256,31 +277,32 @@ After an instructor enables automated test and provides test-related
 information (e.g., compile command, run options, and test cases) for a
 programming assignment,
 every submission will be built (if required) and executed in a separate
-containerized environment, that is, a different
-container than the one in which the \emph{Course2018} LMS is running; 
-this process is done by a \emph{shell script} which is generated by the LMS
-using the test data provided by the instructor, this script compares the
+containerized environment; that is, a different
+container than the one in which the \emph{Course2018} LMS is running.
+This process is done by a \emph{shell script} which is generated by the LMS
+using the test data provided by the instructor. This script compares the
 output of a student's program with the sample output (provided by the instructor
-as part of a test case), the result of those comparisons will be available for
+as part of a test case); the result of those comparisons will be available for
 all relevant parties (i.e., the student who submitted files, the TA and
 the instructor) as soon as the process is finished.
 
 \subsection{Marking interface}
 This module mainly provides an easy-to-use interface for the
-purpose of easing the process of assignments feedback for markers. The
-interface splits the screen into two sections: a file display section on the
+purpose of easing the process of assignment feedback for markers.
+The interface splits the screen into two sections: a file display section on the
 left-hand side, and a comments editing section on the right-hand side.
 
 \section{Modules dependencies}
-A lot of the modules in the \emph{Course2018} LMS depends on each other,
-thus, a dependency tree is drawn to determine the order of the development
-process.
+Many of the modules in the \emph{Course2018} LMS depends on each other,
+thus, a dependency tree to determine the order of the development
+process is shown in Figure~\ref{fig:DEP}.
 
 \bigskip\ \\
 
 \begin{figure}[ht]
     \centering
     \caption{Modules dependencies}
+    \label{fig:DEP}
 
     \usetikzlibrary{er, positioning, arrows}
     \begin{tikzpicture}[align=center, auto,node distance=2.5cm]

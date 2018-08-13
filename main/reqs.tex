@@ -29,8 +29,7 @@ environments.
 
 \subsection{Use cases}
 A use case is a series of actions performed by one or more actors interact
-with the system to accomplished a task
-(Alistair Cockburn, 2011 \cite{useCase}).
+with the system to accomplished a task~\cite{useCase}.
 
 \medskip 
 
@@ -62,12 +61,12 @@ the system, as well as the activities performed by the system.
 \end{itemize}
 
 \section{Functional requirements}
+\label{FUNCREQS}
 
 \subsection{User authentication}
 
 The system shall provide routines to handle activities related to user accounts
-such as user login, user logout, and permission checking for restricted
-content.
+such as user login, permission checking for restricted content, and user logout.
 
 \subsubsection{Use cases}
 
@@ -119,7 +118,7 @@ content.
     \begin{itemize}
         \item On success: an interface with the requested content will be presented
             to the user.
-        \item On failure: n interface indicates that the user is unauthorized will
+        \item On failure: an interface indicates that the user is unauthorized will
             be presented to the user.
     \end{itemize}
 \item Triggers: the user types the request URL to the browser location field
@@ -173,7 +172,7 @@ and modify) their courses.
             \item The server validates the form data for errors including,
                 but not limited to, invalid input format, numbers out-of-range,
                 and conflicts (such as a course with the same identifier  
-                already exists in that academic year).
+                already exists for that academic year).
             \item If the validation fails, the same create course interface
                 with error messages will be returned; otherwise, the server will
                 execute the routines to create a course with the submitted 
@@ -185,7 +184,7 @@ and modify) their courses.
 \item Update course information
 \begin{itemize}
     \item Primary actor: a registered instructor.
-    \item User story: the user wishes to update the information of one course
+    \item User story: the user wishes to update the information of one course.
     \item Preconditions:
         \begin{itemize}
             \item The user is logged in to the system.
@@ -262,7 +261,7 @@ students to submit and view those assignments.
 
 \subsubsection{Use cases}
 \begin{enumerate}
-\item Create an assignments:
+\item Create an assignment:
 \begin{itemize}
     \item Primary actor: a registered instructor.
     \item User story: the user wishes to create an assignment.
@@ -271,7 +270,7 @@ students to submit and view those assignments.
             \item The user is logged in to the system.
             \item The user has previously created a course.
             \item The user is at the create assignment interface where a form
-                with several assignment-information related fields is
+                with several assignment information-related fields is
                 presented to the user.
             \item The user has filled in all the fields with data that may
                 or may not be invalid.
@@ -301,7 +300,7 @@ students to submit and view those assignments.
         \end{enumerate}
 \end{itemize}
 
-\item Update assignment information
+\item Update assignment information:
 \begin{itemize}
     \item Primary actor: a registered instructor.
     \item User story: the user wishes to update the information of one
@@ -316,11 +315,13 @@ students to submit and view those assignments.
                 information pre-filled is presented to him.
         \end{itemize}
     \item Postconditions:
-        \item On success: the same assignment summary interface with the updated
-            information will be presented to the user.
-        \item On failure: the same assignment summary interface with error
-            messages indicating which fields were filled with invalid data will
-            be presented to the user.
+        \begin{itemize}
+            \item On success: the same assignment summary interface with the updated
+                information will be presented to the user.
+            \item On failure: the same assignment summary interface with error
+                messages indicating which fields were filled with invalid data will
+                be presented to the user.
+        \end{itemize}
     \item Triggers: the \emph{Save Changes} button is clicked.
     \item Basic flow:
         \begin{enumerate}
@@ -459,15 +460,15 @@ files when they need to (such as submit assignments and upload attachments).
         \end{itemize}
     \item Postconditions:
         \begin{itemize}
-            \item The file can be displayed (such as a plain text or PDF file): 
-                An interface with the requested file
+            \item The file can be displayed (e.g., a plain text or PDF file): 
+                an interface with the requested file
                 displayed will be presented to the user.
             \item The file cannot be displayed (e.g., a binary file such as an executable
                 file): a download dialogue for that file will be presented to
                 the user.
         \end{itemize}
     \item Triggers: 
-        One of the \emph{View} button is clicked.
+        One of the \emph{View} buttons is clicked.
     \item Basic flow:
         \begin{enumerate}
             \item The request with the file name is encrypted and sent to the server.
@@ -576,11 +577,10 @@ assignment is submitted.
                 permission to enable and configure an automated test.
             \item The server decodes the \emph{JSON} text and saves the data to
                 the system database.
-            \item The server creates a \emph{shell script} 
-                (Brian Kernighan and Rob Pike, \cite{shellScript})
+            \item The server creates a \emph{shell script}~\cite{shellScript}
                 for the automated test using the configuration data from the
                 system database.
-            \item A success message is returned to the user.
+            \item A success ore failure message is returned to the user.
         \end{enumerate}
 \end{itemize}
 
@@ -607,13 +607,13 @@ assignment is submitted.
             \item The server examines the request and makes sure the user has
                 permission to view the requested test result.
             \item The server fetches the test result and performs syntax
-                highlighting for it.
+                highlighting upon the result.
             \item An interface with the test result is returned.
         \end{enumerate}
 \end{itemize}
 \end{enumerate}
 
-\subsection{Assignment Marking}
+\subsection{Assignment marking}
 The system shall provide tools for instructors and teaching assistants to grade
 the students' assignment.
 
@@ -622,7 +622,7 @@ the students' assignment.
 \item Grade assignments:
 \begin{itemize}
     \item Primary actor: a registered student.
-    \item User story: he user wishes to grade an assignment.
+    \item User story: the user wishes to grade an assignment.
     \item Preconditions:
         \begin{itemize}
             \item The user is logged in to the system.
@@ -631,6 +631,7 @@ the students' assignment.
             \item The user is at the teaching assistant interface where there
                 is a table displaying all the submitted assignments.
         \end{itemize}
+    \need 1 in
     \item Postconditions:
         \begin{itemize}
             \item The grade and feedback from the user will be saved and be
@@ -642,6 +643,12 @@ the students' assignment.
         assignments.
     \item Basic flow:
         \begin{enumerate}
+            \item A \emph{mark assignment} request is sent to the server.
+            \item The server examines the request and makes sure the user has
+                marker (see section~\ref{sec:ASNMAN}) permission.
+            \item If the request is valid, a marking interface is returned to
+                the user; otherwise, a page with an \emph{unauthorized} error
+                message is returned to the user.
             \item A marking interface composed of two sections, 
                 a files (that the student submitted) display section and
                 a comments section, is presented to the user.
@@ -665,10 +672,12 @@ the students' assignment.
 Following is a list of non-functional requirements ordered by their priorities.
 
 \subsection{Development time}
+\label{TIMEFRAME}
 The process of development of this project shall be no longer than three
 months (starting from May 1, 2018).
 
 \subsection{Security}
+\label{SECURITY}
 The system shall provide a reasonable degree of security.
 That is, reasonable efforts will be made to prevent the release of 
 sensitive information (such as student information, grades, and
@@ -676,6 +685,7 @@ submitted files) to unauthorized parties utilizing \emph{SQL Injection}
 and/or other forms of cyber attacks \cite{cyberAttacks}.
 
 \subsection{Maintainability}
+\label{MAINTAINABILITY}
 It is highly possible that future developments will be made to the system by
 developers other than the original author, therefore, this system shall be
 well designed and constructed with high-quality program code to provide
