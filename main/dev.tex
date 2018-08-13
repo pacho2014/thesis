@@ -1,0 +1,52 @@
+
+%-----------------------------------------------------------------------------
+% Chapter: Development
+%-----------------------------------------------------------------------------
+
+\chapter{Development}
+\label{chap:DEV}
+
+\section{Methodology}
+The most important point in the development process of the \emph{Course2018}
+LMS is the idea of \emph{continuous integration} (CI), meaning that every new
+develop feature is tested and integrate to the existing server seamlessly.
+
+\medskip
+This is achieved by using a development tool called \emph{GitLab CI}
+\cite{gitlabCI}, a sub-system that came with the source management tool,
+\emph{GitLab}~\cite{gitlab}, which is also used for the development of this
+project. 
+
+\medskip
+
+This toolchain offers abilities to a developer so that every time
+the developer finishes programming of a feature and pushes the code to the
+\emph{GitLab} project repository, the \emph{GitLab} server then invokes some
+routines to test the new code with a test scheme also defined by the developer
+prior to the time when the code was pushed; finally, if all tests are passed, 
+the \emph{GitLab} server deploys the new version of the project by simply
+building a new container that has the latest code in it, and has the old
+container replaced with the new one.
+
+\section{Deployment}
+In the development process of this project, the deployment stage is defined
+before the actual programming even start. This approach makes sure that all
+modules of the project can be test in the
+deployment environment (i.e., the container in which the \emph{Course2018}
+will be eventually running) as soon as the implementation if finished.
+
+\subsection{Environment}
+The \emph{Course2018} LMS is containerized in an environment
+(the production container) based on
+\emph{Debian 8}~\cite{debian}, with \emph{Python 3} and all necessary packages
+(including \emph{Django 2.0}) installed.
+
+\subsection{HTTP server}
+An \emph{HTTP server} is included in the production container to host the
+\emph{Course2018} LMS.
+The \emph{HTTP server} in use in the production container is the
+\emph{Apache HTTP server} (version 2.4)~\cite{apache}, with the
+\texttt{mod\_wsgi}~\cite{wsgi} package installed to accommodate
+\emph{Python} web applications in \emph{WSGI}
+(Web Server Gateway Interface~\cite{wsgi}) specification, such as a
+\emph{Django} project.
