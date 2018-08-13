@@ -185,7 +185,7 @@ module solely by the developer.
         \hline
         \texttt{id} & primary key \\
         \hline
-        \texttt{department} & required, department code of the course (e.g., COMP, MATH) \\
+        \texttt{department} & required, department code of the course \\ & (e.g., COMP, MATH) \\
         \hline
         \texttt{number} & required, course number \\
         \hline
@@ -208,16 +208,16 @@ module solely by the developer.
 
         \texttt{instructor} & foreign key to the instructor \\
         \hline
-        \texttt{students} & many to many relationship to the students registered in the course\\
+        \texttt{students} & many to many relationship to the students registered \\ & in the course\\
         \hline
-        \texttt{TAs} & many to many relationship to the TAs registered in the course \\
+        \texttt{TAs} & many to many relationship to the TAs registered \\ & in the course \\
 
         \hline
         \hline
 
         \texttt{repo\_name} & optional, the name of the remote \emph{GitLab}
-            repository in which \\
-            & programming assignment source code files are stored \\
+            repository \\ & in 
+            which programming assignment source code files \\ & are stored \\
         \hline
         \hline
 
@@ -225,16 +225,20 @@ module solely by the developer.
             1. combination of fields
                 \texttt{department},
                 \texttt{number},
-                \texttt{section},
-                \texttt{year}, \\ &
+                \texttt{section}, \\ &
+                \hspace{1.3em}\texttt{year},
                 \texttt{semester} must be unique \\
             & 2. role of the \texttt{instructor} must be \emph{Professor} \\
-            & 3. role of the \texttt{students} must be \emph{Student} \\
+            & 3. role of the each of the \texttt{students} must be \emph{Student} \\
         \hline
     \end{tabular}
     \renewcommand{\arraystretch}{1}
     
 \end{table}
+
+
+
+
 
 %-----------------------------------------------------------------------------
 % Section: User authentication
