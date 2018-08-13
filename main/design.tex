@@ -285,11 +285,11 @@ process.
     \usetikzlibrary{er, positioning, arrows}
     \begin{tikzpicture}[align=center, auto,node distance=2.5cm]
         \node[entity] (ua)      {User authentication};
-        \node[entity] (fm)  [right = 1cm of ua] {File management};
     
-        \node[entity] (cm) [below left of = fm] {Course management};
+        \node[entity] (cm) [below of = ua] {Course management};
         \node[entity] (am) [below = 1cm of cm] {Assignment management};
     
+        \node[entity] (fm)  [right = 1cm of cm] {File management};
         \node[entity] (afd) [right = 1cm of am] {Files display};
     
         \node[entity] (ct) [below of = am] {Automated test};
@@ -297,7 +297,7 @@ process.
     
         \path[->] 
             (ua) edge node {} (cm)
-            (fm) edge node {} (cm)
+            (fm) edge node {} (afd)
     
             (cm) edge node {} (am)
             (am) edge node {} (afd)
