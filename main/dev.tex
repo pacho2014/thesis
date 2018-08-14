@@ -19,7 +19,7 @@ project.
 
 \medskip
 
-This toolchain offers abilities to a developer so that every time
+This tool chain offers abilities to a developer so that every time
 the developer finishes programming of a feature and pushes the code to the
 \emph{GitLab} project repository, the \emph{GitLab} server automatically
 invokes some
@@ -81,7 +81,7 @@ a loaded page dynamically with \emph{AJAX}~\cite{AJAX}.
 %-----------------------------------------------------------------------------
 
 \subsection{User authentication}
-As discussed in section~\ref{sec:USRAUTH}, user authentication is handled by the
+As discussed in Section~\ref{sec:USRAUTH}, user authentication is handled by the
 \emph{Django User Model} provided by the \emph{Django} \texttt{auth} library,
 not only does this approach simplifies the implementation of the module,
 security is also improved in comparison with implementing the authentication
@@ -115,7 +115,7 @@ Table~\ref{tab:PROFILE_ATTR}.
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}[ht]{r|l}
         \hline
-        \texttt{Attribute} & Note \\
+        Attribute & Note \\
         \hline
         \hline
         \texttt{id} & primary key \\
@@ -259,7 +259,7 @@ Figure~\ref{fig:COURSE_ER} and Table~\ref{tab:COURSE_ATTR}. \bigskip
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}[ht]{r|l}
         \hline
-        \texttt{Attribute} & Note \\
+        Attribute & Note \\
         \hline
         \hline
         \texttt{id} & primary key \\
@@ -319,12 +319,13 @@ Figure~\ref{fig:COURSE_ER} and Table~\ref{tab:COURSE_ATTR}. \bigskip
 
 \begin{itemize}
     \item Create courses: \\
+    \label{item:NEW_COURSE}
         This activity is handled with the \texttt{CreateCourseView} which is
         inherited from the \texttt{AbstractLoginRequiredView} and 
         only accessible by instructors. 
-        This view accepts all the \emph{create course} request, validates the
-        data in the request, and if the data has no error,
-        create a course record with the data.
+        This view accepts all the \emph{create course} requests, validates the
+        data in each of the requests, and if the data has no error,
+        create course records with the data in the course database table.
         The permission control of this view
         (and any other views that are only accessible by instructors) is
         achieved by simply raising an \texttt{HTTPForbidden}~\cite{http403}
@@ -336,10 +337,11 @@ Figure~\ref{fig:COURSE_ER} and Table~\ref{tab:COURSE_ATTR}. \bigskip
     the \texttt{AbstractLoginRequir-\\edView} class.
     \begin{itemize}
         \item \texttt{student\_view()}: 
-            Information about the course and a list of assignments
+            information about the course and a list of assignments
             are fetched from the database and displayed to the registered
             students.
-        \item \texttt{professor\_view()}: In addition to the course information,
+        \item \texttt{professor\_view()}:
+            in addition to the course information,
             this function also fetches the latest students and TAs activities 
             (i.e., assignment submit activities and  assignment grading
             activities),
@@ -350,7 +352,7 @@ Figure~\ref{fig:COURSE_ER} and Table~\ref{tab:COURSE_ATTR}. \bigskip
 
 \subsubsection{Templates}
 \begin{itemize}
-    \item Create course template: \\
+    \item Create courses template: \\
         This template is used by the \texttt{CreateCourseView}, the template
         contains a form to be filled out by the user who
         wishes to create a course. 
@@ -382,11 +384,12 @@ Figure~\ref{fig:COURSE_ER} and Table~\ref{tab:COURSE_ATTR}. \bigskip
 % Section: Assignment management
 %-----------------------------------------------------------------------------
 
-\section{Assignment management}
+\subsection{Assignment management}
 
-\subsection{Data model}
+\subsubsection{Data model}
 Data model of the user authentication module is shown in
-% Figure~\ref{fig:COURSE_ER} and Table~\ref{tab:COURSE_ATTR}. \bigskip
+Figure~\ref{fig:ASM_ER}, Table~\ref{tab:ASM_ATTR},
+and Table~\ref{tab:COMMIT_ATTR}. \bigskip
 
 \begin{figure}[ht]
     \centering
@@ -411,3 +414,184 @@ Data model of the user authentication module is shown in
 
     \end{tikzpicture}
 \end{figure}
+
+\begin{table}[ht]
+    \centering
+    \caption{Attributes of \texttt{Assignment} model}
+    \label{tab:ASM_ATTR}
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}[ht]{r|l}
+        \hline
+        Attribute & Note \\
+        \hline
+        \hline
+
+        \texttt{id} & primary key \\
+        \hline
+        \texttt{course} & foreign key to the course to which the assignment
+            belongs \\
+        \hline
+        \hline
+
+        \texttt{title} & required, title of the assignment\\
+        \hline
+        \texttt{description} & required, description of the assignment 
+            in \emph{HTML} format \\
+        \hline
+        \texttt{num\_of\_problem} & required, default: 1 \\
+        \hline
+        \texttt{total\_grade} & required, total grade of each problem \\
+        \hline
+        \texttt{due} & require, time the assignment is due, default: 7:00 PM, 7
+            days \\ & from the time when the assignment is created \\
+        \hline
+        \texttt{is\_release} & \texttt{boolean} field, indicating whether or not
+            students can view\\ & the grade and feedback \\
+        \hline
+        \texttt{created\_time} & time when the assignment is created \\
+        \hline
+        \texttt{modified\_time} & time of the last modify of an assignment
+            object\\
+        \hline
+        \texttt{attachment\_path} & path to the directory where the attachments
+            are saved \\
+        \hline
+        \hline
+
+        \texttt{use\_git} & \texttt{boolean} field, indicating whether or not
+            the \\ & assignment uses \emph{Git} to provide source code management \\
+        \hline
+        \texttt{auto\_run} & \texttt{boolean} field, indicating whether or not
+            automated test \\ & is enabled \\
+        \hline
+        \hline
+
+        \texttt{constraints} & combination of \texttt{course} and \texttt{assignment\_number}
+            must \\ & be unique \\
+        \hline
+    \end{tabular}
+    \renewcommand{\arraystretch}{1}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \caption{Attributes of \texttt{Commit} model}
+    \label{tab:COMMIT_ATTR}
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}[ht]{r|l}
+        \hline
+        Attribute & Note \\
+        \hline
+        \hline
+
+        \texttt{id} & primary key \\
+        \hline
+        \texttt{assignment} & foreign key to the assignment to which a commit
+            instance\\ & belong \\
+        \hline
+        \texttt{by} & foreign key to the student who creates the commit \\
+        \hline
+        \hline
+
+        \texttt{problem} & required, indicating which problem a student submits
+            to \\
+        \hline
+        \texttt{file\_path} & required, path to the directory where files that
+            the student \\ & submits store \\
+        \hline
+        \texttt{commit\_time} & time when a commit instance is created \\
+        \hline
+        \texttt{commit\_id} & a \emph{Git} commit id, used for source code 
+            management \\
+        \hline
+        \texttt{auto\_run\_status} & if automated test is enabled for the
+            assignment 
+            run status \\ & is updated every time a user access the test result \\
+        \hline
+        \hline
+
+        \texttt{grade} & the grade a student got on the problem of an assignment \\
+        \hline
+        \texttt{marked\_comments} & \emph{marker}'s (instructor or TA) feedback on
+            this commit \\
+        \texttt{marked\_by} & foreign key to the \emph{marker} who marks this commit \\
+        \hline
+        \texttt{marked\_time} & time when the marker save the grade of this commit \\
+        \hline
+    \end{tabular}
+    \renewcommand{\arraystretch}{1}
+\end{table}
+
+
+\subsubsection{Views}
+\begin{itemize}
+    \item Create assignments: \\
+        This activity is handle with the \texttt{NewAssignmentView} class with 
+        permission control in the same manner as it is described in the
+        \emph{create course} activity (see Section~\ref{item:NEW_COURSE}).
+        The \texttt{NewAssignmentView} accepts all the \emph{create assignment}
+        requests, validates the data in each request, and if the data has no
+        error, create assignment records with the data in the assignment
+        database table.
+
+    \item View assignments:
+        When the \emph{Course2018} LMS receives a \emph{view assignment}
+        request, the request is processed with the \texttt{AssignmentView}
+        class which is inherited from the \texttt{AbstractLoginRequiredView}
+        class.
+        \begin{itemize}
+            \item \texttt{student\_view()}:
+                information about the assignment and the list of assignment
+                problems are fetched from the database and displayed to the 
+                registered students.
+            \item \texttt{professor\_view()}:
+            \label{item:PROF_VIEW}
+                this function first generates a form with the assignment's
+                information pre-filled; then it fetches all student's
+                submissions on the assignment. All the information will
+                be apply to the a template and generate a web page in which
+                the instructor can access each student's submitted file, as
+                well as modifying the assignment's information.
+        \end{itemize}
+
+    \item Submit assignments: \\
+        Whenever a student makes a submission on an assignment with source
+        code management enabled, 
+        a \emph{git commit}~\citep[Chapter 2]{progit} with copies of the files
+        the student submitted are created in the course's \emph{Git} directory,
+        under a branch~\cite[Chapter 3]{progit} named with the student's user
+        ID.
+        A unique commit ID is generated and saved in the \emph{Commit} model,
+        this ID is used for getting automated test information and
+        source code version comparison.
+        This activity is processed with the \texttt{SubmitAssignmentAPI} class
+        which is inherited from the \texttt{AbstractLoginRequiredAPI} class.
+\end{itemize}
+
+\subsubsection{Templates}
+\begin{itemize}
+    \item Create assignments template: \\
+    This template is used by the \texttt{NewAssignmentView}, the template
+    contains a form to be filled out by the user who wishes to create an
+    assignment.
+
+    \need 1 in
+
+    \item View assignment templates:
+    \begin{itemize}
+        \item Student template: 
+            this template is used by the \texttt{student\_view()} function
+            of the \texttt{AssignmentView} class, it is
+            a web page with details of an assignment, from
+            which students can view the assignment's information and
+            download the assignment's attachments; also, students can submit
+            their assignments in this page.
+        \item Professor template:
+            this template is used by the \texttt{professor\_view()} function
+            of the \texttt{AssignmentView} class, it is a webpage
+            contains a table with all student's submissions, it also renders
+            the form generated in the \\ \texttt{professor\_view()} to allow
+            instructors to modify the assignment's information
+            (see Section~\ref{item:PROF_VIEW}).
+    \end{itemize}
+\end{itemize}
