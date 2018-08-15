@@ -563,7 +563,7 @@ and Table~\ref{tab:COMMIT_ATTR}. \bigskip
         under a branch~\cite[Chapter 3]{progit} named with the student's user
         ID.
         A unique commit ID is generated and saved in the \emph{Commit} model,
-        this ID is used for getting automated test information and
+        this ID is used for getting automated test result and
         source code version comparison.
         This activity is processed with the \texttt{SubmitAssignmentAPI} class
         which is inherited from the \texttt{AbstractAPI} class.
@@ -655,9 +655,9 @@ the system database.
         \texttt{assignment} & foreign key to the assignment to which the
             attachment belongs \\
         \hline
-        \texttt{file\_name} & \\
+        \texttt{file\_name} & name of the file\\
         \hline
-        \texttt{file\_type} & type of the file \\
+        \texttt{file\_type} & type of the file (e.g., PDF, text) \\
         \hline
     \end{tabular}
 \end{table}
@@ -676,9 +676,9 @@ the system database.
         \hline
         \texttt{commit} & foreign key to the commit to which the file belongs \\
         \hline
-        \texttt{file\_name} & \\
+        \texttt{file\_name} & name of the file \\
         \hline
-        \texttt{file\_type} & type of the file \\
+        \texttt{file\_type} & type of the file (e.g., PDF, text) \\
         \hline
     \end{tabular}
 \end{table}
@@ -718,8 +718,9 @@ the system database.
     to send the file to the user block by block.
 
     \item File display: \\
-    There are multiple APIs implemented for display access of different parties
-    (i.e., markers and students), all of the APIs are inherited from the
+    There are multiple APIs implemented to display different files for different
+    parties
+    (i.e., markers and students), all of those APIs are inherited from the
     \texttt{DisplayFileAPI} which itself is inherited from the
     \texttt{AbstractAPI} to provide permission control.
 
@@ -729,6 +730,12 @@ the system database.
     before they are rendered on the users' browser.
     This is achieved by
     using a syntax highlighter called \emph{Pygments}~\cite{pygments}.
+
+    \item Version comparison display: \\
+    Version different display is processed by multiple APIs inherited from a
+    \texttt{DiffAPI}, if source code management is enabled for an assignment,
+    this API works with the \emph{GitLab} server to provide version comparison
+    for the latest two versions of each submitted file.
 \end{itemize}
 
 \subsubsection{Templates}
@@ -753,8 +760,156 @@ the system database.
 
 
 
+
 %-----------------------------------------------------------------------------
 % Section: Automated test
 %-----------------------------------------------------------------------------
 
 \subsection{Automated test}
+\label{sec:AUTO_TEST}
+
+\subsubsection{Data model}
+Data model of the assignment module module is shown in
+Figure~\ref{fig:AUTO_ER}, Table~\ref{tab:AUTO_ATTR},
+and Table~\ref{tab:TC_ATTR}. \bigskip
+
+\begin{figure}[ht]
+    \centering
+    \caption{Data model of the automated test module}
+    \label{fig:AUTO_ER}
+    \usetikzlibrary{er}
+
+    \begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}, node distance = 3.5cm]
+        \node[entity] (asm) {Assignment};
+
+        \node[relationship] (asm_config) [right of = asm] {has} edge (asm);
+        \node[entity] (config) [right of = asm_config] {AutoRunConfig} edge (asm_config);
+
+        \node[relationship] (config_tc) [right of = config] {has} edge (config);
+        \node[entity] (tc) [right of = config_tc] {AutoRunTestCase} edge[total] (config_tc);
+    \end{tikzpicture}
+\end{figure}
+
+\begin{table}[ht]
+    \centering
+    \caption{Attributes of \texttt{AutoRunConfig} model}
+    \label{tab:AUTO_ATTR}
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}[ht]{r|l}
+        \hline
+        Attribute & Note \\
+        \hline
+        \hline
+
+        \texttt{id} & primary key \\
+        \hline
+        \texttt{assignment} & foreign key to the assignment to which the test
+            scheme \\ & belongs \\
+        \hline
+        \hline
+
+        \texttt{problem} & required, indicating the problem of the assignment to
+            \\ & which the test scheme is applied \\
+        \hline
+        \texttt{enable} & \texttt{boolean} field, indicating whether or not automated test \\
+            & is enabled; default: \texttt{False} \\
+        \hline
+        \texttt{build\_stage} & \texttt{boolean} field, indicating whether or not the build \\
+            & stage of the test is enabled; default: \texttt{False} \\
+        \hline
+        \texttt{compile\_command} & \emph{Bash} command to compile the program \\
+        \hline
+    \end{tabular}
+    \renewcommand{\arraystretch}{1}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \caption{Attributes of \texttt{AutoRunTestCase} model}
+    \label{tab:TC_ATTR}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}[ht]{r|l}
+        \hline
+        Attribute & Note \\
+        \hline
+        \hline
+
+        \texttt{id} & primary key \\
+        \hline
+        \texttt{config} & foreign key to the \texttt{AutoRunConfig} object to
+            which the \\ & test scheme belongs \\
+        \hline
+        \hline
+
+        \texttt{prog\_name} & name of the program \\
+        \hline
+        \texttt{argv} & command line arguments that will be passed to the \\ & program \\
+        \hline
+        \hline
+
+        \texttt{empty\_input} & \texttt{boolean} field, indicating whether or not the \\
+            & sample input is empty; \\ & default: \texttt{False} \\
+        \hline
+        \texttt{display\_input} & \texttt{boolean} field, indicating whether or not the \\
+            & sample input is displayed in the test result; \\ & default: \texttt{False} \\
+        \hline
+        \texttt{sample\_input} & sample input of the test case \\
+        \hline
+        \hline
+
+        \texttt{empty\_output} & \texttt{boolean} field, indicating whether or not the \\
+            & sample output is empty; default: \texttt{False} \\
+        \hline
+        \texttt{display\_output} & \texttt{boolean} field, indicating whether or not the \\
+            & sample output is displayed in the test result; \\ & default: \texttt{False} \\
+        \hline
+        \texttt{sample\_output} & sample output of the test case \\
+        \hline
+        \texttt{strict\_comparison} & \texttt{boolean} field, indicating
+            whether or not the program \\
+            & output has to be \textbf{exactly} the same as the sample output \\
+            & in order to pass the test; \\
+            & default: \texttt{False} \\
+        \hline
+        \hline
+        \texttt{time\_limit} & time limit of the test \\
+        \hline
+        \texttt{prog\_return} & sample program return code \\
+        \hline
+    \end{tabular}
+    \renewcommand{\arraystretch}{1}
+\end{table}
+
+\subsubsection{Views}
+\begin{itemize}
+    \item Automated test configurations: \\
+    Requests of automated test configuration are processed by the
+    \texttt{SaveAutoRunDataAPI}.
+    This API first saves the test configurations to an \texttt{AutoRunConfig}
+    object;
+    then for each test case, it creates the sample input and sample output
+    file in the assignment's \emph{Git} directory under the \emph{master}
+    branch;
+    also, a script to execute the test cases and a \emph{GitLab} CI file~\cite{gitlabConfig}
+    is also created in the same
+    directory;
+    finally, the API execute a \texttt{git commit} command and push the commit
+    to the course's \emph{GitLab} repository.
+
+    \item Automated tests: \\
+    After the execution script and the \emph{GitLab} CI file is pushed to the
+    course's \emph{GitLab} repository, \emph{GitLab} will run the execution
+    script on the commit branch each time a commit is pushed to the repository.
+    Such an execution is also known as a \emph{job}, and the output of a job
+    is known as the \emph{trace} of a job.
+
+    \item Test result: \\
+    There are multiple APIs implemented to display test results to different
+    parties, all of those APIs are inherited from the \texttt{AutoRunTraceAPI}.
+    This API fetches the trace of the requested job from the \emph{GitLab}
+    server and has it returned to the user.
+
+    Job traces from the \emph{GitLab} server are encoded in \emph{ANSI} escape
+    code~\cite{ansi}, thus a \emph{Python} package called \texttt{ansi2html}~\cite{ansi2html}
+    is used in the API to convert the job traces to \emph{HTML} format.
+\end{itemize}
