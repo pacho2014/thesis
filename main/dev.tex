@@ -783,7 +783,7 @@ and Table~\ref{tab:TC_ATTR}. \bigskip
         \node[entity] (asm) {Assignment};
 
         \node[relationship] (asm_config) [right of = asm] {has} edge (asm);
-        \node[entity] (config) [right of = asm_config] {AutoRunConfig} edge (asm_config);
+        \node[entity] (config) [right of = asm_config] {AutoRunConfig} edge[total] (asm_config);
 
         \node[relationship] (config_tc) [right of = config] {has} edge (config);
         \node[entity] (tc) [right of = config_tc] {AutoRunTestCase} edge[total] (config_tc);
@@ -882,9 +882,9 @@ and Table~\ref{tab:TC_ATTR}. \bigskip
 
 \subsubsection{Views}
 \begin{itemize}
-    \item Automated test configurations: \\
+    \item Configurations: \\
     Requests of automated test configuration are processed by the
-    \texttt{SaveAutoRunDataAPI}.
+    \texttt{SaveAutoRunDat-\\aAPI}.
     This API first saves the test configurations to an \texttt{AutoRunConfig}
     object;
     then for each test case, it creates the sample input and sample output
@@ -910,6 +910,112 @@ and Table~\ref{tab:TC_ATTR}. \bigskip
     server and has it returned to the user.
 
     Job traces from the \emph{GitLab} server are encoded in \emph{ANSI} escape
-    code~\cite{ansi}, thus a \emph{Python} package called \texttt{ansi2html}~\cite{ansi2html}
+    code~\cite{ansi}, thus a \emph{Python} package called
+    \texttt{ansi2html}~\cite{ansi2html}
     is used in the API to convert the job traces to \emph{HTML} format.
 \end{itemize}
+
+\subsubsection{Templates}
+\begin{itemize}
+    \item Configurations: \\
+    The professor template for the \emph{View assignment} page also provides
+    a dynamic form (see Section~\ref{sec:AUTOTEST}) for instructors to
+    configure automated test schemes for
+    each individual problem of an assignment. 
+    This dynamic form is implemented in \emph{Javascript} with the
+    \emph{jQuery}~\cite{jQuery} library, so that the fields in the form can
+    change automatically according to the previous input data.
+    For example, when a user disables the \emph{build} stage for a test scheme,
+    the form's \emph{build} input (e.g., compile command input) section will
+    be hidden immediately and the existing input will be ignored.
+
+    This approach improves user experience significantly (in comparison to
+    static forms); however, it also makes server side (i.e., the view)
+    validations of the
+    input data very difficult, thus, the input data is validated on the
+    client side (i.e., the template).
+
+    After the input data is validated, it will be converted in a \emph{JSON}
+    format and sent to the server with \emph{AJAX} using the 
+    \texttt{SaveAutoRunDataAPI}.
+
+    \item Test result: \\
+    Test results are displayed in a file template with status badge
+    (e.g., running, stopped, success, and failed)
+    displayed on top of the test result's text content.
+    In addition, if the automated test scheme is updated after the the job
+    in display is finished, a notification with a button to trigger a re-run
+    of the job will be prompted to the user.
+\end{itemize}
+
+
+
+
+%-----------------------------------------------------------------------------
+% Section: Marking interface
+%-----------------------------------------------------------------------------
+
+\subsection{Marking interface}
+
+\subsubsection{Data model}
+No dedicated data model is designed for this module, markers' feedback
+(grades and comments) on each student's assignment is saved in the student's
+\texttt{Commit} to the assignment.
+
+\subsubsection{Views}
+    \begin{itemize}
+        \item Marker's views: \\
+        Most of the components of the marking interface are implemented on
+        the client side (i.e., the template). A \texttt{MarkAssignmentView}
+        is implemented to render the marking interface to the markers.
+        Moreover, a \texttt{GetAssignmentGradeAPI} and a
+        \texttt{SaveAssignmentGradeAPI} is also provided by the \emph{Course}
+        LMS for the template to interact with the server.
+
+        All of those views are inherited from the 
+        \texttt{AbstractLoginRequiredView}
+        or the \texttt{AbstractAPI} to perform proper permission control.
+
+        \item Student's views: \\
+        Similar to the marker's views, there is a
+        \texttt{DisplayMarkedAssignmentView} implemented to render the feedback
+        interface to the students, as well as the same 
+        \texttt{GetAssignmentGradeAPI} for the template to fetch the feedback
+        from the system.
+    \end{itemize}
+
+
+\subsubsection{Templates}
+    \begin{itemize}
+        \item Marker's template: \\
+        Comments in the \emph{Course2018} LMS are designed to be edited in
+        a markup language called \emph{Markdown}, then convert to an \emph{HTML}
+        format and display on the web page.
+        To achieve this, the marking interface is horizontally
+        split into two areas, the file display area and the edit area.
+
+        The file display areas uses the file display APIs and the 
+        \texttt{AutoRunTraceAPI}
+        to fetch and display the student's submitted files as well
+        as the result of the automated test.
+
+        The edit area is vertically split in to an editor area and a
+        preview area. A web-based text editor that supports syntax highlighting
+        and custom key binding (default key binding: \emph{Vim})
+        called \emph{Ace} \cite{aceEditor} is integrated to the editor area.
+        Also, there are two \emph{Javascript} library,
+        \texttt{Showdown}~\cite{showdown} and \texttt{MathJax}~\cite{mathjax},
+        used in the marking interface to provide preview for the \emph{Markdown}
+        input.
+
+        This interface uses the \texttt{GetAssignmentGradeAPI} to load the
+        existing grade to the web page, in the cases where a marker updates
+        his comments on a student's \texttt{Commit}. When the marker finishes
+        editing, the grade and comments are sent back to the server with the
+        \texttt{SaveAssignmentGradeAPI}.
+
+        \item Student's template: \\
+        The student's template is implemented in a way almost the same as the
+        marker's template. Except there is no editor is provided for the
+        students and no save grade feature is provided.
+    \end{itemize}
