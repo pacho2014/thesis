@@ -12,7 +12,7 @@ each of the module in the \emph{Course2018} LMS.
 \section{User authentication}
 The Login interface shown in Figure~\ref{fig:LOGIN} is used for authentication
 of all users.
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
         \includegraphics[width=.8\textwidth]{figures/login}
     \caption{System login interface}
@@ -25,7 +25,7 @@ of all users.
 The form shown in Figure~\ref{fig:NEW_COURSE} is used for instructors to create
 courses in the \emph{Course2018} LMS.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
         \includegraphics[width=.6\textwidth]{figures/create-courses}
     \caption{Create courses interface}
@@ -38,14 +38,14 @@ instructors can view the latest assignment grade summary, marking status,
 student activities, as well as manage the course (e.g., register TAs, shown
 in Figure~\ref{fig:REG_TA}).
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
         \includegraphics[width=0.8\textwidth]{figures/course-summary}
     \caption{Course summary interface}
     \label{fig:COURSE_SUMMARY}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
         \includegraphics[width=0.8\textwidth]{figures/reg-ta}
     \caption{TA registration interface}
@@ -59,7 +59,7 @@ in Figure~\ref{fig:REG_TA}).
 The form shown in Figure~\ref{fig:NEW_ASM} is used for instructors to create
 assignments for a course.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
         \includegraphics[width=0.4\textwidth]{figures/create-asm}
     \caption{Create assignment interface}
@@ -73,24 +73,28 @@ Figure~\ref{fig:ASM_SUMMARY_PROF} shows the assignment summary interface for
 instructors to view the submission status of the latest assignment, manage
 each individual assignment, and release assignment feedback to the students.
 
-\begin{figure}[ht]
+\subsubsection{Student view}
+The student's assignment summary interface, shown in
+Figure~\ref{fig:ASM_SUMMARY_STUDENT}, contains a table of a list
+of assignments with links to the detail page of each individual assignment.
+
+\pagebreak
+
+\begin{figure}[H]
     \centering
         \includegraphics[width=1.0\textwidth]{figures/asm-summary-prof}
     \caption{Assignment summary interface for instructors}
     \label{fig:ASM_SUMMARY_PROF}
 \end{figure}
 
-\subsubsection{Student view}
-The student's assignment summary interface, shown in
-Figure~\ref{fig:ASM_SUMMARY_STUDENT}, contains a table of a list
-of assignments with links to the detail page of each individual assignment.
-
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
         \includegraphics[width=1.0\textwidth]{figures/asm-summary-student}
     \caption{Assignment summary interface for students}
     \label{fig:ASM_SUMMARY_STUDENT}
 \end{figure}
+
+\pagebreak
 
 \subsection{Assignment detail}
 
@@ -106,28 +110,82 @@ sections:
     \item \textbf{Manage}: a form is presented to the instructor in this section
         to modify the detail information of an assignment, as well as to
         manage assignment attachments (shown in Figure~\ref{fig:ASM_MANAGE}).
-    \item \textbf{AutoRun}: a form is presented to the instructor in this
+    \item \textbf{Auto Run}: a form is presented to the instructor in this
         section to modify the configurations of the assignment's automated
         test scheme and test cases (shown in Figure~\ref{fig:ASM_AUTORUN}).
 \end{enumerate}
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
         \includegraphics[width=1.0\textwidth]{figures/asm-submits}
     \caption{Assignment submissions interface}
     \label{fig:ASM_SUBMITS}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
         \includegraphics[width=0.8\textwidth]{figures/asm-manage}
     \caption{Assignment management interface}
     \label{fig:ASM_MANAGE}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
         \includegraphics[width=0.9\textwidth]{figures/asm-autorun}
     \caption{Assignment automated test configurations interface}
     \label{fig:ASM_AUTORUN}
+\end{figure}
+
+\subsubsection{Student View}
+Student's assignment detail view is composed with a tab panel where users can
+select to view the detail and attachments of an assignment, or submit files
+to different problems of an assignment (shown in Figure~\ref{fig:ASM_DETAIL}
+and Figure~\ref{fig:ASM_PROBLEM}).
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=1.0\textwidth]{figures/asm-detail}
+    \caption{Assignment detail interface for students}
+    \label{fig:ASM_DETAIL}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=1.0\textwidth]{figures/asm-problem}
+    \caption{Assignment problem interface for students}
+    \label{fig:ASM_PROBLEM}
+\end{figure}
+
+
+\section{File management and display}
+
+The interface shown in Figure~\ref{fig:FILE_UPLOAD} is used for uploading
+attachments (by instructors) and submitting assignments (by students), as well
+as management (delete, modify) of those files.
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=0.7\textwidth]{figures/file-upload}
+    \caption{File upload interface}
+    \label{fig:FILE_UPLOAD}
+\end{figure}
+
+Whenever a user wishes to view a file, an interface shown in
+Figure~\ref{fig:VIEW_FILE} is presented to the user. If source code management
+(\emph{Git}) is enabled for the assignment, a \emph{Diff} button is appeared;
+and the user can click on it to view the latest changes between the two latest
+version of a file (shown in Figure~\ref{fig:VIEW_FILE_DIFF}.
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=1.0\textwidth]{figures/view-file}
+    \caption{File upload interface}
+    \label{fig:VIEW_FILE}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=1.0\textwidth]{figures/view-file-diff}
+    \caption{File upload interface}
+    \label{fig:VIEW_FILE_DIFF}
 \end{figure}
