@@ -174,7 +174,7 @@ Whenever a user wishes to view a file, an interface shown in
 Figure~\ref{fig:VIEW_FILE} is presented to the user. If source code management
 (\emph{Git}) is enabled for the assignment, a \emph{Diff} button is appeared;
 and the user can click on it to view the latest changes between the two latest
-version of a file (shown in Figure~\ref{fig:VIEW_FILE_DIFF}.
+version of a file (shown in Figure~\ref{fig:VIEW_FILE_DIFF}).
 
 \begin{figure}[H]
     \centering
@@ -188,4 +188,51 @@ version of a file (shown in Figure~\ref{fig:VIEW_FILE_DIFF}.
         \includegraphics[width=1.0\textwidth]{figures/view-file-diff}
     \caption{File upload interface}
     \label{fig:VIEW_FILE_DIFF}
+\end{figure}
+
+
+\section{Automated test}
+As it is shown in Figure~\ref{fig:ASM_SUBMITS} and Figure~\ref{fig:ASM_PROBLEM},
+a test status badge is displayed on each submissions. This badge is clickable
+with a link to an interface that displays the test result
+(Figure~\ref{fig:TRACE}).
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=0.85\textwidth]{figures/job-trace}
+    \caption{Automated test result interface}
+    \label{fig:TRACE}
+\end{figure}
+
+If the automated test scheme is updated after a job is finished, a notification
+is presented to the user to re-run the test~(Figure~\ref{fig:RERUN}).
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=1.0\textwidth]{figures/rerun}
+    \caption{Automated test result re-run notification}
+    \label{fig:RERUN}
+\end{figure}
+
+\section{Marking interface}
+\subsection{Marker's view}
+The marking interface for instructors and TAs is shown in
+Figure~\ref{fig:MARKING}.
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=1.0\textwidth]{figures/marker}
+    \caption{Marking interface for instructors and TAs}
+    \label{fig:MARKING}
+\end{figure}
+
+\subsection{Student's view}
+The assignment feedback interface for students is shown in
+Figure~\ref{fig:FEEDBACK}.
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=1.0\textwidth]{figures/feedback}
+    \caption{Assignment feedback interface for students}
+    \label{fig:FEEDBACK}
 \end{figure}
