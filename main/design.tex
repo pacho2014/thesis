@@ -21,8 +21,8 @@ and the environment in which the system will be running.
 Debate on whether or not it is better to use a framework never fails to be
 a popular topic in the developer communities. On one hand, many developers
 believe that a framework imposes a lot of constraints to a project which limits the
-overall control of the project (especially core behaviors) \cite{frameworks};
-on the other hand, there are also many developers believe that a framework
+overall control of the project (especially core behaviors) \cite{frameworks}.
+On the other hand, there are also many developers who believe that a framework
 offers a better degree of efficiency and a better
 measure of security to a project, while keeping the simplicity and
 the architectural clarity of the project by enforcing the developers to apply
@@ -32,7 +32,7 @@ an architectural pattern (such as the \emph{model-view-controller} pattern
 \medskip
 
 Given the development time frame, requirements for
-security and maintainability (see Section~\ref{TIMEFRAME},
+security and maintainability (see Sections~\ref{TIMEFRAME},
 \ref{SECURITY}, and \ref{MAINTAINABILITY}),
 as well as the scale of this project,
 it is not unjustifiable for this project to use a web framework to achieve a
@@ -98,38 +98,36 @@ compilers) isolated as well.
 Conventional virtualization (i.e., hardware virtualization) is a method for a
 host computer system to simulate a hardware environment on which the guest
 application can be run completely independent from the environment of the host
-system, with dedicated resources from the host system~\citep[chapter 16]{os}.
+system, with dedicated resources from the host system~\citep[Chapter 16]{os}.
 A \emph{virtual machine} (VM) could be a straightforward solution to solve
 this,
 but an efficient VM
 (e.g., a \emph{kernel-based virtual machine}~\cite{kvm}) 
 often places undesirable requirements to the host system 
-(including a rebuild of the operating system kernel);
-moreover, there is no easy way for the host system to provide a flexible
-resource allocation for any VM.
+(including a rebuild of the operating system kernel).
 
 \subsubsection{Containerization}
 \emph{Operating-system-level virtualization}, also known as
 \emph{containerization}, is an operating system (OS) feature offered by the
-kernel of the OS allowing multiple isolated user-space~\citep[section 1.5.1]{os}
-instances to exist simultaneously~\cite{docker},
+kernel of the OS allowing multiple isolated user-space~\citep[Section 1.5.1]{os}
+instances to exist simultaneously~\cite{docker};
 each of these instances is known as a \emph{container}, and no dedicated resource
 is required to be allocated for these instances.
 This makes them much more
 flexible than a conventional VM.
 Further, with the same hardware system and
 OS kernel as the host system being used, the overhead of a container is
-generally considered to be next to nothing (compared to conventional VMs).
+generally considered to be next to nothing (compared to conventional VMs)~\cite{dockerVM}.
 
 \pagebreak
 
 Following are the results of the \texttt{uname} command
 (a command to show the kernel version of a Unix or Unix-like OS)
-on an \emph{Arch Linux} host system (listing~\ref{lst:UNAME_HOST}),
+on an \emph{Arch Linux} host system (Listing~\ref{lst:UNAME_HOST}),
 a container on the host system with a \emph{Debian 8}~\cite{debian} image
-(listing~\ref{lst:UNAME_CONT}),
+(Listing~\ref{lst:UNAME_CONT}),
 and a \emph{kernel-based VM} (KVM) on the host system with \emph{Debian 8} installed
-(listing~\ref{lst:UNAME_KVM}),
+(Listing~\ref{lst:UNAME_KVM}),
 showing that containers share the same OS kernel with the host system whereas
 VMs do not.
 
@@ -179,25 +177,25 @@ Each user account is attached with a profile containing the \emph{role}
 the system perform permission control, such as to
 decide whether or not a user has permission to access content
 that does not belong to him; e.g., an instructor can view all students' assignment
-files, but students can only view the files belong to them.
+files, but students can only view their own files.
 
 \medskip
 
-It is worth mentioning that there is no such a role choice as a \emph{teaching
-assistant}~(TA) defined in the profile model,
-the reason behind this design is that all users can be defined as either a
+It is worth mentioning that there is no such role choice as a \emph{teaching
+assistant}~(TA) defined in the profile model;
+the reason behind this design decision is that all users can be defined as either a
 student or an instructor without the knowledge of the courses in which they are
-registered, but TAs are bounded with courses; i.e., a user
-can be a student or instructor to the \emph{Course2018} LMS, but he can only
-be a TA to some specific courses.
-Therefore, in the \emph{Course2018} LMS, the role TA is
-reflected by a \emph{many to many} relationship between users and courses.
+registered, but TAs are always associated with courses. That is, a user
+can be a student or instructor in the \emph{Course2018} LMS, but he can only
+be a TA for some specific courses.
+Therefore, in the \emph{Course2018} LMS, the TA role is
+reflected by a \emph{many-to-many} relationship between users and courses.
 
 \subsection{File management}
 The \emph{Django} official documentation recommends storing files in what is
 called a ``\emph{Media directory}''. This directory will then be served by the
 \emph{HTTP} server \cite{djangoManagingFiles}
-(such as \emph{Apache} and \emph{Nginx}). However, this method does not allow
+(such as \emph{Apache} or \emph{Nginx}). However, this method does not allow
 \emph{Django} to perform permission control on each individual file.
 
 \medskip
@@ -206,16 +204,16 @@ To overcome this, the \emph{Course2018} LMS manages all users' files without
 involving the \emph{HTTP} server by implementing a routine to provide file
 download service to the users. Whenever a user requests access to a file, the system
 will always perform a permission check before invoking that routine
-(see chapter \ref{chap:DEV} for more detail).
+(see Chapter \ref{chap:DEV} for more detail).
 
 \medskip
 
 In comparison with
-involving the \emph{HTTP} server (which is implemented in \emph{C}) to provide
+using the \emph{HTTP} server (which is implemented in \emph{C}) to provide
 the file download service,
 implementing the same service in \emph{Python} is suboptimal in terms of
-performance, 
-but considering the fact that most of the course-related
+performance.
+However, considering the fact that most of the course-related
 files have relatively small file sizes, the performance difference will
 not be significant.
 
@@ -223,7 +221,7 @@ not be significant.
 Every time the \emph{Course2018} LMS receives a \emph{view file} request,
 it invokes routines in the \emph{file management} module to locate the
 requested file, then invokes this module to determine whether or not the
-requested file can be displayed (i.e., PDF file and plaintext file). Also,
+requested file can be displayed (e.g., a PDF file and a plain text file). Also,
 if the requested file is a plaintext file, this module will try to determine
 the programming language of the file and provide syntax highlighting for the
 user.
@@ -263,7 +261,7 @@ designed solely for instructors or students.
 \begin{itemize}
     \item View assignment requirements
     \item Submit assignments
-    \item View submitted files (including version difference)
+    \item View submitted files (including version differences)
     \item View grade and marker's feedback
 \end{itemize}
 
@@ -311,8 +309,8 @@ process is shown in Figure~\ref{fig:DEP}.
         \node[entity] (cm) [below of = ua] {Course management};
         \node[entity] (am) [below = 1cm of cm] {Assignment management};
     
-        \node[entity] (fm)  [right = 1cm of cm] {File management};
-        \node[entity] (afd) [right = 1cm of am] {Files display};
+        \node[entity] (fm)  [right = 2cm of cm] {File management};
+        \node[entity] (afd) [right = 2cm of am] {File display};
     
         \node[entity] (ct) [below of = am] {Automated test};
         \node[entity] (mk) [below of = ct] {Marking interface};
@@ -324,7 +322,7 @@ process is shown in Figure~\ref{fig:DEP}.
             (cm) edge node {} (am)
             (am) edge node {} (afd)
     
-            (afd) edge node {} (ct)
+            (afd) edge node {} (mk)
             (am) edge node {} (ct)
     
             (ct) edge node {} (mk)
