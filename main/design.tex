@@ -214,14 +214,14 @@ the file download service,
 implementing the same service in \emph{Python} is suboptimal in terms of
 performance.
 However, considering the fact that most of the course-related
-files have relatively small file sizes, the performance difference will
+files are relatively small, the performance difference should
 not be significant.
 
 \subsection{Files display}
 Every time the \emph{Course2018} LMS receives a \emph{view file} request,
 it invokes routines in the \emph{file management} module to locate the
 requested file, then invokes this module to determine whether or not the
-requested file can be displayed (e.g., a PDF file and a plain text file). Also,
+requested file can be displayed (e.g., a PDF file or a plain text file). Also,
 if the requested file is a plaintext file, this module will try to determine
 the programming language of the file and provide syntax highlighting for the
 user.
