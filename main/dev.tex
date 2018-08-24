@@ -800,8 +800,6 @@ and Table~\ref{tab:TC_ATTR}. \bigskip
 
 \begin{figure}[ht]
     \centering
-    \caption{Data model of the automated test module}
-    \label{fig:AUTO_ER}
     \usetikzlibrary{er}
 
     \begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}, node distance = 3.5cm]
@@ -813,6 +811,9 @@ and Table~\ref{tab:TC_ATTR}. \bigskip
         \node[relationship] (config_tc) [right of = config] {has} edge (config);
         \node[entity] (tc) [right of = config_tc] {AutoRunTestCase} edge[total] (config_tc);
     \end{tikzpicture}
+
+    \caption{Data model of the automated test module}
+    \label{fig:AUTO_ER}
 \end{figure}
 
 \begin{table}[h]
