@@ -4,7 +4,7 @@ COMPILE = pdflatex
 
 BIB = bibtex
 
-FILES = *.tex acadia*thesis.sty *.bib
+FILES = *.tex */*.tex acadia*thesis.sty bibliography/*.bib
 
 AUX_FILES = *.aux *.toc *.bbl *.blg *.loa *.lof *.log *.lol *.lot *.out
 
