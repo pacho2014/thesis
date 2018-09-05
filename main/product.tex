@@ -7,10 +7,10 @@
 \label{chap:RSLT}
 
 This chapter shows the result of the project by providing screenshots for
-each of the module in the \emph{Course2018} LMS.
+each of the modules in the \emph{Course2018} LMS.
 
 \section{User authentication}
-The Login interface shown in Figure~\ref{fig:LOGIN} is used for authentication
+The Login interface, shown in Figure~\ref{fig:LOGIN}, is used for authentication
 of all users.
 \begin{figure}[H]
     \centering
@@ -22,13 +22,13 @@ of all users.
 \section{Course management}
 
 \subsection{Create courses}
-The form shown in Figure~\ref{fig:NEW_COURSE} is used for instructors to create
+The form shown in Figure~\ref{fig:NEW_COURSE} is used by instructors to create
 courses in the \emph{Course\-2018} LMS.
 
 \begin{figure}[H]
     \centering
         \includegraphics[width=.6\textwidth]{figures/create-courses}
-    \caption{Create courses interface}
+    \caption{Create course interface}
     \label{fig:NEW_COURSE}
 \end{figure}
 
@@ -40,7 +40,7 @@ in Figure~\ref{fig:REG_TA}).
 
 \begin{figure}[H]
     \centering
-        \includegraphics[width=0.8\textwidth]{figures/course-summary}
+        \includegraphics[width=1.0\textwidth]{figures/course-summary}
     \caption{Course summary interface}
     \label{fig:COURSE_SUMMARY}
 \end{figure}
@@ -56,7 +56,7 @@ in Figure~\ref{fig:REG_TA}).
 \section{Assignment management}
 
 \subsection{Create assignments}
-The form shown in Figure~\ref{fig:NEW_ASM} is used for instructors to create
+The form shown in Figure~\ref{fig:NEW_ASM} is used by instructors to create
 assignments for a course.
 
 \begin{figure}[H]
@@ -105,14 +105,16 @@ sections:
 \begin{enumerate}
     \item \textbf{Submits}: all submissions of an assignment are displayed
         in a table with links so that instructors can view and grade each
-        student's assignment; as well as a drop-down menu to assign TA to
+        student's assignment; a drop-down menu to assign TA to
         different problems (shown in Figure~\ref{fig:ASM_SUBMITS}).
-    \item \textbf{Manage}: a form is presented to the instructor in this section
+    \item \textbf{Manage}: the form shown in Figure~\ref{fig:ASM_MANAGE} is
+        presented to the instructor in this section
         to modify the detail information of an assignment, as well as to
-        manage assignment attachments (shown in Figure~\ref{fig:ASM_MANAGE}).
-    \item \textbf{Auto Run}: a form is presented to the instructor in this
+        manage assignment attachments.
+    \item \textbf{Auto Run}: a form (see Figure~\ref{fig:ASM_AUTORUN}) is
+        presented to the instructor in this
         section to modify the configurations of the assignment's automated
-        test scheme and test cases (shown in Figure~\ref{fig:ASM_AUTORUN}).
+        test scheme and test cases.
 \end{enumerate}
 
 \begin{figure}[H]
@@ -124,20 +126,20 @@ sections:
 
 \begin{figure}[H]
     \centering
-        \includegraphics[width=0.8\textwidth]{figures/asm-manage}
+        \includegraphics[width=1.0\textwidth]{figures/asm-manage}
     \caption{Assignment management interface}
     \label{fig:ASM_MANAGE}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-        \includegraphics[width=0.9\textwidth]{figures/asm-autorun}
+        \includegraphics[width=0.95\textwidth]{figures/asm-autorun}
     \caption{Assignment automated test configurations interface}
     \label{fig:ASM_AUTORUN}
 \end{figure}
 
 \subsubsection{Student View}
-Student's assignment detail view is composed with a tab panel where users can
+The student's assignment detail view is composed of a tab panel where users can
 select to view the detail and attachments of an assignment, or submit files
 to different problems of an assignment (shown in Figure~\ref{fig:ASM_DETAIL}
 and Figure~\ref{fig:ASM_PROBLEM}).
@@ -170,11 +172,11 @@ as management (delete, modify) of those files.
     \label{fig:FILE_UPLOAD}
 \end{figure}
 
-Whenever a user wishes to view a file, an interface shown in
+Whenever a user wishes to view a file, the interface shown in
 Figure~\ref{fig:VIEW_FILE} is presented to the user. If source code management
-(\emph{Git}) is enabled for the assignment, a \emph{Diff} button is appeared;
-and the user can click on it to view the latest changes between the two latest
-version of a file (shown in Figure~\ref{fig:VIEW_FILE_DIFF}).
+(\emph{Git}) is enabled for the assignment, a \emph{Diff} button is displayed;
+and the user can click on it to view the changes between the two latest
+version of a file, as shown in Figure~\ref{fig:VIEW_FILE_DIFF}.
 
 \begin{figure}[H]
     \centering
@@ -193,7 +195,7 @@ version of a file (shown in Figure~\ref{fig:VIEW_FILE_DIFF}).
 
 \section{Automated test}
 As it is shown in Figure~\ref{fig:ASM_SUBMITS} and Figure~\ref{fig:ASM_PROBLEM},
-a test status badge is displayed on each submissions. This badge is clickable
+a test status badge is displayed on each submission. This badge is clickable
 with a link to an interface that displays the test result
 (Figure~\ref{fig:TRACE}).
 
@@ -229,6 +231,9 @@ Figure~\ref{fig:MARKING}.
 \subsection{Student's view}
 The assignment feedback interface for students is shown in
 Figure~\ref{fig:FEEDBACK}.
+The files of the student's assignment are displayed on the left-hand side,
+whereas the TA or instructor's feedback are displayed on the right-hand side,
+so that the student can easily refer the comments to his own assignment.
 
 \begin{figure}[H]
     \centering
