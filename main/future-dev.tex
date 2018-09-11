@@ -3,83 +3,103 @@
 % Chapter:Future enhancements 
 %-----------------------------------------------------------------------------
 
-\chapter{Future enhancements}
+\chapter{Future Enhancements and Conclusion}
 \label{chap:FUTURE}
 
+\section{Future enhancements}
 As a part of this thesis work, 
-the \emph{Course2018} LMS has all the functionalities that define itself
-to be a special and computer-science-facing LMS.
-However the lack of certain features also makes it less than ideal in terms
-of user experience.
-Therefore, some suggestions of future enhancements are pointed out in this
-chapter.
+the \emph{Course2018} LMS has a collection of functionalities which produces an
+LMS with features specifically designed for computer science programming
+classes.
+During the implementation of the code, various useful additions to the system
+described in the previous chapters were identified.
+These additions are pointed out and described in this chapter.
 
-\section{User registration interface}
+\subsection{User registration interface}
 As of now, the \emph{Course2018} LMS uses the \emph{Django Admin} site to
 add new users to the system, but this action can only performed by users that
-has \texttt{admin} privilege to the system~\cite{djangoAdmin} and it is very
-inconvenient to import a large amount of user information to the system.
+have \texttt{admin} privilege to the system~\cite{djangoAdmin}. Further, this
+makes it very inconvenient to import a large amount of user information to the system.
 Hence, a user registration interface is desired.
 
-\subsection{Implementation suggestions}
-As a departmental LMS, the user registration should be opened only to students
-of the CS department.
-That is, an instructor first upload a file with the students' basic information
+\subsubsection{Implementation suggestions}
+As a departmental LMS, the user registration should be open only to students
+who are in the Computer Science major.
+That is, an instructor first uploads a file with the students' basic information
 (e.g., student ID, first name, last name, and email) to the LMS, the LMS
 creates user accounts and profiles for those students, and marks all of them
 as inactive users (see attribute \texttt{is\_active} in
 Table~\ref{tab:USR_ATTR}).
 Then a student can input and submit his student ID to the registration
-interface; after the LMS receive the student's ID,
+interface; after the LMS receives the student's ID,
 it sends an email with an expirable temporary password to the student's
 email account.
 Finally, the student uses that temporary password to reset his password and
 activate his account.
 
-\section{Course materials}
-Course materials (e.g., lecture notes) management is a desired feature to be
+\subsection{Course materials}
+Course material (e.g., lecture notes) management is a desired feature to be
 added to the \emph{Course2018} LMS.
 
-\subsection{Implementation suggestions}
+\subsubsection{Implementation suggestions}
 The implementation of this feature should be very simple.
-As it is shown in
+As shown in
 Figure~\ref{fig:COURSE_SUMMARY}, the \emph{course summary} template is already
-designed to be connected to course materials management module.
+designed to be connected to the course materials management module.
 Moreover, the \emph{data model} design of this module should
 be very similar the the design of the \emph{AssignmentAttachment} model 
 (see Table~\ref{tab:ATTACH_FILE_ATTR}).
 
-\section{More source code management functionalities}
-Since \emph{Git} and \emph{GitLab} is already integrated to the
-\emph{Course2018} LMS, features listed below can be added to the LMS in the
-future:
+\subsection{More source code management functionalities}
+Since \emph{Git} and \emph{GitLab} are already integrated to the
+\emph{Course2018} LMS, the features listed below can be added to the LMS in the
+future with a modest amount of effort:
 \begin{itemize}
-    \item Revert: allows a user to revert some of his submitted file to a
-        previous version.
+    \item Revert: allows a user to revert one or more of his submitted files to
+        previous versions.
     \item Enhanced version comparison: allows a user to compare the differences
-        between any two versions of a file.
-    \item Issues: allows a user to post issues (e.g., confusions of an
+        between any two versions of a file, not just the two most recent
+        versions.
+    \item Issues: allows a user to post issues (e.g., questions about of an
         assignment, or objections of some deductions) on assignments, and
-        discusses the issues with the instructor or the TAs.
+        discuss the issues with the instructor or the TAs.
 \end{itemize}
 
-\section{Automated test configurations for TAs}
-Right now it is only allowed for instructors to update automated test
+\subsection{Automated test configurations for TAs}
+Currently, only instructors are allowed to update automated test
 configurations of an assignment in the \emph{Course2018} LMS.
 One can foresee that it is not uncommon for TAs to come up with new test
 cases during the process of grading assignments, and it is desireable for TAs
 to have abilities to update the automated test configurations of the assignment
-problems he is assigned to grade.
+problems they are assigned to grade.
 
-\section{\emph{REST} APIs}
+\subsection{\emph{REST} APIs}
 Representational State Transfer, also known as \emph{REST}, is a standard of
 web applications API architectural style commonly used for communications
 between clients and the server~\citep[Chapter 5]{REST}.
 
 To implement all features of the \emph{Course2018} to a set of \emph{REST} APIs
-may require a huge amount of work. However, once it is finished, the LMS can
-offer abilities for advanced users to interact with the LMS in any form they
-whish. For example, an instructor can implement a script using those APIs to
+may require a considerable amount of work. However, once this implementation is
+finished, the LMS can offer abilities for advanced users to interact with the
+LMS in any form they
+wish. For example, an instructor can implement a script using those APIs to
 interact with the LMS and fully automate the process of assignment management
-to satisfy with his own workflow. In addition, those set of APIs can be used
+to satisfy with his own workflow. In addition, those sets of APIs can be used
 to implement a mobile device version of the \emph{Course2018} application.
+
+
+\section{Conclusion}
+In conclusion, this thesis work successfully presents a comprehensive
+learning management system which is mainly focus on Computer Science
+programming courses. The implementation of this project demonstrates
+a rapid application development process with modern development tool chain
+such as \emph{Docker}, \emph{GitLab}, and \emph{GitLab CI}.
+And the end product, the \emph{Course2018} LMS, has the potential to expose the
+students to a
+software development environment where features like source code management and
+automated tests play significant roles on their assignments, thus encouraging
+the students to submit higher quality works.
+Further,
+the enhanced marking interface of the \emph{Course2018} LMS 
+has the ability that enables the TAs and professors to provide more informative
+feedback to the students on their assignments in a more efficient way.
