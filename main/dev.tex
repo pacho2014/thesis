@@ -216,7 +216,7 @@ a great open-source version control tool,
 creator and principal developer of the \emph{Linux} operating system
 kernel~\cite{lTorvalds}.
 Moreover, 
-an open-source \emph{Git}-repository manager, \emph{GitLab}~\cite{gitlab}, is also
+an open-source \emph{Git}-repository manager, \emph{GitLab}~\cite{Agitlab}, is also
 used in the \emph{Course2018} LMS to enhance the source code management user
 experience.
 
@@ -630,7 +630,7 @@ The data model of the user authentication module is shown in
 Figure~\ref{fig:FILES_ER}, Table~\ref{tab:ATTACH_FILE_ATTR},
 and Table~\ref{tab:COMMIT_FILE_ATTR}. \medskip
 
-The \emph{Django} framework provides \emph{signals}~\cite{djangoSignal}
+The \emph{Django} framework provides \emph{signals}~\cite{EdjangoSignal}
 for updates (create, save, and delete) of \texttt{Model} objects; in the
 \emph{Course2018} LMS, a \texttt{delete\_file()} function is connected to
 the \texttt{AssignmentAttachment} model and the \texttt{CommitFile} model by
@@ -741,7 +741,7 @@ the system database.
     To minimize the memory usage, the download process is implemented with
     a \emph{Django} library function,
     \texttt{StreamingHttpResponse()}~\citep[Section Streaming\-Http\-Response
-    objects]{djangoRequest},
+    objects]{DdjangoRequest},
     to send the file to the user block by block.
 
     \item File display: \\
