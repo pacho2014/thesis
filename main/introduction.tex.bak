@@ -91,7 +91,7 @@ This is achieved by integrating a great open-source version control system,
 creator and principal developer of the \emph{Linux} operating system kernel
 (Linus Torvalds \& David Diamond, 2001 \cite{lTorvalds}), as well as 
 \emph{GitLab}, an open-source Git-repository manager developed by GitLab
-Inc.~\cite{gitlab}.
+Inc.~\cite{Agitlab}.
 
 \subsubsection{Souce code display}
 A good source code display system with syntax highlighting and line numbering
@@ -107,7 +107,7 @@ in an \emph{HTML} format.
 When a programming assignment is submitted by a student with \emph{Course2018},
 the source code files will be pushed to a remote \emph{GitLab} instance; then
 the program will be built (if required) and executed immediately by a script
-in a \emph{GitLab} subsystem, \emph{Gitlab CI/CD} \cite{gitlabci},
+in a \emph{GitLab} subsystem, \emph{Gitlab CI/CD} \cite{BgitlabCI},
 this script is defined by the instructor prior to the time when the assignment
 was published, it contains test data like sample input and output, time limit,
 and sample program return code;
@@ -133,7 +133,7 @@ Alternatively, an easy-to-use plain text markup language called \emph{Markdown}
 is introduced to the \emph{Course2018} marking system. This markup language was
 designed in a way that it can be converted to an \emph{HTML} format, which is
 exactly what this project needs, and it has been
-widely used by famous websites including \emph{GitHub} \cite{gitHubMarkdown}
+widely used by famous websites including \emph{GitHub} \cite{CgitHubMarkDown}
 and \emph{Stack Overflow} \cite{stackOverflowMarkdown}.
 Moreover, a \emph{Javascript} library call \emph{MathJax} is also integrated
 to the marking system so that \TeX\ and \LaTeX\ mathematical notation can be

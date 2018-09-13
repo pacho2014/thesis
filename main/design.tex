@@ -43,7 +43,8 @@ better result.
 The framework this project uses is called \emph{Django}, an open-source web
 framework written in \emph{Python}. \emph{Django} was originally developed by
 the web programming team at the \emph{Lawrence Journal-World} newspaper in 2003,
-designed for the company to deliver their contents as fast as possible~\cite{django}.
+designed for the company to deliver their contents as fast as
+possible~\cite[Chapter 1]{django}.
 With more than a decade of improvements
 having been made to the framework, it is now among one of the most popular web
 frameworks in the world, used by well-known companies and organizations like the
@@ -55,7 +56,7 @@ The \emph{Django} framework provides a set of libraries to handle most basic
 aspects of web application development. One good example of those libraries is
 the \emph{object-relational mapper}. This framework has the capability to create
 relational database schemas based on the \emph{Python} data model classes
-written by the developer, so that no raw SQL query is required~\cite{django}
+written by the developer, so that no raw SQL query is required~\cite[Chapter 1]{django}
 for most of the
 database operations (such as select, filter, remove, and insert database
 records).
@@ -87,7 +88,7 @@ are required for this system conflict with those existing services, an
 isolated environment for this system is desired.
 
 \medskip
-The \emph{Django} project official guide~\cite{djangoGuide} recommends using
+The \emph{Django} project official guide~\cite{BdjangoGuide} recommends using
 a tool called \texttt{virtualenv} to create an isolated environment. However,
 this tool is only capable of isolating \emph{Python} packages, and the
 \emph{Course2018} LMS may need to have some system packages (such as
@@ -168,7 +169,7 @@ following modules.
 
 \subsection{User authentication}
 \label{sec:USRAUTH}
-The \emph{Course2018} LMS uses the \emph{Django User Model} \cite{djangoUser}
+The \emph{Course2018} LMS uses the \emph{Django User Model} \cite{FdjangoUser}
 to provide
 basic functionalities related to user authentication activities, such as
 user registration, user account management and user login/logout.
@@ -194,7 +195,7 @@ reflected by a \emph{many-to-many} relationship between users and courses.
 \subsection{File management}
 The \emph{Django} official documentation recommends storing files in what is
 called a ``\emph{Media directory}''. This directory will then be served by the
-\emph{HTTP} server \cite{djangoManagingFiles}
+\emph{HTTP} server \cite{CdjangoManagingFiles}
 (such as \emph{Apache} or \emph{Nginx}). However, this method does not allow
 \emph{Django} to perform permission control on each individual file.
 
