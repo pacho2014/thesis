@@ -733,10 +733,10 @@ the system database.
     Both
     of these APIs are inherited from the \texttt{AbstractAPI}\null.
     To perform permission control,
-    both APIs' \texttt{professor\_view()} checks if the professor is the
-    instructor of the course to which the request file belongs; both APIs'
-    \texttt{student\_view()} checks if the request file belongs to the student.
-    Then they check the existence of the requested file, if the file
+    both APIs' \texttt{professor\_view()} check if the professor is the
+    instructor of the course to which the requested file belongs; both APIs'
+    \texttt{student\_view()} check whether the requested file belongs to the student.
+    Then they check the existence of the requested file; if the file
     does not exist, an \emph{HTTP 404} error~\citep[Section 6.5.4]{http} will be
     raised; otherwise, the
     file will be fetched and returned to the user.
