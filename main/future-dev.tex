@@ -18,13 +18,15 @@ These additions are described in this chapter.
 \subsection{User registration interface}
 As of now, the \emph{Course2018} LMS uses the \emph{Django Admin} site to
 add new users to the system, but this action can only performed by users that
-have \texttt{admin} privilege to the system~\cite{AdjangoAdmin}. Further, this
-makes it very inconvenient to import a large amount of user information to the system.
-Hence, a user registration interface is desired.
+have \texttt{admin} privilege to the system~\cite{AdjangoAdmin}.
+Further, this
+makes it very inconvenient to import a large amount of user information to
+the system, because all the user information has to be input to the system one
+user at a time. Hence, a user registration interface is desired.
 
 \subsubsection{Implementation suggestions}
-As a departmental LMS, the user registration should be open only to students
-who are in the Computer Science major.
+The user registration should be open only to students
+who are registered in courses which are using the \emph{Course2018} LMS.
 That is, an instructor first uploads a file with the students' basic information
 (e.g., student ID, first name, last name, and email) to the LMS, the LMS
 creates user accounts and profiles for those students, and marks all of them
@@ -47,7 +49,7 @@ As shown in
 Figure~\ref{fig:COURSE_SUMMARY}, the \emph{course summary} template is already
 designed to be connected to the course materials management module.
 Moreover, the \emph{data model} design of this module should
-be very similar the the design of the \emph{AssignmentAttachment} model 
+be very similar to the design of the \emph{AssignmentAttachment} model 
 (see Table~\ref{tab:ATTACH_FILE_ATTR}).
 
 \subsection{More source code management functionalities}
