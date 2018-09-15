@@ -731,9 +731,12 @@ the system database.
     for downloading \texttt{AssignmentAttachment} and \texttt{CommitFile}
     respectively.
     Both
-    of these APIs are inherited from the \texttt{AbstractAPI} to perform
-    permission control; they
-    first check the existence of the requested file, if the file
+    of these APIs are inherited from the \texttt{AbstractAPI}\null.
+    To perform permission control,
+    both APIs' \texttt{professor\_view()} checks if the professor is the
+    instructor of the course to which the request file belongs; both APIs'
+    \texttt{student\_view()} checks if the request file belongs to the student.
+    Then they check the existence of the requested file, if the file
     does not exist, an \emph{HTTP 404} error~\citep[Section 6.5.4]{http} will be
     raised; otherwise, the
     file will be fetched and returned to the user.
@@ -1021,8 +1024,8 @@ Markers' feedback
     \begin{itemize}
         \item Marker's template: \\
         Comments in the \emph{Course2018} LMS are designed to be edited in
-        a markup language called \emph{Markdown}, then convert to an \emph{HTML}
-        format and display on the web page.
+        a markup language called \emph{Markdown}, then converted to an
+        \emph{HTML} format and displayed on the web page.
         To achieve this, the marking interface is horizontally
         split into two areas: the file display area and the edit area.
 
