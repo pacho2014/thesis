@@ -25,32 +25,22 @@ the students is desirable.
 Acadia University currently uses the Moodle Learning System (also known at 
 Acadia University as Acorn) as the default LMS.
 This system works well for most of the courses, however, it has shortcomings
-when it comes to computer science programming assignments due to
-the nature of programming source code files and the lack of certain
-features, including, but not limited to, monospace text font for plain text
+when it comes to computer science programming assignments.
+Due to the nature of programming source code files,
+the Moodle LMS lacks certain features that are essential to computer science
+students and instructors,
+including, but not limited to, monospace text font for plain text
 file display, programming language detection, and syntax
 highlighting for source code file display.
-Also, it is not uncommon for computer science markers and instructors
+Moreover, it is not uncommon for computer science markers and instructors
 to want to put mathematical equations or formulas into their comments on
-students' assignments; the only two ways to do that with the Moodle
-Learning System are to draw the equations or formulas by hand with the
-pointing device of the computer (i.e., computer mouse, trackpad), or write
-the equations or formulas in \emph{HTML} code. Both of these two ways are
+students' assignments; the only ways to do that with the Moodle
+LMS are to draw the equations or formulas by hand with the
+pointing device of the computer (i.e., computer mouse, trackpad), write
+the them in \emph{HTML} code,
+or write them in another software then and insert to the Moodle LMS as an image.
+Both of these ways are
 time-consuming and borderline unfeasible.
-Moreover, there are features in the Moodle Learning System that are rarely
-used by instructors and students (especially instructors and students in
-computer science departments), features like \emph{PoodLL Recorder},
-\emph{Tags} and \emph{Marking Allocation};
-those features increase the
-complexity of the system and result in the fact that an easy task 
-often takes a longer time to finish than it was supposed to. This phenomenon
-is known to be a ``Feature Creep''~\cite{featureCreep};
-the Microsoft Office Suite is generally
-considered to be an example of this phenomenon~\cite{msFeatureCreep}.
-In short, the Moodle Learning System lacks features that are essential
-to computer science students and instructors, at the same time could slow
-down the process of submitting and evaluating assignments due to the complexity
-of the system.
 
 \medskip
 
@@ -68,54 +58,59 @@ to be very capable of handling computer science assignments.
 However, with more
 and more modifications applied to the system over the years, maintaining
 this system has become more and more difficult.
-Further, the amount of work required to add new features (especially the key
-features this thesis intends to achieve, see Section~\ref{FEATURES}) to the system
-has increased dramatically.
+Further, the amount of work required to add new features to the
+system (especially the key features this thesis intends to achieve,
+see Section~\ref{FEATURES}) has increased dramatically
+due to its legacy codebase.
+For example, the whole system frontend of the \emph{Course2000} LMS was built
+with an \emph{HTML} feature called \emph{framing}, which is an obsolete feature
+and it had been dropped in \emph{HTML5}~\cite{framing}, 
+as a result, a lot of changes to the \emph{Course2018} would require a complete
+rewrite of the whole system frontend.
 
 \section{Course2018}
 Influenced by the \emph{Course2000} system, the goal of this project is to
 develop a secure and dynamic LMS with functionalities designed specifically for
 computer science instructors and students.
-Those functionalities are mainly focused on
+These functionalities are mainly focused on
 providing informative feedback on programming assignments to both students
 and instructors for the purpose of easing the process of learning as well as
 evaluation.
-Maintaining the simplicity of the overall system design 
-is an important goal of this project as well,
-so that every task the system needs to
-perform can be done efficiently for both the users and the server,
+Simplicity of the overall system design is an important goal of this project.
+Every task the system 
+performs can be done efficiently for both the users and the server,
 and the future development as well as maintenance will not be too difficult.
 
 \subsection{Key features}
 \label{FEATURES}
-The \emph{Course2018} LMS is mainly characterized by the functionalities
-described below.
+The \emph{Course2018} LMS contains the following functionalities.
 
 \subsubsection{Source code management}
-The \emph{Course2018} LMS provides the abilities for students to manage
-their source code more efficiently and more professionally. With abilities such
+The \emph{Course2018} LMS provides the ability for students to manage
+their source code more efficiently and more professionally. With features such
 as source code version control, students and instructors are now able
 to view the history of every source code file, and more importantly, compare
 the changes between different versions of each file.
 
 \subsubsection{Souce code display}
 Source code display is one fundamental feature of the \emph{Course2018} LMS,
-to provide a better readability of source code files for the users,
-a syntax highlighter is included in the system to enable syntax
-highlighting \cite{syntaxHighlighting} for over 300 programming
+which provides better readability of source code files for the users.
+A syntax highlighter is included in the system for over 300 programming
 languages~\cite{ApygmentsLangs}.
 
 \subsubsection{Automated tests for programming assignments}
 When a programming assignment is submitted by a student with \emph{Course2018},
 a program associated with the submitted source code file(s) will be built
-(if required); this program
+(if required).
+This program
 will then be executed with the sample input data provided to the system
-by the instructor;
-as soon as the execution is finished, 
+by the instructor.
+As soon as the program execution is finished, 
 the output of the program will be compared with the sample output data~(also
-provided by the instructor) to
-generate an informative test result for the relevant parties (i.e., the student
-who submitted the assignment, the markers, and the instructor).
+provided by the instructor) and
+an informative test result will be generated for the relevant parties~(i.e.,
+the student who submitted the assignment, the markers, and the
+instructor).
 
 \subsubsection{Informative assignment feedback}
 The key to providing informative assignment feedback comments in computer
@@ -123,16 +118,15 @@ science assignments (especially programming assignments) is to make sure the
 comments are well formatted.
 Therefore, an easy-to-use plain text markup language called \emph{Markdown}
 is introduced to the \emph{Course2018} marking system. This markup language was
-designed in a way that it can be automatically converted to \emph{HTML} format,
-which very much suits the needs of this project;
-also, it is
+designed to be automatically converted to \emph{HTML} format.
+Also, \emph{Markdown} is
 widely used by well-known websites including \emph{GitHub} \cite{CgitHubMarkDown}
 and \emph{Stack Overflow} \cite{stackOverflowMarkdown}.
-Moreover, an improvement has been made for the purpose of supporting mixed
+An improvement has been made to support mixed
 input of \emph{Markdown} and \TeX\ mathematical notation.
 
 \subsubsection{Powerful built-in text editor}
-With an enhanced assignment feedback solution being mentioned above, a powerful
+With the enhanced assignment feedback solution mentioned above, a powerful
 text editor that supports syntax highlighting, and custom key-bindings is also
 integrated to the \emph{Course2018} LMS in order to ease the actual process of
 typing for the markers and instructors.
