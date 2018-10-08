@@ -14,8 +14,6 @@ class Assignment(models.Model):
 
     use_git = models.BooleanField(default=False)
     auto_run = models.BooleanField(default=False)
-    ci_files_dir = models.CharField(max_length=200, null=True)
-    scripts_dir = models.CharField(max_length=200, null=True)
 
     attachment_path = models.FilePathField(default='')
 
