@@ -195,6 +195,8 @@ Therefore, in the \emph{Course2018} LMS, the TA role is
 reflected by a \emph{many-to-many} relationship between users and courses.
 
 \subsection{File management}
+
+\subsubsection{File handling}
 The \emph{Django} official documentation recommends storing files in what is
 called a ``\emph{Media directory}''. This directory will then be served by the
 \emph{HTTP} server \cite{CdjangoManagingFiles}
@@ -220,7 +222,7 @@ However, considering the fact that most of the course-related
 files are relatively small, the performance difference should
 not be significant.
 
-\subsection{Files display}
+\subsubsection{Files display}
 Every time the \emph{Course2018} LMS receives a \emph{view file} request,
 it invokes routines in the \emph{file management} module to locate the
 requested file and then invokes this module to determine whether or not the
@@ -293,6 +295,8 @@ purpose of easing the process of assignment feedback for markers.
 The interface splits the screen into two sections: a file display section on the
 left-hand side, and a comments editing section on the right-hand side.
 
+\pagebreak
+
 \section{Modules dependencies}
 Many of the modules in the \emph{Course2018} LMS depends on each other,
 thus, a dependency tree to determine the order of the development
@@ -302,8 +306,6 @@ process is shown in Figure~\ref{fig:DEP}.
 
 \begin{figure}[ht]
     \centering
-    \caption{Modules dependencies}
-    \label{fig:DEP}
 
     \usetikzlibrary{er, positioning, arrows}
     \begin{tikzpicture}[align=center, auto,node distance=2.5cm]
@@ -312,26 +314,28 @@ process is shown in Figure~\ref{fig:DEP}.
         \node[entity] (cm) [below of = ua] {Course management};
         \node[entity] (am) [below = 1cm of cm] {Assignment management};
     
-        \node[entity] (fm)  [right = 2cm of cm] {File management};
-        \node[entity] (afd) [right = 2cm of am] {File display};
+        \node[entity] (fm) [right = 2cm of am] {File management};
     
         \node[entity] (ct) [below of = am] {Automated test};
         \node[entity] (mk) [below of = ct] {Marking interface};
     
         \path[->] 
             (ua) edge node {} (cm)
-            (fm) edge node {} (afd)
     
             (cm) edge node {} (am)
-            (am) edge node {} (afd)
+            (am) edge node {} (fm)
     
-            (afd) edge node {} (mk)
+            (fm) edge node {} (mk)
             (am) edge node {} (ct)
     
             (ct) edge node {} (mk)
             ;
     \end{tikzpicture}
+    \caption{Modules dependencies}
+    \label{fig:DEP}
 \end{figure}
+
+\pagebreak
 
 \section{Overall system design}
 The overall system design is shown in Figure~\ref{fig:SYSDES}.
