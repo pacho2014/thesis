@@ -1,0 +1,316 @@
+\begin{thebibliography}{47}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Adj()]{AdjangoAdmin}
+The {Django} admin site.
+\newblock The Django project.
+\newblock URL \url{https://docs.djangoproject.com/en/2.0/ref/contrib/admin/}.
+\newblock Retrieved August 19, 2018.
+
+\bibitem[Agi()]{Agitlab}
+About {Us}.
+\newblock Gitlab Inc.
+\newblock URL \url{https://about.gitlab.com/about/}.
+\newblock Retrieved August 3, 2018.
+
+\bibitem[Apy()]{ApygmentsLangs}
+Supported languages.
+\newblock pygments.org.
+\newblock URL \url{http://pygments.org/languages/}.
+\newblock Retrieved August 3, 2018.
+
+\bibitem[Bdj()]{BdjangoGuide}
+How to install {Django}.
+\newblock The Django Project.
+\newblock URL \url{https://docs.djangoproject.com/en/2.1/topics/install/}.
+\newblock Retrieved August 8, 2018.
+
+\bibitem[Bgi()]{BgitlabCI}
+Gitlab continuous integration (gitlab ci/cd).
+\newblock Gitlab Inc.
+\newblock URL \url{https://docs.gitlab.com/ee/ci/}.
+\newblock Retrieved August 3, 2018.
+
+\bibitem[Bpy()]{Bpygments}
+Pygments {FAQ}.
+\newblock pygments.org.
+\newblock URL \url{http://pygments.org/faq/}.
+\newblock Retrieved August 3, 2018.
+
+\bibitem[Cdj()]{CdjangoManagingFiles}
+Managing files.
+\newblock The Django Project.
+\newblock URL \url{https://docs.djangoproject.com/en/2.1/topics/files/}.
+\newblock Retrieved August 10, 2018.
+
+\bibitem[Cgi()]{CgitHubMarkDown}
+Mastering markdown.
+\newblock GitHub Inc.
+\newblock URL \url{https://guides.github.com/features/mastering-markdown/}.
+\newblock Retrieved August 3, 2018.
+
+\bibitem[Ddj()]{DdjangoRequest}
+Request and response objects.
+\newblock The Django project.
+\newblock URL
+  \url{https://docs.djangoproject.com/en/2.1/ref/request-response/}.
+\newblock Retrieved August 14, 2018.
+
+\bibitem[Edj()]{EdjangoSignal}
+Signals.
+\newblock The Django project.
+\newblock URL \url{https://docs.djangoproject.com/en/2.1/topics/signals/}.
+\newblock Retrieved August 14, 2018.
+
+\bibitem[Fdj()]{FdjangoUser}
+User model.
+\newblock The Django Project.
+\newblock URL
+  \url{https://docs.djangoproject.com/en/2.1/ref/contrib/auth/#permission-model}.
+\newblock Retrieved August 10, 2018.
+
+\bibitem[ace()]{aceEditor}
+Ace editor.
+\newblock Ajax.org.
+\newblock URL \url{https://ace.c9.io/}.
+\newblock Retrieved August 3, 2018.
+
+\bibitem[ans()]{ansi2html}
+ansi2html.
+\newblock Github Inc.
+\newblock URL \url{https://github.com/ralphbean/ansi2html}.
+\newblock Retrieved August 14, 2018.
+
+\bibitem[apa()]{apache}
+What is the {Apache} {HTTP} server project?
+\newblock Apache Software Foundation.
+\newblock URL \url{https://httpd.apache.org/ABOUT_APACHE.html}.
+\newblock Retrieved August 13, 2018.
+
+\bibitem[deb()]{debian}
+What is {Debian}?
+\newblock The {Debian} {Project}.
+\newblock URL \url{https://www.debian.org/intro/about#what}.
+\newblock Retrieved August 8, 2018.
+
+\bibitem[doc()]{dockerVM}
+What is a container.
+\newblock Docker {Inc.}
+\newblock URL \url{https://www.docker.com/resources/what-container}.
+\newblock Retrieved August 19, 2018.
+
+\bibitem[fra()]{framing}
+Html frame tag.
+\newblock w3schools.com.
+\newblock URL \url{https://www.w3schools.com/tags/tag_frame.asp}.
+\newblock Retrieved October 7, 2018.
+
+\bibitem[git()]{gitlabConfig}
+Configuration of your jobs with .gitlab-ci.yml.
+\newblock Gitlab Inc.
+\newblock URL \url{https://docs.gitlab.com/ee/ci/yaml/}.
+\newblock Retrieved August 14, 2018.
+
+\bibitem[jQu()]{jQuery}
+What is {jQuery}?
+\newblock The jQuery Team.
+\newblock URL \url{https://jquery.com/}.
+\newblock Retrieved August 15, 2018.
+
+\bibitem[jqF()]{jqFileUpload}
+{jQuery} {File} {Upload} {Plugin}.
+\newblock Github Inc.
+\newblock URL \url{https://github.com/blueimp/jQuery-File-Upload}.
+\newblock Retrieved August 14, 2018.
+
+\bibitem[lib()]{libmagic}
+magic(4).
+\newblock The Linux man-pages project.
+\newblock URL \url{http://man7.org/linux/man-pages/man4/magic.4.html}.
+\newblock Retrieved August 3, 2018.
+
+\bibitem[mat()]{mathjax}
+About {Us}.
+\newblock The MathJax Consortium.
+\newblock URL \url{https://www.mathjax.org/#about}.
+\newblock Retrieved August 15, 2018.
+
+\bibitem[pdf()]{pdfjs}
+Pdf.js.
+\newblock Github Inc.
+\newblock URL \url{https://github.com/mozilla/pdf.js}.
+\newblock Retrieved August 14, 2018.
+
+\bibitem[pos()]{postgres}
+Why use {PostgreSQL}?
+\newblock URL \url{https://www.postgresql.org/about/}.
+\newblock Retrieved August 8, 2018.
+
+\bibitem[sho()]{showdown}
+Showdown.
+\newblock Gitlab Inc.
+\newblock URL \url{https://github.com/showdownjs/showdown}.
+\newblock Retrieved August 15, 2018.
+
+\bibitem[sta()]{stackOverflowMarkdown}
+Markdown help.
+\newblock Stack Exchange, Inc.
+\newblock URL \url{https://stackoverflow.com/editing-help}.
+\newblock Retrieved August 3, 2018.
+
+\bibitem[ans(1991)]{ansi}
+Standard {ECMA}-48 control functions for coded character sets.
+\newblock Technical report, 1991.
+\newblock URL
+  \url{http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-048.pdf}.
+\newblock Retrieved August 5, 2018.
+
+\bibitem[wsg(2010)]{wsgi}
+{PEP} 3333 -- {Python} web server gateway interface v1.0.1.
+\newblock Python Software Foundation, 2010.
+\newblock URL \url{https://www.python.org/dev/peps/pep-3333/}.
+\newblock Retrieved August 13, 2018.
+
+\bibitem[JSO(2017)]{JSON}
+The {JSON} data interchange syntax.
+\newblock Technical report, 2017.
+\newblock URL
+  \url{http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf}.
+\newblock Retrieved August 5, 2018.
+
+\bibitem[Army(2001)]{functionalReqs}
+United States Government~US Army.
+\newblock \emph{Systems Engineering Fundamentals}.
+\newblock Defense Acquisition University Press, Fort Belvoir, VA, 2001.
+\newblock ISBN 1484120833.
+\newblock URL
+  \url{https://web.archive.org/web/20170131231503/http://www.dau.mil/publications/publicationsdocs/sefguide%2001-01.pdf}.
+\newblock Retrieved August 5, 2018.
+
+\bibitem[Bennett(2008)]{django}
+James Bennett.
+\newblock \emph{Practical Django Projects}.
+\newblock Books for professionals by professionals. Apress, 2008.
+\newblock ISBN 9781430208686.
+\newblock URL \url{https://books.google.ca/books?id=g4QnCgAAQBAJ}.
+\newblock Retrieved August 8, 2018.
+
+\bibitem[Chacon(2010)]{progit}
+S.~Chacon.
+\newblock \emph{Pro Git}.
+\newblock Apress, 2010.
+\newblock ISBN 9781430216803.
+\newblock URL \url{https://books.google.ca/books?id=8qsXogEACAAJ}.
+
+\bibitem[Cockburn(2011)]{useCase}
+Alistair Cockburn.
+\newblock \emph{Writing effective use cases}.
+\newblock Addison-Wesley, Boston; Toronto, 2011.
+\newblock ISBN 0201702258.
+
+\bibitem[Engineering(2011)]{djangoInstagram}
+Instagram Engineering.
+\newblock What powers instagram: Hundreds of instances, dozens of technologies.
+\newblock Medium, 2011.
+\newblock URL
+  \url{https://instagram-engineering.com/what-powers-instagram-hundreds-of-instances-dozens-of-technologies-adf2e22da2ad}.
+\newblock Retrieved August 8, 2018.
+
+\bibitem[Fielding and Reschke(2014)]{http}
+Roy Fielding and Julian Reschke.
+\newblock Hypertext transfer protocol (http/1.1): Semantics and content.
+\newblock Technical report, 2014.
+\newblock URL \url{https://tools.ietf.org/html/rfc7231}.
+\newblock Retrieved August 13, 2018.
+
+\bibitem[Fielding and Taylor(2000)]{REST}
+Roy~T Fielding and Richard~N Taylor.
+\newblock \emph{Architectural styles and the design of network-based software
+  architectures}, Volume~7.
+\newblock University of California, Irvine Doctoral dissertation, 2000.
+
+\bibitem[Fink(2014)]{docker}
+John Fink.
+\newblock Docker: a software as a service, operating system-level
+  virtualization framework.
+\newblock \emph{Code4Lib Journal}, 25:\penalty0 29, 2014.
+
+\bibitem[Garrett et~al.(2005)]{AJAX}
+Jesse~James Garrett et~al.
+\newblock Ajax: A new approach to web applications.
+\newblock 2005.
+\newblock URL
+  \url{http://adaptivepath.org/ideas/ajax-new-approach-web-applications/}.
+\newblock Retrieved August 13, 2018.
+
+\bibitem[Holovaty(2005)]{djangoWashingtonPost}
+Adrian Holovaty.
+\newblock Django in use at washingtonpost.com.
+\newblock The Django Project, 2005.
+\newblock URL
+  \url{https://www.djangoproject.com/weblog/2005/dec/08/congvotes/}.
+\newblock Retrieved August 8, 2018.
+
+\bibitem[Kernighan and Pike(1984)]{shellScript}
+Brian Kernighan and Rob Pike.
+\newblock \emph{The Unix Programming Environment}, chapter~3.
+\newblock Prentice Hall, Inc., Upper Saddle River, NJ, 1984.
+\newblock ISBN 013937681X.
+
+\bibitem[Krasner and Pope(1988)]{mvc}
+Glenn~E. Krasner and Stephen~T. Pope.
+\newblock A cookbook for using the model-view controller user interface
+  paradigm in {Smalltalk-80}.
+\newblock \emph{J. Object Oriented Program.}, 1\penalty0 (3):\penalty0 26--49,
+  August 1988.
+\newblock ISSN 0896-8438.
+\newblock URL \url{http://dl.acm.org/citation.cfm?id=50757.50759}.
+\newblock Retrieved August 8, 2018.
+
+\bibitem[{KVM}(2016)]{kvm}
+{KVM}.
+\newblock Main page --- {KVM}, 2016.
+\newblock URL
+  \url{https://www.linux-kvm.org/index.php?title=Main_Page&oldid=173792}.
+\newblock Retrieved August 8, 2018.
+
+\bibitem[Melnick(2018)]{cyberAttacks}
+Jeff Melnick.
+\newblock Top 10 most common types of cyber attacks.
+\newblock Netwrix Blog, 2018.
+\newblock URL
+  \url{https://blog.netwrix.com/2018/05/15/top-10-most-common-types-of-cyber-attacks/}.
+\newblock Retrieved August 5, 2018.
+
+\bibitem[Scopatz and D.~Huff(2015)]{git}
+Anthony Scopatz and Kathryn D.~Huff.
+\newblock \emph{Effective Computation in Physics: Field Guide to Research with
+  Python}, page 351.
+\newblock O'Reilly Media, Inc., 1005 Gravenstein Highway North, Sebastopol, CA
+  95472, 2015.
+\newblock ISBN 1491901535.
+
+\bibitem[Silberschatz et~al.(2012)Silberschatz, Galvin, and Gagne]{os}
+Abraham Silberschatz, Peter~B. Galvin, and Greg Gagne.
+\newblock \emph{Operating System Concepts}.
+\newblock Wiley Publishing, 9th edition, 2012.
+\newblock ISBN 1118063333.
+
+\bibitem[Team(2015)]{frameworks}
+Editorial Team.
+\newblock Web frameworks: Pros and cons of using frameworks.
+\newblock 1stWebDesigner, 2015.
+\newblock URL \url{https://1stwebdesigner.com/web-frameworks/}.
+\newblock Retrieved August 8, 2018.
+
+\bibitem[Torvalds and Diamond(2001)]{lTorvalds}
+Linus Torvalds and David Diamond.
+\newblock \emph{Just for fun: the story of an accidental revolutionary}.
+\newblock HarperBusiness, New York, NY, 2001.
+\newblock ISBN 0066620724.
+
+\end{thebibliography}

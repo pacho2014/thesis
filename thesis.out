@@ -1,0 +1,127 @@
+\BOOKMARK [0][-]{chapter*.5}{Abstract}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 2
+\BOOKMARK [1][-]{section.1.1}{Background}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.2}{Course2018}{chapter.1}% 4
+\BOOKMARK [2][-]{subsection.1.2.1}{Key features}{section.1.2}% 5
+\BOOKMARK [3][-]{section*.6}{Source code management}{subsection.1.2.1}% 6
+\BOOKMARK [3][-]{section*.7}{Souce code display}{subsection.1.2.1}% 7
+\BOOKMARK [3][-]{section*.8}{Automated tests for programming assignments}{subsection.1.2.1}% 8
+\BOOKMARK [3][-]{section*.9}{Informative assignment feedback}{subsection.1.2.1}% 9
+\BOOKMARK [3][-]{section*.10}{Powerful built-in text editor}{subsection.1.2.1}% 10
+\BOOKMARK [0][-]{chapter.2}{Requirements Analysis}{}% 11
+\BOOKMARK [1][-]{section.2.1}{Terminologies}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.1.1}{Functional requirement}{section.2.1}% 13
+\BOOKMARK [2][-]{subsection.2.1.2}{Non-functional requirement}{section.2.1}% 14
+\BOOKMARK [2][-]{subsection.2.1.3}{Use cases}{section.2.1}% 15
+\BOOKMARK [1][-]{section.2.2}{Functional requirements}{chapter.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.1}{User authentication}{section.2.2}% 17
+\BOOKMARK [3][-]{section*.11}{Use cases}{subsection.2.2.1}% 18
+\BOOKMARK [2][-]{subsection.2.2.2}{Course information handling}{section.2.2}% 19
+\BOOKMARK [3][-]{section*.12}{Use cases}{subsection.2.2.2}% 20
+\BOOKMARK [2][-]{subsection.2.2.3}{Assignment information handling}{section.2.2}% 21
+\BOOKMARK [3][-]{section*.13}{Use cases}{subsection.2.2.3}% 22
+\BOOKMARK [2][-]{subsection.2.2.4}{File handling}{section.2.2}% 23
+\BOOKMARK [3][-]{section*.14}{Use cases}{subsection.2.2.4}% 24
+\BOOKMARK [2][-]{subsection.2.2.5}{Assignment source code control}{section.2.2}% 25
+\BOOKMARK [3][-]{section*.15}{Use cases}{subsection.2.2.5}% 26
+\BOOKMARK [2][-]{subsection.2.2.6}{Automated code testing}{section.2.2}% 27
+\BOOKMARK [3][-]{section*.16}{Use cases}{subsection.2.2.6}% 28
+\BOOKMARK [2][-]{subsection.2.2.7}{Assignment marking}{section.2.2}% 29
+\BOOKMARK [3][-]{section*.17}{Use cases}{subsection.2.2.7}% 30
+\BOOKMARK [1][-]{section.2.3}{Non-functional requirements}{chapter.2}% 31
+\BOOKMARK [2][-]{subsection.2.3.1}{Development time}{section.2.3}% 32
+\BOOKMARK [2][-]{subsection.2.3.2}{Security}{section.2.3}% 33
+\BOOKMARK [2][-]{subsection.2.3.3}{Maintainability}{section.2.3}% 34
+\BOOKMARK [2][-]{subsection.2.3.4}{Cross-platform availability}{section.2.3}% 35
+\BOOKMARK [2][-]{subsection.2.3.5}{Deployment}{section.2.3}% 36
+\BOOKMARK [0][-]{chapter.3}{System Design}{}% 37
+\BOOKMARK [1][-]{section.3.1}{Specifications}{chapter.3}% 38
+\BOOKMARK [2][-]{subsection.3.1.1}{Frameworks}{section.3.1}% 39
+\BOOKMARK [2][-]{subsection.3.1.2}{DBMS}{section.3.1}% 40
+\BOOKMARK [2][-]{subsection.3.1.3}{Environment}{section.3.1}% 41
+\BOOKMARK [3][-]{section*.18}{Containerization}{subsection.3.1.3}% 42
+\BOOKMARK [3][-]{section*.19}{Docker}{subsection.3.1.3}% 43
+\BOOKMARK [1][-]{section.3.2}{System modules}{chapter.3}% 44
+\BOOKMARK [2][-]{subsection.3.2.1}{User authentication}{section.3.2}% 45
+\BOOKMARK [2][-]{subsection.3.2.2}{File management}{section.3.2}% 46
+\BOOKMARK [3][-]{section*.20}{File handling}{subsection.3.2.2}% 47
+\BOOKMARK [3][-]{section*.21}{Files display}{subsection.3.2.2}% 48
+\BOOKMARK [2][-]{subsection.3.2.3}{Course management}{section.3.2}% 49
+\BOOKMARK [2][-]{subsection.3.2.4}{Assignment management}{section.3.2}% 50
+\BOOKMARK [3][-]{section*.22}{Instructor activities}{subsection.3.2.4}% 51
+\BOOKMARK [3][-]{section*.23}{Student activities}{subsection.3.2.4}% 52
+\BOOKMARK [3][-]{section*.24}{Marker activities}{subsection.3.2.4}% 53
+\BOOKMARK [2][-]{subsection.3.2.5}{Automated test}{section.3.2}% 54
+\BOOKMARK [2][-]{subsection.3.2.6}{Marking interface}{section.3.2}% 55
+\BOOKMARK [1][-]{section.3.3}{Modules dependencies}{chapter.3}% 56
+\BOOKMARK [1][-]{section.3.4}{Overall system design}{chapter.3}% 57
+\BOOKMARK [0][-]{chapter.4}{Development}{}% 58
+\BOOKMARK [1][-]{section.4.1}{Methodology}{chapter.4}% 59
+\BOOKMARK [1][-]{section.4.2}{Deployment}{chapter.4}% 60
+\BOOKMARK [2][-]{subsection.4.2.1}{Environment}{section.4.2}% 61
+\BOOKMARK [2][-]{subsection.4.2.2}{HTTP server}{section.4.2}% 62
+\BOOKMARK [1][-]{section.4.3}{System development}{chapter.4}% 63
+\BOOKMARK [2][-]{subsection.4.3.1}{MVT}{section.4.3}% 64
+\BOOKMARK [3][-]{section*.27}{Example}{subsection.4.3.1}% 65
+\BOOKMARK [2][-]{subsection.4.3.2}{APIs}{section.4.3}% 66
+\BOOKMARK [2][-]{subsection.4.3.3}{User authentication}{section.4.3}% 67
+\BOOKMARK [3][-]{section*.28}{Data model}{subsection.4.3.3}% 68
+\BOOKMARK [3][-]{section*.32}{Views}{subsection.4.3.3}% 69
+\BOOKMARK [3][-]{section*.33}{Templates}{subsection.4.3.3}% 70
+\BOOKMARK [2][-]{subsection.4.3.4}{Course management}{section.4.3}% 71
+\BOOKMARK [3][-]{section*.34}{Data model}{subsection.4.3.4}% 72
+\BOOKMARK [3][-]{section*.37}{Views}{subsection.4.3.4}% 73
+\BOOKMARK [3][-]{section*.38}{Templates}{subsection.4.3.4}% 74
+\BOOKMARK [2][-]{subsection.4.3.5}{Assignment management}{section.4.3}% 75
+\BOOKMARK [3][-]{section*.39}{Data model}{subsection.4.3.5}% 76
+\BOOKMARK [3][-]{section*.43}{Views}{subsection.4.3.5}% 77
+\BOOKMARK [3][-]{section*.44}{Templates}{subsection.4.3.5}% 78
+\BOOKMARK [2][-]{subsection.4.3.6}{File management and display}{section.4.3}% 79
+\BOOKMARK [3][-]{section*.45}{Data model}{subsection.4.3.6}% 80
+\BOOKMARK [3][-]{section*.49}{Views}{subsection.4.3.6}% 81
+\BOOKMARK [3][-]{section*.50}{Templates}{subsection.4.3.6}% 82
+\BOOKMARK [2][-]{subsection.4.3.7}{Automated test}{section.4.3}% 83
+\BOOKMARK [3][-]{section*.51}{Data model}{subsection.4.3.7}% 84
+\BOOKMARK [3][-]{section*.55}{Views}{subsection.4.3.7}% 85
+\BOOKMARK [3][-]{section*.56}{Templates}{subsection.4.3.7}% 86
+\BOOKMARK [2][-]{subsection.4.3.8}{Marking interface}{section.4.3}% 87
+\BOOKMARK [3][-]{section*.57}{Data model}{subsection.4.3.8}% 88
+\BOOKMARK [3][-]{section*.58}{Views}{subsection.4.3.8}% 89
+\BOOKMARK [3][-]{section*.59}{Templates}{subsection.4.3.8}% 90
+\BOOKMARK [1][-]{section.4.4}{Functional testing}{chapter.4}% 91
+\BOOKMARK [2][-]{subsection.4.4.1}{User authentication}{section.4.4}% 92
+\BOOKMARK [2][-]{subsection.4.4.2}{Course management}{section.4.4}% 93
+\BOOKMARK [2][-]{subsection.4.4.3}{Assignment management}{section.4.4}% 94
+\BOOKMARK [2][-]{subsection.4.4.4}{File management}{section.4.4}% 95
+\BOOKMARK [2][-]{subsection.4.4.5}{Automated test}{section.4.4}% 96
+\BOOKMARK [2][-]{subsection.4.4.6}{Marking interface}{section.4.4}% 97
+\BOOKMARK [0][-]{chapter.5}{The Course2018 LMS}{}% 98
+\BOOKMARK [1][-]{section.5.1}{User authentication}{chapter.5}% 99
+\BOOKMARK [1][-]{section.5.2}{Course management}{chapter.5}% 100
+\BOOKMARK [2][-]{subsection.5.2.1}{Create courses}{section.5.2}% 101
+\BOOKMARK [2][-]{subsection.5.2.2}{Course summary}{section.5.2}% 102
+\BOOKMARK [1][-]{section.5.3}{Assignment management}{chapter.5}% 103
+\BOOKMARK [2][-]{subsection.5.3.1}{Create assignments}{section.5.3}% 104
+\BOOKMARK [2][-]{subsection.5.3.2}{Assignment summary}{section.5.3}% 105
+\BOOKMARK [3][-]{section*.65}{Professor view}{subsection.5.3.2}% 106
+\BOOKMARK [3][-]{section*.66}{Student view}{subsection.5.3.2}% 107
+\BOOKMARK [2][-]{subsection.5.3.3}{Assignment detail}{section.5.3}% 108
+\BOOKMARK [3][-]{section*.69}{Professor view}{subsection.5.3.3}% 109
+\BOOKMARK [3][-]{section*.73}{Student View}{subsection.5.3.3}% 110
+\BOOKMARK [1][-]{section.5.4}{File management and display}{chapter.5}% 111
+\BOOKMARK [1][-]{section.5.5}{Automated test}{chapter.5}% 112
+\BOOKMARK [1][-]{section.5.6}{Marking interface}{chapter.5}% 113
+\BOOKMARK [2][-]{subsection.5.6.1}{Marker's view}{section.5.6}% 114
+\BOOKMARK [2][-]{subsection.5.6.2}{Student's view}{section.5.6}% 115
+\BOOKMARK [0][-]{chapter.6}{Future Work and Conclusion}{}% 116
+\BOOKMARK [1][-]{section.6.1}{Future work}{chapter.6}% 117
+\BOOKMARK [2][-]{subsection.6.1.1}{User registration interface}{section.6.1}% 118
+\BOOKMARK [3][-]{section*.83}{Implementation suggestions}{subsection.6.1.1}% 119
+\BOOKMARK [2][-]{subsection.6.1.2}{Course materials}{section.6.1}% 120
+\BOOKMARK [3][-]{section*.84}{Implementation suggestions}{subsection.6.1.2}% 121
+\BOOKMARK [2][-]{subsection.6.1.3}{More source code management functionalities}{section.6.1}% 122
+\BOOKMARK [2][-]{subsection.6.1.4}{Automated test configurations for TAs}{section.6.1}% 123
+\BOOKMARK [2][-]{subsection.6.1.5}{REST APIs}{section.6.1}% 124
+\BOOKMARK [1][-]{section.6.2}{Conclusion}{chapter.6}% 125
+\BOOKMARK [0][-]{appendix.A}{Data models implementation}{}% 126
+\BOOKMARK [0][-]{appendix*.85}{Bibliography}{}% 127
