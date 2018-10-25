@@ -274,9 +274,10 @@ and modify) their courses.
             \item The user has previously created a course.
             \item The user is at the manage course interface for the course
                 to be removed.
-            \item The user clicked the \emph{Register TA} button and a TA
-                registration dialogue is presented.
+            \item The user clicked the \emph{Manage TA} button and a TA
+                management dialogue is presented.
         \end{enumerate}
+        \need 1 in
     \item Postconditions:
         \begin{itemize}
             \item On success: the student will be registered to the course
@@ -304,6 +305,48 @@ and modify) their courses.
                 if the student has already been registered as a TA, a warning
                 message is returned to the user; otherwise, the system registers
                 the student to the course as a TA and returns a success message.
+        \end{enumerate}
+\end{itemize}
+
+\item Remove a teaching assistant:
+\begin{itemize}
+    \item Primary actor: a registered instructor.
+    \item User story: the user wishes to remove a student from a course as a
+        TA.
+    \item Preconditions:
+        \begin{enumerate}
+            \item The user is logged in to the system.
+            \item The user has previously created a course.
+            \item The user is at the manage course interface for the course
+                to be removed.
+            \item The user clicked the \emph{Manage TA} button and a TA
+                management dialogue is presented, a list of registered TA
+                is shown in a table, each row of the table contains the TA's
+                name, student ID and email address, followed by a \emph{Remove}
+                button.
+        \end{enumerate}
+    \item Postconditions:
+        \begin{itemize}
+            \item On success: the student will be removed from the course
+                as a TA, a message indicating the registration was
+                successful is presented to the user.
+            \item On failure: a message indicating the error will be presented
+                to the user.
+        \end{itemize}
+    \item Triggers:
+        \begin{itemize}
+            \item The user clicks the \emph{Remove} button in the table entry
+                of the student to be removed.
+        \end{itemize}
+    \item Basic flow:
+        \begin{enumerate}
+            \item The removed TA request is encrypted and sent to the server.
+            \item The server checks if the user has permission to remove a
+                TA (i.e. if the user is the instructor of the course to which
+                the TA is registered).
+            \item The server checks if the student is a TA of the course.
+            \item The system removes the student from the course as a TA
+                and returns a success message.
         \end{enumerate}
 \end{itemize}
 

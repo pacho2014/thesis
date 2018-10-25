@@ -7,9 +7,8 @@
 \label{chap:FUTURE}
 
 \section{Future work}
-As a part of this thesis work, 
-the \emph{Course2018} LMS has a collection of functionalities which produces an
-LMS with features specifically designed for computer science programming
+The \emph{Course2018} LMS has a collection of functionalities 
+with features specifically designed for computer science programming
 classes.
 During the implementation of the code, various useful additions to the system
 described in the previous chapters were identified.
@@ -27,9 +26,9 @@ user at a time. Hence, a user registration interface is desired.
 \subsubsection{Implementation suggestions}
 The user registration should be open only to students
 who are registered in courses which are using the \emph{Course2018} LMS.
-That is, an instructor first uploads a file with the students' basic information
-(e.g., student ID, first name, last name, and email) to the LMS, the LMS
-creates user accounts and profiles for those students, and marks all of them
+An instructor would first upload a file with the students' basic information
+(e.g., student ID, first name, last name, and email) to the LMS. The LMS would
+create user accounts and profiles for those students, and marks all of them
 as inactive users (see attribute \texttt{is\_active} in
 Table~\ref{tab:USR_ATTR}).
 Then a student can input and submit his student ID to the registration
@@ -62,25 +61,25 @@ future with a modest amount of effort:
     \item Enhanced version comparison: allows a user to compare the differences
         between any two versions of a file, not just the two most recent
         versions.
-    \item Issues: allows a user to post issues (e.g., questions about of an
-        assignment, or objections of some deductions) on assignments, and
+    \item Issues: allows a user to post issues (e.g., questions about an
+        assignment, or objections to some deductions) on assignments, and
         discuss the issues with the instructor or the TAs.
 \end{itemize}
 
 \subsection{Automated test configurations for TAs}
 Currently, only instructors are allowed to update automated test
 configurations of an assignment in the \emph{Course2018} LMS.
-One can foresee that it is not uncommon for TAs to come up with new test
+It is not uncommon for TAs to come up with new test
 cases during the process of grading assignments, and it is desireable for TAs
-to have abilities to update the automated test configurations of the assignment
-problems they are assigned to grade.
+to have the ability to update the automated test configurations of the
+assignment problems they are assigned to grade.
 
 \subsection{\emph{REST} APIs}
 Representational State Transfer, also known as \emph{REST}, is a standard of
 web applications API architectural style commonly used for communications
 between clients and the server~\citep[Chapter 5]{REST}.
 
-To implement all features of the \emph{Course2018} to a set of \emph{REST} APIs
+To implement all features of the \emph{Course2018} LMS to a set of \emph{REST} APIs
 may require a considerable amount of work. However, once this implementation is
 finished, the LMS can offer abilities for advanced users to interact with the
 LMS in any form they
@@ -89,18 +88,26 @@ interact with the LMS and fully automate the process of assignment management
 to satisfy with his own workflow. In addition, those sets of APIs can be used
 to implement a mobile device version of the \emph{Course2018} application.
 
+\subsection{Interact with the \emph{Moodle} LMS}
+A lot of instructors at Acadia University are heavily depend on the
+\emph{Moodle} LMS, for the features that are not provided by
+\emph{Course2018} (e.g., grade book, quiz/test tools, and midterm/final
+exam grade recording). The efficiency of learning management would be
+highly increased if the \emph{Course2018} LMS can interact with the existing
+\emph{Moodle} LMS.
+
 
 \section{Conclusion}
-In conclusion, this thesis work successfully presents a comprehensive
-learning management system which mainly focuses on Computer Science
+In conclusion, this thesis work presents a comprehensive
+learning management system which mainly focuses on computer science
 programming courses. The implementation of this project demonstrates
 a rapid application development process with modern development tools
 such as \emph{Docker}, \emph{GitLab}, and \emph{GitLab CI}.
-The final product, the \emph{Course2018} LMS, has the potential to expose
+The final product, \emph{Course2018} LMS, has the potential to expose
 students to a software development environment where features like source
 code management and
 automated tests play significant roles in their assignments, encouraging
-students to submit higher quality works.
+students to submit higher quality work.
 Further,
 the enhanced marking interface allows professors and TAs to provide more
 informative feedback to students in a more efficient way.
