@@ -79,12 +79,16 @@ following information:
     \item title: \texttt{Magic}
 \end{itemize}
 
-The \texttt{Model} is shown in Listing~\ref{lst:course-model},
+The \texttt{Model} is shown in Listing~\ref{lst:course-model-example},
 the \texttt{View} is shown in Listing~\ref{lst:course-view-example},
 the \texttt{Template} is shown in~Listing~\ref{lst:course-template-example},
-and the response from django to that user is shown in
+and the response from \emph{Django} to that user is shown in
 Listing~\ref{lst:course-template-resp}.
 
+\lstinputlisting[caption=A \texttt{Model} example,
+label=lst:course-model-example,
+language=Python
+]{./examples/course-model-simplified.py}
 
 \lstinputlisting[caption=A \texttt{View} example,
 label=lst:course-view-example,
@@ -250,10 +254,9 @@ an open-source version control tool,
 \emph{Git} was originally developed by \emph{Linus Torvalds}~\cite{git},
 creator and principal developer of the \emph{Linux} operating system
 kernel~\cite{lTorvalds}.
-as 
-an open-source \emph{Git}-repository manager, \emph{GitLab}~\cite{Agitlab}, is also
-used in the \emph{Course2018} LMS to enhance the source code management user
-experience.
+An open-source \emph{Git}-repository manager, \emph{GitLab}~\cite{Agitlab},
+is also used in the \emph{Course2018} LMS to enhance the source code management
+user experience.
 
 \medskip
 Once an instructor enables source code management for an assignment, a remote
@@ -287,12 +290,12 @@ Figure~\ref{fig:COURSE_ER} and Table~\ref{tab:COURSE_ATTR}. \bigskip
     \label{fig:COURSE_ER}
 \end{figure}
 
-\begin{table}[h]
+\begin{table}[H]
     \centering
     \caption{Attributes of \texttt{Course} model}
     \label{tab:COURSE_ATTR}
-    \renewcommand{\arraystretch}{1.3}
-    \begin{tabular}[ht]{r|p{4in}}
+    \renewcommand{\arraystretch}{1}
+    \begin{tabular}[H]{r|p{4in}}
         \hline
         Attribute & Note \\
         \hline
@@ -302,11 +305,11 @@ Figure~\ref{fig:COURSE_ER} and Table~\ref{tab:COURSE_ATTR}. \bigskip
         \texttt{department} & required, department code of the course
             (e.g., COMP, MATH) \\
         \hline
-        \texttt{number} & required, course number \\
+        \texttt{number} & required, course number (e.g., 2103)\\
         \hline
         \texttt{section} & required, course section (e.g., X1) \\
         \hline
-        \texttt{title} & require, course title \\
+        \texttt{title} & require, course title (e.g., Programming 3)\\
         \hline
         \texttt{semester} & required, semester of the course
             (e.g., Winter, Fall) \\
@@ -327,11 +330,11 @@ Figure~\ref{fig:COURSE_ER} and Table~\ref{tab:COURSE_ATTR}. \bigskip
 
         \texttt{instructor} & foreign key to the instructor \\
         \hline
-        \texttt{students} & many-to-many relationship to the students
-            registered in the course\\
+        \texttt{students} & many-to-many relationship between students and
+            courses \\
         \hline
-        \texttt{TAs} & many-to-many relationship to the TAs registered in the
-            course \\
+        \texttt{TAs} & many-to-many relationship between students and the
+            courses they are registered as TAs \\
 
         \hline
         \hline
@@ -344,7 +347,7 @@ Figure~\ref{fig:COURSE_ER} and Table~\ref{tab:COURSE_ATTR}. \bigskip
 
         \texttt{constraints} & 
             \vspace{-7mm}
-            \begin{enumerate}[leftmargin=5mm]
+            \begin{enumerate}[leftmargin=5mm, itemsep=0em, parsep=0em]
                 \item the combination of fields \texttt{department},
                         \texttt{number},
                         \hspace{2em}\texttt{section},
@@ -439,7 +442,86 @@ The data model of the assignment module module is shown in
 Figure~\ref{fig:ASM_ER}, Table~\ref{tab:ASM_ATTR},
 and Table~\ref{tab:COMMIT_ATTR}. \bigskip
 
-\begin{figure}[ht]
+
+\subsubsection{Views}
+\begin{itemize}
+    \item Create assignments: \\
+        This activity is handle with the \texttt{NewAssignmentView} class with 
+        permission control in the same manner as described in the
+        \emph{create course} activity (see Section~\ref{item:NEW_COURSE}).
+        The \texttt{NewAssignmentView} accepts all the \emph{create assignment}
+        requests, validates the data in each request, and if the data has no
+        error, creates assignment records with the data in the assignment
+        database table.
+
+    \item View assignment:
+        When the \emph{Course2018} LMS receives a \emph{view assignment}
+        request, the request is processed with the \texttt{AssignmentView}
+        class which is inherited from the \texttt{AbstractLoginRequiredView}
+        class.
+        \begin{itemize}
+            \item \texttt{student\_view()}:
+                information about the assignment and the list of assignment
+                problems are fetched from the database and displayed to the 
+                registered students.
+            \item \texttt{professor\_view()}:
+            \label{item:PROF_VIEW}
+                this function first generates a form with the assignment's
+                information pre-filled; then it fetches all students'
+                submissions on the assignment. All the information will
+                be applied to a template and a web page will be generated in
+                which the instructor can access each student's submitted file,
+                as well as modifying the assignment's information.
+        \end{itemize}
+
+        Further, a \texttt{MarkerAssignmentView} is implemented for a TA to
+        view all students' submissions of the assignments that are to be
+        graded.
+
+    \item Submit assignment: \\
+        Whenever a student makes a submission on an assignment with source
+        code management enabled, 
+        a \emph{git commit}~\citep[Chapter 2]{progit} with copies of the files
+        the student submitted are created in the course's \emph{Git} directory,
+        under a branch~\cite[Chapter 3]{progit} named with the student's user
+        ID\null.
+        A unique commit ID is generated and saved in the \emph{Commit} model.
+        This ID is used for getting automated test results and
+        source code version comparisons.
+        This activity is processed with the \texttt{SubmitAssignmentAPI} class
+        which is inherited from the \texttt{AbstractAPI} class.
+\end{itemize}
+
+\subsubsection{Templates}
+\begin{itemize}
+    \item Create assignment template: \\
+    This template is used by the \texttt{NewAssignmentView}.
+    The template
+    contains a form to be filled out by the user who wishes to create an
+    assignment.
+
+    \need 1 in
+
+    \item View assignment templates:
+    \begin{itemize}
+        \item Student template: 
+            this template is used by the \texttt{student\_view()} function
+            of the \texttt{AssignmentView} class. It is
+            a web page with details of an assignment, from
+            which students can view the assignment's information and
+            download the assignment's attachments; also, students can submit
+            their assignments using this page.
+        \item Professor template:
+            this template is used by the \texttt{professor\_view()} function
+            of the \texttt{AssignmentView} class. It is a webpage
+            containing a table with all students' submissions; it also renders
+            the form generated in the \texttt{professor\_\-view()} to allow
+            instructors to modify the assignment's information.
+    \end{itemize}
+\end{itemize}
+
+
+\begin{figure}[H]
     \centering
 
     \usetikzlibrary{er}
@@ -581,84 +663,6 @@ and Table~\ref{tab:COMMIT_ATTR}. \bigskip
     \renewcommand{\arraystretch}{1}
 \end{table}
 
-
-\subsubsection{Views}
-\begin{itemize}
-    \item Create assignments: \\
-        This activity is handle with the \texttt{NewAssignmentView} class with 
-        permission control in the same manner as described in the
-        \emph{create course} activity (see Section~\ref{item:NEW_COURSE}).
-        The \texttt{NewAssignmentView} accepts all the \emph{create assignment}
-        requests, validates the data in each request, and if the data has no
-        error, creates assignment records with the data in the assignment
-        database table.
-
-    \item View assignment:
-        When the \emph{Course2018} LMS receives a \emph{view assignment}
-        request, the request is processed with the \texttt{AssignmentView}
-        class which is inherited from the \texttt{AbstractLoginRequiredView}
-        class.
-        \begin{itemize}
-            \item \texttt{student\_view()}:
-                information about the assignment and the list of assignment
-                problems are fetched from the database and displayed to the 
-                registered students.
-            \item \texttt{professor\_view()}:
-            \label{item:PROF_VIEW}
-                this function first generates a form with the assignment's
-                information pre-filled; then it fetches all students'
-                submissions on the assignment. All the information will
-                be applied to a template and a web page will be generated in
-                which the instructor can access each student's submitted file,
-                as well as modifying the assignment's information.
-        \end{itemize}
-
-        Further, a \texttt{MarkerAssignmentView} is implemented for a TA to
-        view all students' submissions of the assignments that are to be
-        graded.
-
-    \item Submit assignment: \\
-        Whenever a student makes a submission on an assignment with source
-        code management enabled, 
-        a \emph{git commit}~\citep[Chapter 2]{progit} with copies of the files
-        the student submitted are created in the course's \emph{Git} directory,
-        under a branch~\cite[Chapter 3]{progit} named with the student's user
-        ID\null.
-        A unique commit ID is generated and saved in the \emph{Commit} model.
-        This ID is used for getting automated test results and
-        source code version comparisons.
-        This activity is processed with the \texttt{SubmitAssignmentAPI} class
-        which is inherited from the \texttt{AbstractAPI} class.
-\end{itemize}
-
-\subsubsection{Templates}
-\begin{itemize}
-    \item Create assignment template: \\
-    This template is used by the \texttt{NewAssignmentView}.
-    The template
-    contains a form to be filled out by the user who wishes to create an
-    assignment.
-
-    \need 1 in
-
-    \item View assignment templates:
-    \begin{itemize}
-        \item Student template: 
-            this template is used by the \texttt{student\_view()} function
-            of the \texttt{AssignmentView} class. It is
-            a web page with details of an assignment, from
-            which students can view the assignment's information and
-            download the assignment's attachments; also, students can submit
-            their assignments using this page.
-        \item Professor template:
-            this template is used by the \texttt{professor\_view()} function
-            of the \texttt{AssignmentView} class. It is a webpage
-            containing a table with all students' submissions; it also renders
-            the form generated in the \texttt{professor\_\-view()} to allow
-            instructors to modify the assignment's information.
-    \end{itemize}
-\end{itemize}
-
 \FloatBarrier
 
 
@@ -753,7 +757,7 @@ the system database.
     There are two APIs, 
     \texttt{Upload\-Assign\-ment\-Attach\-ment\-API} and
     \texttt{Sub\-mit\-Assign\-ment\-API}, 
-    implemented to process \emph{file upload} requests for
+    implemented to process \emph{file upload} requests
     for instructors (\texttt{Assign\-ment\-Attach\-ment}) and students
     (\texttt{CommitFile}) respectively.
 
@@ -899,8 +903,8 @@ and Table~\ref{tab:TC_ATTR}. \bigskip
         \hline
         \hline
 
-        \texttt{constraints} & the combination of \texttt{assignment} and \texttt{problem},
-            must be unique \\
+        \texttt{constraints} & the combination of \texttt{assignment} and
+            \texttt{problem} must be unique \\
         \hline
     \end{tabular}
     \renewcommand{\arraystretch}{1}
@@ -1087,7 +1091,7 @@ Markers' feedback
         preview area. A web-based text editor that supports syntax highlighting
         and custom key binding (default key bindings: \emph{Vim})
         called \emph{Ace} \cite{aceEditor} is integrated to the editor area.
-        Also, there are two \emph{Javascript} library,
+        Also, there are two \emph{Javascript} libraries,
         \texttt{Showdown}~\cite{showdown} and \texttt{MathJax}~\cite{mathjax},
         used in the marking interface to provide preview for the \emph{Markdown}
         input.
@@ -1100,8 +1104,8 @@ Markers' feedback
 
         \item Student's template: \\
         The student's template is implemented in almost the same way as the
-        marker's template, except there is no editor is provided for the
-        students and no save grade feature is provided.
+        marker's template, except that the student's template has neither an
+        editor nor a save grade feature.
     \end{itemize}
 
 
@@ -1109,7 +1113,8 @@ Markers' feedback
 Functional testing is performed on all the system modules to ensure they are
 implemented correctly as per the functional requirements described in
 Section~\ref{sec:FUNC_REQS}. 
-The test cases are described below, all test cases are passed.
+The test cases are described below, all of which are passed by the current
+implementation.
 
 \need 1 in
 
@@ -1124,20 +1129,20 @@ The test cases are described below, all test cases are passed.
     \end{enumerate}
 
     \item \textbf{Permission control} \begin{enumerate}
-        \item An instructor, Bob, requests for a
+        \item An instructor, Bob, requests a
                 summary view of a course he created. \\
         \textbf{Expected behavior:} The summary view is presented to Bob.
 
-        \item A student, Alice, requests for a summary
+        \item A student, Alice, requests a summary
                 view of a course in which she is registered. \\
-        \textbf{Expected behavior:}The summary view is presented to Alice.
+        \textbf{Expected behavior:} The summary view is presented to Alice.
 
-        \item Instructor Bob requests for a summary view
-                of a course he did not created. \\
+        \item Instructor Bob requests a summary view
+                of a course he did not create. \\
         \textbf{Expected behavior:} Bob receives an error message indicating
             the access was refused.
 
-        \item Student Alice requests for a summary view
+        \item Student Alice requests a summary view
                 of a course in which she is not registered. \\
         \textbf{Expected behavior:} Alice receives an error message
             indicating the access was refused.
@@ -1150,54 +1155,55 @@ The test cases are described below, all test cases are passed.
         \item Instructor Bob tries to create a course with proper input data. \\
         {\bf Expected behavior:} A course is created by Bob.
 
-        \item Instructor Bob tries to create a course with information 
+        \item Instructor Bob tries to create a course which 
             already exists in the system. \\
         {\bf Expected behavior:} Bob receives an error message indicating that
             the same course already exists in the system
 
-        \item Instructor Bob tries to create a course, he fills the
+        \item Instructor Bob tries to create a course; he fills the
             course creation form with invalid data, then clicks \emph{Create}. \\
         {\bf Expected behavior:} For each field in the form with invalid data,
-            Bob receives different error message indicating how the data was
-            misentered.
+            Bob receives an error message indicating the input was invalid.
     \end{enumerate}
 
     \item \textbf{Update a course} \begin{enumerate}
-        \item Instructor Bob requests for a course management view. \\
-        {\bf Expected behavior:} A course management view contains a form
+        \item Instructor Bob requests a course management view. \\
+        {\bf Expected behavior:} A course management view containing a form
             with the course's existing information pre-filled is presented
             to Bob.
 
         \item Instructor Bob tries to update the course, he fills the course
-            management form with various invalid data, then clicks \emph{Save}. \\
+            management form with some invalid data, then clicks \emph{Save}. \\
         {\bf Expected behavior:} For each field in the form with invalid input,
-            Bob receives different error messages indicating how the input was
-            misentered.
+            Bob receives an error messages indicating the input was
+            invalid.
     \end{enumerate}
 
     \item \textbf{Remove a course} \begin{enumerate}
-        \item Instructor Bob requests to removed a course, the system prompts
-            for confirmation and bob confirms the request. \\
+        \item Instructor Bob wishes to remove a course, the system prompts
+            for confirmation and Bob confirms the request. \\
         {\bf Expected behavior:} The course is removed.
     \end{enumerate}
 
     \item \textbf{Register a TA} \begin{enumerate}
-        \item Instructor Bob requests to register a TA, he enters the TA's
-            student ID and clicks add. \\
+        \item Instructor Bob wishes to register a TA, he enters the TA's
+            student ID and clicks the \emph{Add} button. \\
         {\bf Expected behavior:} The student is registered to the course as a
             TA.
 
-        \item Instructor Bob request to register a TA, he made a mistake while
+        \item Instructor Bob wishes to register a TA, but he made a mistake while
             entering the TA's student ID. \\
         {\bf Expected behavior:} Bob receives an error message indicating the
             student ID he entered does not match any student in the system.
 
-        \item Instructor Bob request to registered a TA, he registers the same
+        \item Instructor Bob wishes to register a TA, he registers the same
             student ID twice by mistake. \\
         {\bf Expected behavior:} Bob receives a warning indicating that the
             student is already registered in the course as a TA.
 
-        \item Instructor Bob request to remove a student from a course as a TA. \\
+        \item Instructor Bob wishes to remove a student from a course as a TA;
+            he clicks the \emph{Remove} button follows the student's information
+            in the TA management pane. \\
         {\bf Expected behavior:} The student is removed from the course.
     \end{enumerate}
 \end{itemize}
@@ -1205,23 +1211,23 @@ The test cases are described below, all test cases are passed.
 \subsection{Assignment management}
 \begin{itemize}
     \item \textbf{Create an assignment} \begin{enumerate}
-        \item Instructor Bob requests to create an assignment, he fills the
+        \item Instructor Bob wishes to create an assignment, he fills the
             create assignment form with valid data, then clicks \emph{Create}. \\
         {\bf Expected behavior:} An assignment is created.
 
-        \item Instructor Bob requests to create an assignment, he fills the
+        \item Instructor Bob wishes to create an assignment, he fills the
             create assignment form with an \texttt{assignment number}
-            already exists in the course, then clicks \emph{Create}. \\
+            which already exists in the course, then clicks \emph{Create}. \\
         {\bf Expected behavior:} Bob receives an error message indicating
             that an assignment with the same \texttt{assignment number}
             already exists in the course.
 
-        \item Instructor Bob requests to create an assignment, he fills the
-            create assignment form with various invalid data, then clicks
-            create. \\
+        \item Instructor Bob wishes to create an assignment, he fills the
+            create assignment form with data, some of which is invalid,
+            then clicks \emph{Create}. \\
         {\bf Expected behavior:} For each field in the form with invalid input,
-            Bob receives different error messages indicating how the input was 
-            misentered.
+            Bob receives an error messages indicating the problem with the
+            input.
     \end{enumerate}
 
     \item \textbf{Update an assignment} \begin{enumerate}
@@ -1229,27 +1235,28 @@ The test cases are described below, all test cases are passed.
         {\bf Expected behavior:} A form with the assignment's existing
             information pre-filled is presented to Bob.
 
-        \item Instructor Bob requests to update the assignment, he fills the
+        \item Instructor Bob wishes to update the assignment, he fills the
             assignment management form with valid data, then clicks \emph{Save}. \\
         {\bf Expected behavior:} The assignment is updated with the new
             information.
 
-        \item Instructor Bob requests to update the assignment, he fills the
+        \item Instructor Bob wishes to update the assignment, he fills the
             assignment management form with invalid data, then clicks \emph{Save}. \\
         {\bf Expected behavior:} For each field in the form with invalid input,
-            Bob receives different error messages indicating how the input was 
-            misentered.
+            Bob receives an error message indicating the problem with the
+            input.
+            \need 3\baselineskip
     \end{enumerate}
 
     \item \textbf{Remove an assignment} \begin{enumerate}
-        \item Instructor Bob requests to removed an assignment, the system
-            prompts for confirmation and bob confirms the request. \\
+        \item Instructor Bob wishes to remove an assignment, the system
+            prompts for confirmation and Bob confirms the request. \\
         {\bf Expected behavior:} The assignment is removed.
     \end{enumerate}
 
     \item \textbf{View an assignment} \begin{enumerate}
-        \item Student Alice request to view an assignment of a course in which
-            she is registered.
+        \item Student Alice wishes to view an assignment of a course in which
+            she is registered. \\
         {\bf Expected behavior:} The assignment summary view is presented to
             Alice.
     \end{enumerate}
@@ -1257,45 +1264,51 @@ The test cases are described below, all test cases are passed.
 
 \subsection{File management}
 \begin{itemize}
-    \item File handling \begin{enumerate}
+    \item {\bf File handling} \begin{enumerate}
         \item Instructor Bob clicks the upload attachments button in the
             assignment summary view, a file upload dialogue is presented
-            and he selected a file to be uploaded, then clicks \emph{Upload}. \\
+            and he selects a file to be uploaded, then clicks \emph{Upload}. \\
         {\bf Expected behavior:} The file is uploaded as an assignment
             attachment.
 
         \item Student Alice clicks the upload assignment button in the
             assignment summary view, a file upload dialogue is presented
-            and she selected a file to be uploaded, then clicks \emph{Upload}. \\
+            and she selects a file to be uploaded, then clicks \emph{Upload}. \\
         {\bf Expected behavior:} The file is uploaded as an assignment
             submission.
     \end{enumerate}
 
-    \item File display \begin{enumerate}
-        \item Student Alice clicks a source code file she previously uploaded
-            in the assignment summary view. \\
+    \item {\bf File display} \begin{enumerate}
+        \item Student Alice clicks the file name of a source code file she
+            previously uploaded in the assignment summary view. \\
         {\bf Expected behavior:} A file display view is presented, the source
             code file is rendered in this view with highlighted syntax.
 
         \item Student Alice clicks a \emph{PDF} file she previously uploaded
             in the assignment summary view. \\
         {\bf Expected behavior:} A file display view is presented, the
-            \emph{PDF} file is rendered as it is.
+            \emph{PDF} file is rendered as is.
     \end{enumerate}
 \end{itemize}
 
 \subsection{Automated test}
 \begin{itemize}
-    \item Configure automated tests \begin{enumerate}
-        \item Instructor Bob requests to configure automated tests for an
+    \item {\bf Configure automated tests} \begin{enumerate}
+        \item Instructor Bob wishes to configure automated tests for an
             assignment, he opens the summary view of that assignment. \\
-        {\bf Expected behavior:} Below the assignment management form, a automated
-            tests configuration form is presented to Bob.
+        {\bf Expected behavior:} Below the assignment management form, an
+            automated tests configuration form is presented to Bob.
 
-        \item Instructor Bob fills the test configuration form with one required
-            field left empty, then clicks \emph{Save}. \\
+        \item Instructor Bob fills the test configuration form with one or more
+            required fields left empty, then clicks \emph{Save}. \\
         {\bf Expected behavior:} Bob receives an error message indicating that
-            one of the required fields were left empty.
+            one or more of the required fields were left empty.
+
+        \item Instructor Bob fills the test configuration form with data, some
+            of which is invalid, then clicks \emph{Save}. \\
+        {\bf Expected behavior:} For each field in the form with invalid input,
+            Bob receives an error message indicating that
+            the input was invalid.
 
         \item Instructor Bob fills the test configuration form with proper data,
             then clicks \emph{Save}. \\
@@ -1303,9 +1316,9 @@ The test cases are described below, all test cases are passed.
             tests are saved for the assignment.
     \end{enumerate}
 
-    \item View automated test result \begin{enumerate}
+    \item {\bf View automated test result} \begin{enumerate}
         \item Student Alice clicks the test status badge in the assignment
-            summary view, and requests to see the test result of an assignment.
+            summary view, and wishes to see the test result of an assignment. \\
         {\bf Expected behavior:} A view with the test result detail is
             presented to Alice.
     \end{enumerate}
@@ -1314,15 +1327,15 @@ The test cases are described below, all test cases are passed.
 \subsection{Marking interface}
 \begin{itemize}
     \item Student Alice is a registered TA in a course, she opens an assignment
-        summary view of that course.
+        summary view of that course. \\
     {\bf Expected behavior:} The assignment view is presented to Alice, which
-        contains a table displaying all the submitted assignment.
+        contains a table displaying all the submitted assignments.
 
     \item TA Alice clicks the \emph{Mark} button on one of the submissions.\\
     {\bf Expected behavior:} A marking interface (as shown in
     Figure~\ref{fig:MARKING}) is presented to Alice.
 
-    \item TA Alice enters some comments into the comment area and edit the
+    \item TA Alice enters some comments into the comment area and edits the
         grade, then clicks the \emph{Save} button. \\
     {\bf Expected behavior:} The grade and comments are saved, Alice receives
         a success message.
@@ -1330,5 +1343,5 @@ The test cases are described below, all test cases are passed.
     \item Instructor Bob clicks the \emph{Release} button in the assignment
         summary view. \\
     {\bf Expected behavior:} All students in the course can now view their
-        grades and comments of that assignment.
+        grades and comments for that assignment.
 \end{itemize}

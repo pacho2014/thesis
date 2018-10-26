@@ -174,12 +174,12 @@ and modify) their courses.
             \item The server validates the form data for errors including,
                 but not limited to,
                 invalid input format
-                (i.e., invalid date/time field input format,
+                (e.g., invalid date/time field input format,
                 input text length is greater than the maximum text length
                 allowance defined in the database),
-                conflicts (i.e., a course with the same identifier  
+                conflicts (e.g., a course with the same identifier  
                 already exists for that academic year),
-                and numbers out-of-range.
+                and numbers out of range.
             \item If the validation fails, the same create course interface
                 with error messages will be returned; otherwise, the server will
                 execute the routines to create a course with the submitted 
@@ -192,6 +192,7 @@ and modify) their courses.
 \begin{itemize}
     \item Primary actor: a registered instructor.
     \item User story: the user wishes to update the information of one course.
+        \need 2\baselineskip
     \item Preconditions:
         \begin{itemize}
             \item The user is logged in to the system.
@@ -204,11 +205,11 @@ and modify) their courses.
         \end{itemize}
     \item Postconditions:
         \begin{itemize}
-            \item On success: the manage course interface where a form with
+            \item On success: the manage course interface, where a form with
                 the course's updated information pre-filled will be presented
                 to the user.
-            \item On failure: the manage course interface with error messages
-                indicating which fields were filled with invalid data will be
+            \item On failure: the manage course interface, with error messages
+                indicating which fields were filled with invalid data, will be
                 presented to the user.
         \end{itemize}
     \item Triggers: the \emph{Save Changes} button is clicked.
@@ -219,10 +220,10 @@ and modify) their courses.
             \item The server validates the form data for errors including,
                 but not limited to,
                 invalid input format
-                (i.e., invalid date/time field input format,
+                (e.g., invalid date/time field input format,
                 input text length is greater than the maximum text length
                 allowance defined in the database),
-                conflicts (i.e., a course with the same identifier  
+                conflicts (e.g., a course with the same identifier  
                 already exists for that academic year),
                 and numbers out-of-range.
             \item If the validation failed, the same create course interface
@@ -230,6 +231,7 @@ and modify) their courses.
                 execute the routines to update the course with the submitted 
                 information and have the new manage course interface with the
                 updated course data prepared and returned.
+            \need 2 in
         \end{enumerate}
 \end{itemize}
 
@@ -272,8 +274,8 @@ and modify) their courses.
         \begin{enumerate}
             \item The user is logged in to the system.
             \item The user has previously created a course.
-            \item The user is at the manage course interface for the course
-                to be removed.
+            \item The user is at the manage course interface for the TA
+                to be registered.
             \item The user clicked the \emph{Manage TA} button and a TA
                 management dialogue is presented.
         \end{enumerate}
@@ -295,7 +297,7 @@ and modify) their courses.
         \begin{enumerate}
             \item The registration request is encrypted and sent to the server.
             \item The server checks if the user has permission to register a
-                TA (i.e. if the user is the instructor of the course to which
+                TA (i.e., if the user is the instructor of the course to which
                 the TA is registered).
             \item The server checks if the student ID exists in the user
                 database, and if the student has already been registered as a TA.
@@ -313,14 +315,15 @@ and modify) their courses.
     \item Primary actor: a registered instructor.
     \item User story: the user wishes to remove a student from a course as a
         TA.
+        \need 1 in
     \item Preconditions:
         \begin{enumerate}
             \item The user is logged in to the system.
             \item The user has previously created a course.
-            \item The user is at the manage course interface for the course
+            \item The user is at the manage course interface for the TA
                 to be removed.
             \item The user clicked the \emph{Manage TA} button and a TA
-                management dialogue is presented, a list of registered TA
+                management dialogue is presented; a list of registered TAs
                 is shown in a table, each row of the table contains the TA's
                 name, student ID and email address, followed by a \emph{Remove}
                 button.
@@ -328,7 +331,7 @@ and modify) their courses.
     \item Postconditions:
         \begin{itemize}
             \item On success: the student will be removed from the course
-                as a TA, a message indicating the registration was
+                as a TA and a message indicating the registration was
                 successful is presented to the user.
             \item On failure: a message indicating the error will be presented
                 to the user.
@@ -342,7 +345,7 @@ and modify) their courses.
         \begin{enumerate}
             \item The removed TA request is encrypted and sent to the server.
             \item The server checks if the user has permission to remove a
-                TA (i.e. if the user is the instructor of the course to which
+                TA (i.e., if the user is the instructor of the course to which
                 the TA is registered).
             \item The server checks if the student is a TA of the course.
             \item The system removes the student from the course as a TA
@@ -389,12 +392,12 @@ students to submit and view those assignments.
             \item The server validates the form data for errors including,
                 but not limited to,
                 invalid input format
-                (i.e., invalid date/time field input format,
+                (e.g., invalid date/time field input format,
                 input text length is greater than the maximum text length
                 allowance defined in the database),
-                conflicts (i.e., an assignment with the same
+                conflicts (e.g., an assignment with the same
                 number already exists in the course),
-                and numbers out-of-range.
+                and numbers out of range.
             \item If the validation failed, the same create assignment interface
                 with error messages will be returned; otherwise, the server will
                 execute the routines to create an assignment with the submitted
@@ -470,6 +473,7 @@ students to submit and view those assignments.
                 authorized to perform such an activity.
             \item If the request is valid, the assignment, along with all its
                 relevant data, will be removed from the system database.
+                \need 1 in
         \end{enumerate}
 \end{itemize}
 
@@ -508,7 +512,7 @@ files when they need to (such as submit assignments and upload attachments).
 \subsubsection{Use cases}
 \begin{enumerate}
 
-\item Upload assignments attachments:
+\item Upload assignment attachments:
 \begin{itemize}
     \item Primary actor: a registered instructor.
     \item User story: the user wishes to upload some files as assignment
@@ -518,16 +522,16 @@ files when they need to (such as submit assignments and upload attachments).
             \item The user is logged in to the system.
             \item The user has previously created a course.
             \item The user has previously created an assignment in the course,
-                for which the attachment files to be uploaded.
+                for which the attachment files are to be uploaded.
             \item The user is at the upload assignment attachment interface
                 where an \emph{Upload} button is presented.
         \end{itemize}
     \item Postconditions:
         \begin{itemize}
-            \item The files the user uploaded will be uploaded and saved to the
+            \item The files the user chose will be uploaded and saved to the
                 \emph{Course2018}'s file system.
-            \item Theses files can be viewed immediately by all relevant parties
-                (the instructor, the students who registered in the course,
+            \item These files can be viewed immediately by all relevant parties
+                (the instructor, the students registered in the course,
                 and the markers).
             \item An interface, with links from which the user can
                 download the file will be presented.
@@ -567,7 +571,7 @@ files when they need to (such as submit assignments and upload attachments).
         \end{itemize}
     \item Postconditions:
         \begin{itemize}
-            \item The files the user submitted will be uploaded and saved to the
+            \item The files the user chose will be uploaded and saved to the
                 \emph{Course2018}'s file system.
             \item Theses files can be viewed immediately by all relevant parties
                 (the student who submitted the files, the instructor,
@@ -586,8 +590,8 @@ files when they need to (such as submit assignments and upload attachments).
         \begin{enumerate}
             \item The files that the user wished to submit are encrypted and
                 sent to the server.
-            \item The server checks if the user has permission to upload
-                assignment attachment files (i.e., if the user is a
+            \item The server checks if the user has permission to submit
+                assignments (i.e., if the user is a
                 student of the course to which the assignment belongs).
             \item If the user has permission, the server saves the files to the
                 file system and creates database records for those files.
@@ -627,7 +631,7 @@ files when they need to (such as submit assignments and upload attachments).
             \item The server examines the request and makes sure the user
                 has permission to view the requested file.
             \item If the file can be displayed, the system will prepare the
-                file (such as syntax highlighting for plain text files) and
+                file (such as syntax highlighting for text files) and
                 have the interface with that file returned; otherwise, a download
                 URL to that file will be returned.
         \end{enumerate}
@@ -653,11 +657,11 @@ version of an assignment file.
             \item The user is logged in to the system.
             \item The user has made at least two submissions on one source code
                 file.
-            \item The user is at the file display interface of the file changed,
+            \item The user is at the file display interface of the changed file,
                 where there is a \emph{Diff} button on the interface.
         \end{itemize}
     \item Postconditions:
-        An interface, with changes of the last two versions of that file
+        An interface, with changes of the last two versions between that file
         displayed, is presented to the user.
     \item Triggers:
         The \emph{diff} button is clicked.
@@ -702,8 +706,8 @@ assignment is submitted.
         \begin{itemize}
             \item An automated test scheme will be created.
             \item Any future submissions will be tested with the scheme.
-            \item The prior submissions will be prompted to be tested each time
-                they are viewed.
+            \item Each time a prior submission is viewed the user will be given
+                the option to run the corresponding tests.
         \end{itemize}
     \item Triggers:
         \begin{itemize}
@@ -719,7 +723,8 @@ assignment is submitted.
     \item Basic flow:
         \begin{enumerate}
             \item The form data is validated for errors
-                (i.e., if all required fields are entered, if there are texts
+                (i.e., if there are required fields with no input,
+                if there are texts
                 in numeric fields, and if there is input with length greater
                 than the maximum text length allowance defined in the database)
                 immediately on the client side of the system (because it is a
@@ -727,7 +732,7 @@ assignment is submitted.
                 will be displayed if the validation failed.
             \item If the validation is successful, the configuration data is
                 serialized into a block of \emph{JSON} \cite{JSON} formatted text and
-                encapsulated in a request which then is encrypted and sent to
+                encapsulated in a request which is then encrypted and sent to
                 the server.
             \item The server examines the request and makes sure the user has
                 permission to enable and configure an automated test.
@@ -748,7 +753,7 @@ assignment is submitted.
     \item Preconditions:
         \begin{itemize}
             \item The user is logged in to the system.
-            \item The user has submitted a programming assignment whose
+            \item The user has submitted a programming assignment for which an
                 automated test had been enabled prior to the submission.
         \end{itemize}
     \item Postconditions:
@@ -773,21 +778,21 @@ assignment is submitted.
 The system shall provide tools for instructors and teaching assistants (TAs) to
 grade the students' assignment.
 
-In this thesis, \emph{Markers} are referred to a group of users who has
-permission to grade the assignments (i.e., instructor and TAs of a course).
+In this thesis, the term \emph{Markers} refers to a group of users who have
+permission to grade the assignments (i.e., the instructor and TAs of a course).
 
 \subsubsection{Use cases}
 \begin{enumerate}
 \item Grade assignments:
 \begin{itemize}
-    \item Primary actor: a registered student.
+    \item Primary actor: a registered user.
     \item User story: the user wishes to grade an assignment.
     \item Preconditions:
         \begin{itemize}
             \item The user is logged in to the system.
-            \item The user is registered as a TA in the course
+            \item The user is a marker in the course
                 to which the assignment belongs.
-            \item The user is at the TA interface where there
+            \item The user is at the marker interface where there
                 is a table displaying all the submitted assignments.
         \end{itemize}
     \need 1 in
@@ -805,14 +810,12 @@ permission to grade the assignments (i.e., instructor and TAs of a course).
             \item A \emph{mark assignment} request is sent to the server.
             \item The server examines the request and makes sure the user has
                 marker (see Section~\ref{sec:ASNMAN}) permission.
-            \item The server examines the request and makes sure the user has
-                permission to grade this assignment.
             \item If the request is valid, a marking interface is returned to
                 the user; otherwise, a page with an \emph{unauthorized} error
                 message is returned to the user.
-            \item A marking interface composed of two sections, 
-                (file(s) that the student submitted display section and
-                a comments section), is presented to the user.
+            \item A marking interface composed of two sections
+                (a file(s) display section and a comments section)
+                is presented to the user.
             \item The user checks the files and enters comments and the
                 grade to this assignment.
             \item The user selects the \emph{Save} button.
