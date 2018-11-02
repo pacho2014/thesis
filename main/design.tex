@@ -179,7 +179,7 @@ Each user account is attached with a profile containing the \emph{role}
 the system perform permission control, such as to
 decide whether or not a user has permission to access certain content;
 e.g., an instructor can view all students' assignment
-files, but students can only view their own files.
+files, but students who are not TAs can only view their own files.
 
 \medskip
 
@@ -192,7 +192,7 @@ A user
 can be a student or instructor in the \emph{Course2018} LMS, but can only
 be a TA for some specific courses.
 Therefore, in the \emph{Course2018} LMS, the TA role is
-reflected by a \emph{many-to-many} relationship between users and courses.
+reflected only by a \emph{many-to-many} relationship between users and courses.
 
 \subsection{File management}
 
@@ -233,7 +233,7 @@ user.
 
 \subsection{Course management}
 This module is designed primarily for instructors to manage their courses, 
-providing features such as creating a course, modify course information,
+providing features such as create a course, modify course information,
 register/remove TAs, and upload course materials.
 
 \subsection{Assignment management}
@@ -295,24 +295,20 @@ purpose of easing the process of assignment feedback for markers.
 The interface splits the screen into two sections: a file display section on the
 left-hand side, and a comments editing section on the right-hand side.
 
-\pagebreak
-
 \section{Modules dependencies}
 Many of the modules in the \emph{Course2018} LMS depends on each other,
 thus, a dependency tree to determine the order of the development
 process is shown in Figure~\ref{fig:DEP}.
 
-\bigskip\ \\
-
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
 
     \usetikzlibrary{er, positioning, arrows}
-    \begin{tikzpicture}[align=center, auto,node distance=2.5cm]
+    \begin{tikzpicture}[align=center, auto,node distance=2.2cm]
         \node[entity] (ua)      {User authentication};
     
         \node[entity] (cm) [below of = ua] {Course management};
-        \node[entity] (am) [below = 1cm of cm] {Assignment management};
+        \node[entity] (am) [below of = cm] {Assignment management};
     
         \node[entity] (fm) [right = 2cm of am] {File management};
     

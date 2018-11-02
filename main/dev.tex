@@ -272,18 +272,18 @@ Figure~\ref{fig:COURSE_ER} and Table~\ref{tab:COURSE_ATTR}. \bigskip
 \begin{figure}[ht]
     \centering
 
-    \usetikzlibrary{er}
-    \begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}, node distance = 4cm]
+    \usetikzlibrary{er, positioning}
+    \begin{tikzpicture}[scale=0.8, align=center, auto, node distance=2.5cm]
         \node[entity] (course) {Course};
 
         \node[relationship] (stu_reg) [below of=course] {Student} edge[total] (course);
-        \node[entity] (stu) [left of = stu_reg] {User (Role: student)} edge[total] (stu_reg);
+        \node[entity] (stu) [left=1cm,at=(stu_reg.west)] {User (Role: student)} edge[total] (stu_reg);
 
         \node[relationship] (instructor) [above of = course] {Instructor} edge[total] (course);
-        \node[entity] (prof) [left of = instructor] {User (Role: professor)} edge (instructor);
+        \node[entity] (prof) [left=1cm,at=(instructor.west)] {User (Role: professor)} edge (instructor);
 
-        \node[relationship] (ta_reg) [right of = course] {TA} edge[total] (course);
-        \node[entity] (ta) [right of = ta_reg] {User (Role: student)} edge[total] (ta_reg);
+        \node[relationship] (ta_reg) [right=0.9cm,at=(course.east)] {TA} edge[total] (course);
+        \node[entity] (ta) [right=0.9cm,at=(ta_reg.east)] {User (Role: student)} edge[total] (ta_reg);
     \end{tikzpicture}
 
     \caption{Data model of the course management module}
@@ -334,7 +334,7 @@ Figure~\ref{fig:COURSE_ER} and Table~\ref{tab:COURSE_ATTR}. \bigskip
             courses \\
         \hline
         \texttt{TAs} & many-to-many relationship between students and the
-            courses they are registered as TAs \\
+            courses in which they are registered as TAs \\
 
         \hline
         \hline
@@ -478,80 +478,37 @@ and Table~\ref{tab:COMMIT_ATTR}. \bigskip
         view all students' submissions of the assignments that are to be
         graded.
 
-    \item Submit assignment: \\
-        Whenever a student makes a submission on an assignment with source
-        code management enabled, 
-        a \emph{git commit}~\citep[Chapter 2]{progit} with copies of the files
-        the student submitted are created in the course's \emph{Git} directory,
-        under a branch~\cite[Chapter 3]{progit} named with the student's user
-        ID\null.
-        A unique commit ID is generated and saved in the \emph{Commit} model.
-        This ID is used for getting automated test results and
-        source code version comparisons.
-        This activity is processed with the \texttt{SubmitAssignmentAPI} class
-        which is inherited from the \texttt{AbstractAPI} class.
-\end{itemize}
-
-\subsubsection{Templates}
-\begin{itemize}
-    \item Create assignment template: \\
-    This template is used by the \texttt{NewAssignmentView}.
-    The template
-    contains a form to be filled out by the user who wishes to create an
-    assignment.
-
-    \need 1 in
-
-    \item View assignment templates:
-    \begin{itemize}
-        \item Student template: 
-            this template is used by the \texttt{student\_view()} function
-            of the \texttt{AssignmentView} class. It is
-            a web page with details of an assignment, from
-            which students can view the assignment's information and
-            download the assignment's attachments; also, students can submit
-            their assignments using this page.
-        \item Professor template:
-            this template is used by the \texttt{professor\_view()} function
-            of the \texttt{AssignmentView} class. It is a webpage
-            containing a table with all students' submissions; it also renders
-            the form generated in the \texttt{professor\_\-view()} to allow
-            instructors to modify the assignment's information.
-    \end{itemize}
-\end{itemize}
-
-
-\begin{figure}[H]
+\begin{figure}[ht]
     \centering
-
+ 
     \usetikzlibrary{er}
-
-    \begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}, node distance = 4cm]
-        \node[entity] (course) {Course};
-
-        \node[relationship] (course_asm) [below of =course] {has} edge (course);
-        \node[entity] (asm) [below of = course_asm] {Assignment} edge[total] (course_asm);
-
-        \node[relationship] (asm_commit) [below of = asm] {has} edge (asm);
-        \node[entity] (commit) [below of = asm_commit] {Commit} edge[total] (asm_commit);
-
-        \node[relationship] (ta_grade) [right of = commit] {grades} edge[total] (commit);
-        \node[entity] (ta) [right of = asm] {User (TA)} edge (ta_grade) edge (ta_grade);
-
-        \node[relationship] (commit_stu) [left of = commit] {creates} edge (commit);
-        \node[entity] (stu) [left of = asm] {User (Student)} edge (commit_stu);
-
+ 
+    \begin{tikzpicture}[x=4cm, y=2.5cm, yscale=-1]
+        \node[entity] (course) at (0,0) {Course};
+ 
+        \node[relationship] (course_asm) at (0,1) {has} edge (course);
+        \node[entity] (asm) at (0,2) {Assignment} edge[total] (course_asm);
+ 
+        \node[relationship] (asm_commit) at (0,3) {has} edge (asm);
+        \node[entity] (commit) at (0,4) {Commit} edge[total] (asm_commit);
+ 
+        \node[relationship] (ta_grade) at (1,4) {grades} edge[total] (commit);
+        \node[entity] (ta) at (1,2) {User (TA)} edge (ta_grade) edge (ta_grade);
+ 
+        \node[relationship] (commit_stu) at (-1,4) {creates} edge (commit);
+        \node[entity] (stu) at (-1,2) {User (Student)} edge (commit_stu);
+ 
     \end{tikzpicture}
-
+ 
     \caption{Data model of the assignment management module}
     \label{fig:ASM_ER}
-\end{figure}
+ \end{figure}
 
-\begin{table}[ht]
+\begin{table}[H]
     \centering
     \caption{Attributes of \texttt{Assignment} model}
     \label{tab:ASM_ATTR}
-    \renewcommand{\arraystretch}{1.3}
+    \renewcommand{\arraystretch}{1}
     \begin{tabular}[ht]{r|p{4in}}
         \hline
         Attribute & Note \\
@@ -663,6 +620,49 @@ and Table~\ref{tab:COMMIT_ATTR}. \bigskip
     \renewcommand{\arraystretch}{1}
 \end{table}
 
+
+    \item Submit assignment: \\
+        Whenever a student makes a submission on an assignment with source
+        code management enabled, 
+        a \emph{git commit}~\citep[Chapter 2]{progit} with copies of the files
+        the student submitted are created in the course's \emph{Git} directory,
+        under a branch~\cite[Chapter 3]{progit} named with the student's user
+        ID\null.
+        A unique commit ID is generated and saved in the \emph{Commit} model.
+        This ID is used for getting automated test results and
+        source code version comparisons.
+        This activity is processed with the \texttt{SubmitAssignmentAPI} class
+        which is inherited from the \texttt{AbstractAPI} class.
+\end{itemize}
+
+\subsubsection{Templates}
+\begin{itemize}
+    \item Create assignment template: \\
+    This template is used by the \texttt{NewAssignmentView}.
+    The template
+    contains a form to be filled out by the user who wishes to create an
+    assignment.
+
+    \need 1 in
+
+    \item View assignment templates:
+    \begin{itemize}
+        \item Student template: 
+            this template is used by the \texttt{student\_view()} function
+            of the \texttt{AssignmentView} class. It is
+            a web page with details of an assignment, from
+            which students can view the assignment's information and
+            download the assignment's attachments; also, students can submit
+            their assignments using this page.
+        \item Professor template:
+            this template is used by the \texttt{professor\_view()} function
+            of the \texttt{AssignmentView} class. It is a webpage
+            containing a table with all students' submissions; it also renders
+            the form generated in the \texttt{professor\_\-view()} to allow
+            instructors to modify the assignment's information.
+    \end{itemize}
+\end{itemize}
+
 \FloatBarrier
 
 
@@ -687,11 +687,33 @@ deletes the actual file on the file system whenever an
 \texttt{AssignmentAttachment} or a \texttt{CommitFile} object is deleted from
 the system database.
 
+\subsubsection{Views}
+\begin{itemize}
+    \item File upload: \\
+    There are two APIs, 
+    \texttt{Upload\-Assign\-ment\-Attach\-ment\-API} and
+    \texttt{Sub\-mit\-Assign\-ment\-API}, 
+    implemented to process \emph{file upload} requests
+    for instructors (\texttt{Assign\-ment\-Attach\-ment}) and students
+    (\texttt{CommitFile}) respectively.
+
+    Both of these APIs are inherited from the 
+    \texttt{AbstractAPI} and have either the \texttt{student\_view()}
+    or the \texttt{professor\_view()} disabled.
+    These APIs first make sure that the request is using the
+    \emph{HTTP} \texttt{POST} method~\citep[Section 4.3.3]{http},
+    then copy the files in the request to the assignment directory, and use 
+    a \emph{Unix} library called \emph{libmagic} \cite{libmagic} to determine
+    the file type.
+    Finally, a file model object is created and saved to the system database
+    for each of the uploaded files.
+
+
 \begin{figure}[ht]
     \centering
     \usetikzlibrary{er}
 
-    \begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}, node distance = 4cm]
+    \begin{tikzpicture}[scale=0.8, node distance = 3cm]
         \node[entity] (asm) {Assignment};
 
         \node[relationship] (asm_commit) [right of = asm] {has} edge (asm);
@@ -750,27 +772,6 @@ the system database.
         \hline
     \end{tabular}
 \end{table}
-
-\subsubsection{Views}
-\begin{itemize}
-    \item File upload: \\
-    There are two APIs, 
-    \texttt{Upload\-Assign\-ment\-Attach\-ment\-API} and
-    \texttt{Sub\-mit\-Assign\-ment\-API}, 
-    implemented to process \emph{file upload} requests
-    for instructors (\texttt{Assign\-ment\-Attach\-ment}) and students
-    (\texttt{CommitFile}) respectively.
-
-    Both of these APIs are inherited from the 
-    \texttt{AbstractAPI} and have either the \texttt{student\_view()}
-    or the \texttt{professor\_view()} disabled.
-    These APIs first make sure that the request is using the
-    \emph{HTTP} \texttt{POST} method~\citep[Section 4.3.3]{http},
-    then copy the files in the request to the assignment directory, and use 
-    a \emph{Unix} library called \emph{libmagic} \cite{libmagic} to determine
-    the file type.
-    Finally, a file model object is created and saved to the system database
-    for each of the uploaded files.
 
     \item File download: \\
     Similar to file upload, \emph{file download} requests are processed by
@@ -857,25 +858,25 @@ and Table~\ref{tab:TC_ATTR}. \bigskip
     \centering
     \usetikzlibrary{er}
 
-    \begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}, node distance = 3.5cm]
+    \begin{tikzpicture}
         \node[entity] (asm) {Assignment};
 
-        \node[relationship] (asm_config) [right of = asm] {has} edge (asm);
-        \node[entity] (config) [right of = asm_config] {AutoRunConfig} edge[total] (asm_config);
+        \node[relationship] (asm_config) [right=2cm,at=(asm.east)] {has} edge (asm);
+        \node[entity] (config) [below=1cm,at=(asm_config.south)] {AutoRunConfig} edge[total] (asm_config);
 
-        \node[relationship] (config_tc) [right of = config] {has} edge (config);
-        \node[entity] (tc) [right of = config_tc] {AutoRunTestCase} edge[total] (config_tc);
+        \node[relationship] (config_tc) [below=1cm,at=(config.south)] {has} edge (config);
+        \node[entity] (tc) [left=2cm,at=(config_tc.west)] {AutoRunTestCase} edge[total] (config_tc);
     \end{tikzpicture}
 
     \caption{Data model of the automated test module}
     \label{fig:AUTO_ER}
 \end{figure}
 
-\begin{table}[h]
+\begin{table}[H]
     \centering
     \caption{Attributes of \texttt{AutoRunConfig} model}
     \label{tab:AUTO_ATTR}
-    \renewcommand{\arraystretch}{1.3}
+    \renewcommand{\arraystretch}{1}
     \begin{tabular}[ht]{r|p{4in}}
         \hline
         Attribute & Note \\
@@ -910,11 +911,33 @@ and Table~\ref{tab:TC_ATTR}. \bigskip
     \renewcommand{\arraystretch}{1}
 \end{table}
 
-\begin{table}[h]
+\subsubsection{Views}
+\begin{itemize}
+    \item Configurations: \\
+    Requests of automated test configuration are processed by the
+    \texttt{Save\-Auto\-Run\-Data\-API}.
+    This API first saves the test configurations to an \texttt{AutoRunConfig}
+    object;
+    then, for each test case, it creates the sample input and sample output
+    file in the assignment's \emph{Git} directory under the \emph{master}
+    branch.
+    A script to execute the test cases and a \emph{GitLab} CI
+    file~\cite{gitlabConfig} is also created in the same directory;
+    finally, the API execute a \texttt{git commit} command and pushes the
+    commit to the course's \emph{GitLab} repository.
+
+    \item Automated tests: \\
+    After the execution script and the \emph{GitLab} CI file is pushed to the
+    course's \emph{GitLab} repository, \emph{GitLab} will run the execution
+    script on the commit branch each time a commit is pushed to the repository.
+    Such an execution is also known as a \emph{job}, and the output of a job
+    is known as the \emph{trace} of a job.
+
+\begin{table}[H]
     \centering
     \caption{Attributes of \texttt{AutoRunTestCase} model}
     \label{tab:TC_ATTR}
-    \renewcommand{\arraystretch}{1.3}
+    \renewcommand{\arraystretch}{1}
     \begin{tabular}[h]{r|p{4in}}
         \hline
         Attribute & Note \\
@@ -964,28 +987,6 @@ and Table~\ref{tab:TC_ATTR}. \bigskip
         \hline
     \end{tabular}
 \end{table}
-
-\subsubsection{Views}
-\begin{itemize}
-    \item Configurations: \\
-    Requests of automated test configuration are processed by the
-    \texttt{Save\-Auto\-Run\-Data\-API}.
-    This API first saves the test configurations to an \texttt{AutoRunConfig}
-    object;
-    then, for each test case, it creates the sample input and sample output
-    file in the assignment's \emph{Git} directory under the \emph{master}
-    branch.
-    A script to execute the test cases and a \emph{GitLab} CI
-    file~\cite{gitlabConfig} is also created in the same directory;
-    finally, the API execute a \texttt{git commit} command and pushes the
-    commit to the course's \emph{GitLab} repository.
-
-    \item Automated tests: \\
-    After the execution script and the \emph{GitLab} CI file is pushed to the
-    course's \emph{GitLab} repository, \emph{GitLab} will run the execution
-    script on the commit branch each time a commit is pushed to the repository.
-    Such an execution is also known as a \emph{job}, and the output of a job
-    is known as the \emph{trace} of a job.
 
     \item Test result: \\
     There are multiple APIs implemented to display test results to different
@@ -1202,9 +1203,9 @@ implementation.
             student is already registered in the course as a TA.
 
         \item Instructor Bob wishes to remove a student from a course as a TA;
-            he clicks the \emph{Remove} button follows the student's information
+            he clicks the \emph{Remove} button following the student's information
             in the TA management pane. \\
-        {\bf Expected behavior:} The student is removed from the course.
+        {\bf Expected behavior:} The student is removed as a TA for the course.
     \end{enumerate}
 \end{itemize}
 
@@ -1284,8 +1285,8 @@ implementation.
         {\bf Expected behavior:} A file display view is presented, the source
             code file is rendered in this view with highlighted syntax.
 
-        \item Student Alice clicks a \emph{PDF} file she previously uploaded
-            in the assignment summary view. \\
+        \item Student Alice clicks the name of a \emph{PDF} file she previously
+            uploaded in the assignment summary view. \\
         {\bf Expected behavior:} A file display view is presented, the
             \emph{PDF} file is rendered as is.
     \end{enumerate}
