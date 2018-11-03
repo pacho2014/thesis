@@ -172,10 +172,10 @@ and modify) their courses.
             \item The server validates the form data for errors including,
                 but not limited to,
                 invalid input format
-                (e.g., invalid date/time field input format,
+                (i.e., invalid date/time field input format,
                 input text length is greater than the maximum text length
                 allowance defined in the database),
-                conflicts (e.g., a course with the same identifier  
+                conflicts (i.e., a course with the same identifier  
                 already exists for that academic year),
                 and numbers out of range.
             \item If the validation fails, the same create course interface
@@ -218,10 +218,10 @@ and modify) their courses.
             \item The server validates the form data for errors including,
                 but not limited to,
                 invalid input format
-                (e.g., invalid date/time field input format,
+                (i.e., invalid date/time field input format,
                 input text length is greater than the maximum text length
                 allowance defined in the database),
-                conflicts (e.g., a course with the same identifier  
+                conflicts (i.e., a course with the same identifier  
                 already exists for that academic year),
                 and numbers out-of-range.
             \item If the validation failed, the same create course interface
@@ -388,10 +388,10 @@ students to submit and view those assignments.
             \item The server validates the form data for errors including,
                 but not limited to,
                 invalid input format
-                (e.g., invalid date/time field input format,
+                (i.e., invalid date/time field input format,
                 input text length is greater than the maximum text length
                 allowance defined in the database),
-                conflicts (e.g., an assignment with the same
+                conflicts (i.e., an assignment with the same
                 number already exists in the course),
                 and numbers out of range.
             \item If the validation failed, the same create assignment interface
@@ -485,7 +485,7 @@ students to submit and view those assignments.
                 prepared some assignments.
         \end{itemize}
     \item Postcondition: an interface with the assignment information the user
-        wishes to view will be presented.
+        wish\-es to view will be presented.
     \item Trigger: the user clicked a link to the assignment detail interface.
     \need 1 in
     \item Basic flow:
@@ -619,7 +619,7 @@ files when they need to (such as submit assignments and upload attachments).
                 file): a download dialogue for that file will be presented to
                 the user.
         \end{itemize}
-    \item Trigger: One of the \emph{View} buttons is clicked.
+    \item Trigger: one of the \emph{View} buttons is clicked.
     \item Basic flow:
         \begin{enumerate}
             \item The request with the file name is encrypted and sent to the server.
@@ -658,13 +658,13 @@ version of an assignment file.
     \item Postcondition:
         an interface, with changes between the last two versions of that file
         displayed, is presented to the user.
-    \item Trigger: The \emph{diff} button is clicked.
+    \item Trigger: the \emph{diff} button is clicked.
     \item Basic flow:
         \begin{enumerate}
             \item A \emph{view diff} request with the file identifier is sent
                 to the server.
             \item The server examines the request and makes sure the user has
-                permission to view the requested file.
+                permission to view the (versions of) requested file.
             \item If the request is valid, the server will have the current
                 version of the source code compared with the previous version,
                 then have the result of the comparison formatted and
@@ -717,7 +717,7 @@ assignment is submitted.
     \item Basic flow:
         \begin{enumerate}
             \item The form data is validated for errors
-                (e.g., if there are required fields with no input,
+                (i.e., if there are required fields with no input,
                 if there is non-numeric
                 in numeric fields, or if there is input with length greater
                 than the maximum text length allowance defined in the database)
@@ -732,7 +732,7 @@ assignment is submitted.
                 permission to enable and configure an automated test.
             \item The server decodes the \emph{JSON} text and saves the data to
                 the system database.
-            \item The server creates a \emph{shell script}~\cite{shellScript}
+            \item The server creates a \emph{shell script}~\cite[Chapter 3]{shellScript}
                 for the automated test using the configuration data from the
                 system database.
             \item A success or failure message is returned to the user.
@@ -753,7 +753,7 @@ assignment is submitted.
     \item Postcondition:
         an interface with the automated test result will be presented to the
         user.
-    \item Trigger: The \emph{Test Result} button is clicked by the user.
+    \item Trigger: the \emph{Test Result} button is clicked by the user.
     \item Basic flow:
         \begin{enumerate}
             \item A request for the test result is encrypted and sent to the
@@ -794,7 +794,7 @@ permission to grade the assignments (i.e., the instructor and TAs of a course).
             available for the student who submitted the assignment as soon
             as the instructor releases the grades.
     \item Trigger:
-        The user clicked the \emph{Mark} button on one of the submitted
+        the user clicked the \emph{Mark} button on one of the submitted
         assignments.
     \item Basic flow:
         \begin{enumerate}
