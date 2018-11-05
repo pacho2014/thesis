@@ -132,8 +132,6 @@ The data model of the user authentication module is shown in
 Figure~\ref{fig:AUTH_ER}, Table~\ref{tab:USR_ATTR} and
 Table~\ref{tab:PROFILE_ATTR}.
 
-\bigskip
-
 \begin{figure}[ht]
     \centering
 
@@ -678,37 +676,6 @@ The data model of the user authentication module is shown in
 Figure~\ref{fig:FILES_ER}, Table~\ref{tab:ATTACH_FILE_ATTR},
 and Table~\ref{tab:COMMIT_FILE_ATTR}. \medskip
 
-The \emph{Django} framework provides \emph{signals}~\cite{EdjangoSignal}
-for updates (create, save, and delete) of \texttt{Model} objects; in the
-\emph{Course2018} LMS, a \texttt{delete\_file()} function is connected to
-the \texttt{AssignmentAttachment} model and the \texttt{CommitFile} model by
-listening to the \texttt{pre\_delete} signals of those models. This function
-deletes the actual file on the file system whenever an
-\texttt{AssignmentAttachment} or a \texttt{CommitFile} object is deleted from
-the system database.
-
-\subsubsection{Views}
-\begin{itemize}
-    \item File upload: \\
-    There are two APIs, 
-    \texttt{Upload\-Assign\-ment\-Attach\-ment\-API} and
-    \texttt{Sub\-mit\-Assign\-ment\-API}, 
-    implemented to process \emph{file upload} requests
-    for instructors (\texttt{Assign\-ment\-Attach\-ment}) and students
-    (\texttt{CommitFile}) respectively.
-
-    Both of these APIs are inherited from the 
-    \texttt{AbstractAPI} and have either the \texttt{student\_view()}
-    or the \texttt{professor\_view()} disabled.
-    These APIs first make sure that the request is using the
-    \emph{HTTP} \texttt{POST} method~\citep[Section 4.3.3]{http},
-    then copy the files in the request to the assignment directory, and use 
-    a \emph{Unix} library called \emph{libmagic} \cite{libmagic} to determine
-    the file type.
-    Finally, a file model object is created and saved to the system database
-    for each of the uploaded files.
-
-
 \begin{figure}[ht]
     \centering
     \usetikzlibrary{er}
@@ -772,6 +739,36 @@ the system database.
         \hline
     \end{tabular}
 \end{table}
+
+The \emph{Django} framework provides \emph{signals}~\cite{EdjangoSignal}
+for updates (create, save, and delete) of \texttt{Model} objects; in the
+\emph{Course2018} LMS, a \texttt{delete\_file()} function is connected to
+the \texttt{AssignmentAttachment} model and the \texttt{CommitFile} model by
+listening to the \texttt{pre\_delete} signals of those models. This function
+deletes the actual file on the file system whenever an
+\texttt{AssignmentAttachment} or a \texttt{CommitFile} object is deleted from
+the system database.
+
+\subsubsection{Views}
+\begin{itemize}
+    \item File upload: \\
+    There are two APIs, 
+    \texttt{Upload\-Assign\-ment\-Attach\-ment\-API} and
+    \texttt{Sub\-mit\-Assign\-ment\-API}, 
+    implemented to process \emph{file upload} requests
+    for instructors (\texttt{Assign\-ment\-Attach\-ment}) and students
+    (\texttt{CommitFile}) respectively.
+
+    Both of these APIs are inherited from the 
+    \texttt{AbstractAPI} and have either the \texttt{student\_view()}
+    or the \texttt{professor\_view()} disabled.
+    These APIs first make sure that the request is using the
+    \emph{HTTP} \texttt{POST} method~\citep[Section 4.3.3]{http},
+    then copy the files in the request to the assignment directory, and use 
+    a \emph{Unix} library called \emph{libmagic} \cite{libmagic} to determine
+    the file type.
+    Finally, a file model object is created and saved to the system database
+    for each of the uploaded files.
 
     \item File download: \\
     Similar to file upload, \emph{file download} requests are processed by
