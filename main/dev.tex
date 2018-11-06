@@ -112,8 +112,8 @@ they do not return webpages to the users.
 Instead, they return some
 \emph{JSON}-formatted data.
 These views are the application programming interfaces (APIs) of the system,
-and they are used for updating information
-dynamically with \emph{AJAX}~\cite{AJAX} in loaded pages. 
+and they are used for dynamically updating information (in already-loaded pages)
+via \emph{AJAX}~\cite{AJAX}.
 
 
 %-----------------------------------------------------------------------------
@@ -307,7 +307,7 @@ Figure~\ref{fig:COURSE_ER} and Table~\ref{tab:COURSE_ATTR}. \bigskip
         \hline
         \texttt{section} & required, course section (e.g., X1) \\
         \hline
-        \texttt{title} & require, course title (e.g., Programming 3)\\
+        \texttt{title} & required, course title (e.g., Programming 3)\\
         \hline
         \texttt{semester} & required, semester of the course
             (e.g., Winter, Fall) \\
@@ -443,9 +443,9 @@ and Table~\ref{tab:COMMIT_ATTR}. \bigskip
 
 \subsubsection{Views}
 \begin{itemize}
-    \item Create assignments: \\
-        This activity is handle with the \texttt{NewAssignmentView} class with 
-        permission control in the same manner as described in the
+    \item Create assignment: \\
+        This activity is handled with the \texttt{NewAssignmentView} class with 
+        permission control performed in the same manner as described in the
         \emph{create course} activity (see Section~\ref{item:NEW_COURSE}).
         The \texttt{NewAssignmentView} accepts all the \emph{create assignment}
         requests, validates the data in each request, and if the data has no

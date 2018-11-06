@@ -11,7 +11,7 @@ in order to determine the general needs of the \emph{Course2018} LMS.\ \
 In this chapter, some key requirements will be investigated for their
 feasibility and expectations.
 Depending on the specifications of the requirements, they are categorized into
-two categories, functional requirements and non-functional requirements.
+two categories: functional requirements and non-functional requirements.
 
 \section{Terminologies}
 
@@ -529,7 +529,7 @@ files when they need to (such as submit assignments and upload attachments).
             \item These files can be viewed immediately by all relevant parties
                 (the instructor, the students registered in the course,
                 and the markers).
-            \item An interface, with links from which the user can
+            \item An interface with links from which the user can
                 download the file will be presented.
         \end{itemize}
     \item Triggers:
@@ -642,10 +642,10 @@ version of an assignment file.
 
 \subsubsection{Use cases}
 \begin{enumerate}
-\item View changes:
+\item View differences:
 \begin{itemize}
     \item Primary actor: a registered student.
-    \item User story: the user wishes to see the changes between two
+    \item User story: the user wishes to see the changes between the two most recent
         submissions of the assignment.
     \item Preconditions:
         \begin{itemize}
@@ -658,7 +658,7 @@ version of an assignment file.
     \item Postcondition:
         an interface, with changes between the last two versions of that file
         displayed, is presented to the user.
-    \item Trigger: the \emph{diff} button is clicked.
+    \item Trigger: the \emph{Diff} button is clicked.
     \item Basic flow:
         \begin{enumerate}
             \item A \emph{view diff} request with the file identifier is sent
@@ -800,7 +800,8 @@ permission to grade the assignments (i.e., the instructor and TAs of a course).
         \begin{enumerate}
             \item A \emph{mark assignment} request is sent to the server.
             \item The server examines the request and makes sure the user has
-                marker permission (see Section~\ref{sec:ASNMAN}).
+                marker permission for this assignment
+                (see Section~\ref{sec:ASNMAN}).
             \item If the request is valid, a marking interface is returned to
                 the user; otherwise, a page with an \emph{unauthorized} error
                 message is returned to the user.
