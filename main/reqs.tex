@@ -77,7 +77,7 @@ such as user login, permission checking for restricted content, and user logout.
 \item Primary actor:
     a registered user of the \emph{Course2018} LMS.
 \item User story:
-    a user wishes to have access to some restricted content, therefore, he
+    a user wishes to have access to some restricted content, therefore, the user 
     first needs to login to the system.
 \item Precondition:
     the user is at the login interface, and the login credentials
@@ -169,6 +169,8 @@ and modify) their courses.
         \begin{enumerate}
             \item The form with the update course information is encrypted and
                 sent to the server.
+            \item The server checks if the user has permission to create a
+                course.
             \item The server validates the form data for errors including,
                 but not limited to,
                 invalid input format
@@ -221,8 +223,6 @@ and modify) their courses.
                 (i.e., invalid date/time field input format,
                 input text length is greater than the maximum text length
                 allowance defined in the database),
-                conflicts (i.e., a course with the same identifier  
-                already exists for that academic year),
                 and numbers out-of-range.
             \item If the validation failed, the same create course interface
                 with error messages will be returned; otherwise, the server will
@@ -257,7 +257,7 @@ and modify) their courses.
             \item A \emph{delete} request with the course identifier is encrypted
                 and sent to the server.
             \item The server examines the request and makes sure the user is
-                authorized to perform such an activity.
+                authorized to perform such an activity on this course.
             \item If the request is valid, the course along with all its
                 relevant data will be removed from the system database.
         \end{enumerate}
@@ -298,13 +298,15 @@ and modify) their courses.
                 TA (i.e., if the user is the instructor of the course to which
                 the TA is registered).
             \item The server checks if the student ID exists in the user
-                database, and if the student has already been registered as a TA.
+                database, and if the student has already been registered as a
+                TA to this course.
             \item If the student ID does not match any user in the database, 
                 an error message indicating the mismatch is returned to the
                 user;
-                if the student has already been registered as a TA, a warning
-                message is returned to the user; otherwise, the system registers
-                the student to the course as a TA and returns a success message.
+                if the student has already been registered as a TA to this
+                course, a warning message is returned to the user; otherwise,
+                the system registers the student to the course as a TA and
+                returns a success message.
         \end{enumerate}
 \end{itemize}
 
@@ -317,7 +319,7 @@ and modify) their courses.
     \item Preconditions:
         \begin{itemize}
             \item The user is logged in to the system.
-            \item The user has previously created a course.
+            \item The user has previously created this course.
             \item The user is at the manage course interface for the TA
                 to be removed.
             \item There is at least one student registered as TA to the course.
@@ -573,7 +575,7 @@ files when they need to (such as submit assignments and upload attachments).
                 (the student who submitted the files, the instructor,
                 and the markers).
             \item An interface, with links from which the user can
-                download the files he submitted, will be presented.
+                download the files the user submitted, will be presented.
         \end{itemize}
     \item Triggers:
         \begin{itemize}
