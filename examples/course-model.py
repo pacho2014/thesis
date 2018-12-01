@@ -1,9 +1,9 @@
 def validate_instructor(val):
     user = User.objects.get(pk=val)
     p = get_object_or_404(UserProfileModel, user=user)
-    if p.role != PROFESSOR:
+    if p.role != INSTRUCTOR:
         raise ValidationError(
-            'User %s is not a professor' % user
+            'User %s is not a instructor' % user
         )
 
 class CourseModel(models.Model):

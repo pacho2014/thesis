@@ -194,7 +194,7 @@ Table~\ref{tab:PROFILE_ATTR}.
         \hline
         \texttt{role} & \texttt{integer field}, choice from 0 and 1, indicating the
             user's role \\
-           & is \emph{Student} or \emph{Professor} respectively \\
+           & is \emph{Student} or \emph{Instructor} respectively \\
         \hline
     \end{tabular}
     \renewcommand{\arraystretch}{1}
@@ -216,13 +216,13 @@ Table~\ref{tab:PROFILE_ATTR}.
         defined for general permission control. This class contains a function
         to check whether or not a user is authenticated. If the user is
         authenticated, the function then checks the role of the user and
-        invokes \texttt{student\_view()} or \texttt{professor\_view()} to
+        invokes \texttt{student\_view()} or \texttt{instructor\_view()} to
         provide different content according to the user's role.
 
         All the views of the modules that require permission control are
         inherited from the \texttt{AbstractLoginRequiredView} class, and have
         the class function \texttt{student\_\-view()} and
-        \texttt{professor\_view()} overridden to provide module-specific
+        \texttt{instructor\_view()} overridden to provide module-specific
         content for students and instructors respectively.
 
         In addition, there is also another abstract view class,
@@ -278,7 +278,7 @@ Figure~\ref{fig:COURSE_ER} and Table~\ref{tab:COURSE_ATTR}. \bigskip
         \node[entity] (stu) [left=1cm,at=(stu_reg.west)] {User (Role: student)} edge[total] (stu_reg);
 
         \node[relationship] (instructor) [above of = course] {Instructor} edge[total] (course);
-        \node[entity] (prof) [left=1cm,at=(instructor.west)] {User (Role: professor)} edge (instructor);
+        \node[entity] (prof) [left=1cm,at=(instructor.west)] {User (Role: instructor)} edge (instructor);
 
         \node[relationship] (ta_reg) [right=0.9cm,at=(course.east)] {TA} edge[total] (course);
         \node[entity] (ta) [right=0.9cm,at=(ta_reg.east)] {User (Role: student)} edge[total] (ta_reg);
@@ -351,7 +351,7 @@ Figure~\ref{fig:COURSE_ER} and Table~\ref{tab:COURSE_ATTR}. \bigskip
                         \hspace{2em}\texttt{section},
                         \texttt{year},
                         \texttt{semester} must be unique
-                \item role of the \texttt{instructor} must be \emph{Professor}
+                \item role of the \texttt{instructor} must be \emph{Instructor}
                 \item role of the each of the \texttt{students} must be
                         \emph{Student}
             \end{enumerate} \vspace{-9mm}\\
@@ -386,7 +386,7 @@ Figure~\ref{fig:COURSE_ER} and Table~\ref{tab:COURSE_ATTR}. \bigskip
             information about the course and a list of assignments
             are fetched from the database and displayed to the registered
             students.
-        \item \texttt{professor\_view()}:
+        \item \texttt{instructor\_view()}:
             in addition to the course information,
             this function also fetches the latest student and TA activities 
             (i.e., assignment submission activities and  assignment grading
@@ -408,7 +408,7 @@ Figure~\ref{fig:COURSE_ER} and Table~\ref{tab:COURSE_ATTR}. \bigskip
             (e.g., department, number, section, and title)
             displayed as the page title, and a list of assignments displayed
             in a table.
-        \item Professor template: the same page title displayed with the course
+        \item Instructor template: the same page title displayed with the course
             information as in the student template;
             the page content is divided into three sections:
             \begin{enumerate}
@@ -462,7 +462,7 @@ and Table~\ref{tab:COMMIT_ATTR}. \bigskip
                 information about the assignment and the list of assignment
                 problems are fetched from the database and displayed to the 
                 registered students.
-            \item \texttt{professor\_view()}:
+            \item \texttt{instructor\_view()}:
             \label{item:PROF_VIEW}
                 this function first generates a form with the assignment's
                 information pre-filled; then it fetches all students'
@@ -652,11 +652,11 @@ and Table~\ref{tab:COMMIT_ATTR}. \bigskip
             which students can view the assignment's information and
             download the assignment's attachments; also, students can submit
             their assignments using this page.
-        \item Professor template:
-            this template is used by the \texttt{professor\_view()} function
+        \item Instructor template:
+            this template is used by the \texttt{instructor\_view()} function
             of the \texttt{AssignmentView} class. It is a webpage
             containing a table with all students' submissions; it also renders
-            the form generated in the \texttt{professor\_\-view()} to allow
+            the form generated in the \texttt{instructor\_\-view()} to allow
             instructors to modify the assignment's information.
     \end{itemize}
 \end{itemize}
@@ -761,7 +761,7 @@ the system database.
 
     Both of these APIs are inherited from the 
     \texttt{AbstractAPI} and have either the \texttt{student\_view()}
-    or the \texttt{professor\_view()} disabled.
+    or the \texttt{instructor\_view()} disabled.
     These APIs first make sure that the request is using the
     \emph{HTTP} \texttt{POST} method~\citep[Section 4.3.3]{http},
     then copy the files in the request to the assignment directory, and use 
@@ -779,7 +779,7 @@ the system database.
     Both
     of these APIs are inherited from the \texttt{AbstractAPI}\null.
     To perform permission control,
-    both APIs' \texttt{professor\_view()} check if the professor is the
+    both APIs' \texttt{instructor\_view()} check if the instructor is the
     instructor of the course to which the requested file belongs; both APIs'
     \texttt{student\_view()} check whether the requested file belongs to the student.
     Then they check the existence of the requested file; if the file
@@ -817,7 +817,7 @@ the system database.
 \subsubsection{Templates}
 \begin{itemize}
     \item File upload: \\
-        Both the student template and the professor template for the
+        Both the student template and the instructor template for the
         \emph{View assignment} page (see Section~\ref{sec:ASM_MAN}, Templates)
         provides file upload feature for uploading
         assignment attachments and submitting assignments, respectively.
@@ -1001,7 +1001,7 @@ and Table~\ref{tab:TC_ATTR}. \bigskip
 \subsubsection{Templates}
 \begin{itemize}
     \item Configurations: \\
-    The professor template for the \emph{View assignment} page also provides
+    The instructor template for the \emph{View assignment} page also provides
     a dynamic form (see Section~\ref{sec:AUTOTEST}) for instructors to
     configure automated test schemes for
     each individual problem of an assignment. 

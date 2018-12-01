@@ -1,11 +1,11 @@
 STUDENT = 1
-PROFESSOR = 2
+INSTRUCTOR = 2
 
 class UserProfileModel(models.Model):
 
     ROLE_CHOICES = [
         (STUDENT, 'Student'),
-        (PROFESSOR, 'Professor'),
+        (INSTRUCTOR, 'Instructor'),
     ]
 
     role = models.SmallIntegerField(choices=ROLE_CHOICES,
