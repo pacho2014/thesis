@@ -1127,22 +1127,22 @@ implementation.
     \end{enumerate}
 
     \item \textbf{Permission control} \begin{enumerate}
-        \item An instructor, Bob, requests a
-                summary view of a course he created. \\
-        \textbf{Expected behavior:} The summary view is presented to Bob.
+        \item An instructor, Chen, requests a
+                summary view of a course Chen created. \\
+        \textbf{Expected behavior:} The summary view is presented to Chen.
 
-        \item A student, Alice, requests a summary
-                view of a course in which she is registered. \\
-        \textbf{Expected behavior:} The summary view is presented to Alice.
+        \item A student, Wu, requests a summary
+                view of a course in which Wu is registered. \\
+        \textbf{Expected behavior:} The summary view is presented to Wu.
 
-        \item Instructor Bob requests a summary view
-                of a course he did not create. \\
-        \textbf{Expected behavior:} Bob receives an error message indicating
+        \item Instructor Chen requests a summary view
+                of a course Chen did not create. \\
+        \textbf{Expected behavior:} Chen receives an error message indicating
             the access was refused.
 
-        \item Student Alice requests a summary view
-                of a course in which she is not registered. \\
-        \textbf{Expected behavior:} Alice receives an error message
+        \item Student Wu requests a summary view
+                of a course in which Wu is not registered. \\
+        \textbf{Expected behavior:} Wu receives an error message
             indicating the access was refused.
     \end{enumerate}
 \end{itemize}
@@ -1150,57 +1150,57 @@ implementation.
 \subsection{Course management}
 \begin{itemize}
     \item \textbf{Create a course} \begin{enumerate}
-        \item Instructor Bob tries to create a course with proper input data. \\
-        {\bf Expected behavior:} A course is created by Bob.
+        \item Instructor Chen tries to create a course with proper input data. \\
+        {\bf Expected behavior:} A course is created by Chen.
 
-        \item Instructor Bob tries to create a course which 
+        \item Instructor Chen tries to create a course which 
             already exists in the system. \\
-        {\bf Expected behavior:} Bob receives an error message indicating that
+        {\bf Expected behavior:} Chen receives an error message indicating that
             the same course already exists in the system
 
-        \item Instructor Bob tries to create a course; he fills the
+        \item Instructor Chen tries to create a course; Chen fills the
             course creation form with invalid data, then clicks \emph{Create}. \\
         {\bf Expected behavior:} For each field in the form with invalid data,
-            Bob receives an error message indicating the input was invalid.
+            Chen receives an error message indicating the input was invalid.
     \end{enumerate}
 
     \item \textbf{Update a course} \begin{enumerate}
-        \item Instructor Bob requests a course management view. \\
+        \item Instructor Chen requests a course management view. \\
         {\bf Expected behavior:} A course management view containing a form
             with the course's existing information pre-filled is presented
-            to Bob.
+            to Chen.
 
-        \item Instructor Bob tries to update the course, he fills the course
+        \item Instructor Chen tries to update the course, Chen fills the course
             management form with some invalid data, then clicks \emph{Save}. \\
         {\bf Expected behavior:} For each field in the form with invalid input,
-            Bob receives an error messages indicating the input was
+            Chen receives an error messages indicating the input was
             invalid.
     \end{enumerate}
 
     \item \textbf{Remove a course} \begin{enumerate}
-        \item Instructor Bob wishes to remove a course, the system prompts
-            for confirmation and Bob confirms the request. \\
+        \item Instructor Chen wishes to remove a course, the system prompts
+            for confirmation and Chen confirms the request. \\
         {\bf Expected behavior:} The course is removed.
     \end{enumerate}
 
     \item \textbf{Register a TA} \begin{enumerate}
-        \item Instructor Bob wishes to register a TA, he enters the TA's
+        \item Instructor Chen wishes to register a TA, Chen enters the TA's
             student ID and clicks the \emph{Add} button. \\
         {\bf Expected behavior:} The student is registered to the course as a
             TA.
 
-        \item Instructor Bob wishes to register a TA, but he made a mistake while
+        \item Instructor Chen wishes to register a TA, but Chen made a mistake while
             entering the TA's student ID. \\
-        {\bf Expected behavior:} Bob receives an error message indicating the
-            student ID he entered does not match any student in the system.
+        {\bf Expected behavior:} Chen receives an error message indicating the
+            student ID Chen entered does not match any student in the system.
 
-        \item Instructor Bob wishes to register a TA, he registers the same
+        \item Instructor Chen wishes to register a TA, Chen registers the same
             student ID twice by mistake. \\
-        {\bf Expected behavior:} Bob receives a warning indicating that the
+        {\bf Expected behavior:} Chen receives a warning indicating that the
             student is already registered in the course as a TA.
 
-        \item Instructor Bob wishes to remove a student from a course as a TA;
-            he clicks the \emph{Remove} button following the student's information
+        \item Instructor Chen wishes to remove a student from a course as a TA;
+            Chen clicks the \emph{Remove} button following the student's information
             in the TA management pane. \\
         {\bf Expected behavior:} The student is removed as a TA for the course.
     \end{enumerate}
@@ -1209,80 +1209,80 @@ implementation.
 \subsection{Assignment management}
 \begin{itemize}
     \item \textbf{Create an assignment} \begin{enumerate}
-        \item Instructor Bob wishes to create an assignment, he fills the
+        \item Instructor Chen wishes to create an assignment, Chen fills the
             create assignment form with valid data, then clicks \emph{Create}. \\
         {\bf Expected behavior:} An assignment is created.
 
-        \item Instructor Bob wishes to create an assignment, he fills the
+        \item Instructor Chen wishes to create an assignment, Chen fills the
             create assignment form with an \texttt{assignment number}
             which already exists in the course, then clicks \emph{Create}. \\
-        {\bf Expected behavior:} Bob receives an error message indicating
+        {\bf Expected behavior:} Chen receives an error message indicating
             that an assignment with the same \texttt{assignment number}
             already exists in the course.
 
-        \item Instructor Bob wishes to create an assignment, he fills the
+        \item Instructor Chen wishes to create an assignment, Chen fills the
             create assignment form with data, some of which is invalid,
             then clicks \emph{Create}. \\
         {\bf Expected behavior:} For each field in the form with invalid input,
-            Bob receives an error messages indicating the problem with the
+            Chen receives an error messages indicating the problem with the
             input.
     \end{enumerate}
 
     \item \textbf{Update an assignment} \begin{enumerate}
-        \item Instructor Bob requests the summary view of an assignment. \\
+        \item Instructor Chen requests the summary view of an assignment. \\
         {\bf Expected behavior:} A form with the assignment's existing
-            information pre-filled is presented to Bob.
+            information pre-filled is presented to Chen.
 
-        \item Instructor Bob wishes to update the assignment, he fills the
+        \item Instructor Chen wishes to update the assignment, Chen fills the
             assignment management form with valid data, then clicks \emph{Save}. \\
         {\bf Expected behavior:} The assignment is updated with the new
             information.
 
-        \item Instructor Bob wishes to update the assignment, he fills the
+        \item Instructor Chen wishes to update the assignment, Chen fills the
             assignment management form with invalid data, then clicks \emph{Save}. \\
         {\bf Expected behavior:} For each field in the form with invalid input,
-            Bob receives an error message indicating the problem with the
+            Chen receives an error message indicating the problem with the
             input.
             \need 3\baselineskip
     \end{enumerate}
 
     \item \textbf{Remove an assignment} \begin{enumerate}
-        \item Instructor Bob wishes to remove an assignment, the system
-            prompts for confirmation and Bob confirms the request. \\
+        \item Instructor Chen wishes to remove an assignment, the system
+            prompts for confirmation and Chen confirms the request. \\
         {\bf Expected behavior:} The assignment is removed.
     \end{enumerate}
 
     \item \textbf{View an assignment} \begin{enumerate}
-        \item Student Alice wishes to view an assignment of a course in which
-            she is registered. \\
+        \item Student Wu wishes to view an assignment of a course in which
+            Wu is registered. \\
         {\bf Expected behavior:} The assignment summary view is presented to
-            Alice.
+            Wu.
     \end{enumerate}
 \end{itemize}
 
 \subsection{File management}
 \begin{itemize}
     \item {\bf File handling} \begin{enumerate}
-        \item Instructor Bob clicks the upload attachments button in the
+        \item Instructor Chen clicks the upload attachments button in the
             assignment summary view, a file upload dialogue is presented
-            and he selects a file to be uploaded, then clicks \emph{Upload}. \\
+            and Chen selects a file to be uploaded, then clicks \emph{Upload}. \\
         {\bf Expected behavior:} The file is uploaded as an assignment
             attachment.
 
-        \item Student Alice clicks the upload assignment button in the
+        \item Student Wu clicks the upload assignment button in the
             assignment summary view, a file upload dialogue is presented
-            and she selects a file to be uploaded, then clicks \emph{Upload}. \\
+            and Wu selects a file to be uploaded, then clicks \emph{Upload}. \\
         {\bf Expected behavior:} The file is uploaded as an assignment
             submission.
     \end{enumerate}
 
     \item {\bf File display} \begin{enumerate}
-        \item Student Alice clicks the file name of a source code file she
+        \item Student Wu clicks the file name of a source code file Wu
             previously uploaded in the assignment summary view. \\
         {\bf Expected behavior:} A file display view is presented, the source
             code file is rendered in this view with highlighted syntax.
 
-        \item Student Alice clicks the name of a \emph{PDF} file she previously
+        \item Student Wu clicks the name of a \emph{PDF} file Wu previously
             uploaded in the assignment summary view. \\
         {\bf Expected behavior:} A file display view is presented, the
             \emph{PDF} file is rendered as is.
@@ -1292,53 +1292,53 @@ implementation.
 \subsection{Automated test}
 \begin{itemize}
     \item {\bf Configure automated tests} \begin{enumerate}
-        \item Instructor Bob wishes to configure automated tests for an
-            assignment, he opens the summary view of that assignment. \\
+        \item Instructor Chen wishes to configure automated tests for an
+            assignment, Chen opens the summary view of that assignment. \\
         {\bf Expected behavior:} Below the assignment management form, an
-            automated tests configuration form is presented to Bob.
+            automated tests configuration form is presented to Chen.
 
-        \item Instructor Bob fills the test configuration form with one or more
+        \item Instructor Chen fills the test configuration form with one or more
             required fields left empty, then clicks \emph{Save}. \\
-        {\bf Expected behavior:} Bob receives an error message indicating that
+        {\bf Expected behavior:} Chen receives an error message indicating that
             one or more of the required fields were left empty.
 
-        \item Instructor Bob fills the test configuration form with data, some
+        \item Instructor Chen fills the test configuration form with data, some
             of which is invalid, then clicks \emph{Save}. \\
         {\bf Expected behavior:} For each field in the form with invalid input,
-            Bob receives an error message indicating that
+            Chen receives an error message indicating that
             the input was invalid.
 
-        \item Instructor Bob fills the test configuration form with proper data,
+        \item Instructor Chen fills the test configuration form with proper data,
             then clicks \emph{Save}. \\
-        {\bf Expected behavior:} Bob receives a success message and the automated
+        {\bf Expected behavior:} Chen receives a success message and the automated
             tests are saved for the assignment.
     \end{enumerate}
 
     \item {\bf View automated test result} \begin{enumerate}
-        \item Student Alice clicks the test status badge in the assignment
+        \item Student Wu clicks the test status badge in the assignment
             summary view, and wishes to see the test result of an assignment. \\
         {\bf Expected behavior:} A view with the test result detail is
-            presented to Alice.
+            presented to Wu.
     \end{enumerate}
 \end{itemize}
 
 \subsection{Marking interface}
 \begin{itemize}
-    \item Student Alice is a registered TA in a course, she opens an assignment
+    \item Student Wu is a registered TA in a course, Wu opens an assignment
         summary view of that course. \\
-    {\bf Expected behavior:} The assignment view is presented to Alice, which
+    {\bf Expected behavior:} The assignment view is presented to Wu, which
         contains a table displaying all the submitted assignments.
 
-    \item TA Alice clicks the \emph{Mark} button on one of the submissions.\\
+    \item TA Wu clicks the \emph{Mark} button on one of the submissions.\\
     {\bf Expected behavior:} A marking interface (as shown in
-    Figure~\ref{fig:MARKING}) is presented to Alice.
+    Figure~\ref{fig:MARKING}) is presented to Wu.
 
-    \item TA Alice enters some comments into the comment area and edits the
+    \item TA Wu enters some comments into the comment area and edits the
         grade, then clicks the \emph{Save} button. \\
-    {\bf Expected behavior:} The grade and comments are saved, Alice receives
+    {\bf Expected behavior:} The grade and comments are saved, Wu receives
         a success message.
 
-    \item Instructor Bob clicks the \emph{Release} button in the assignment
+    \item Instructor Chen clicks the \emph{Release} button in the assignment
         summary view. \\
     {\bf Expected behavior:} All students in the course can now view their
         grades and comments for that assignment.
