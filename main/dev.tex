@@ -124,7 +124,7 @@ via \emph{AJAX}~\cite{AJAX}.
 As discussed in Section~\ref{sec:USRAUTH}, user authentication is handled by the
 \emph{Django User Model} provided by the \emph{Django} \texttt{auth} library.
 Not only does this approach simplify the implementation of the module,
-but in addition security is also improved in comparison with implementing the authentication
+but in addition, security is also improved in comparison with implementing the authentication
 module solely by the developer.
 
 \subsubsection{Data model}
@@ -194,7 +194,7 @@ Table~\ref{tab:PROFILE_ATTR}.
         \hline
         \texttt{role} & \texttt{integer field}, choice from 0 and 1, indicating the
             user's role \\
-           & is \emph{Student} or \emph{Instructor} respectively \\
+           & as \emph{Student} or \emph{Instructor} respectively \\
         \hline
     \end{tabular}
     \renewcommand{\arraystretch}{1}
@@ -206,7 +206,7 @@ Table~\ref{tab:PROFILE_ATTR}.
 \begin{itemize}
     \item Login: \\
         A \texttt{UserLogin} view is defined to provide routines to handle user
-        authentication, by invoking the built-in \emph{Django} library
+        authentication by invoking the built-in \emph{Django} library
         function~\texttt{authenticate()}
         to compare the credentials provided
         by the user against the user account database.
@@ -249,7 +249,7 @@ Table~\ref{tab:PROFILE_ATTR}.
 To provide source code management for programming assignments,
 an open-source version control tool,
 \emph{Git}, is integrated into the \emph{Course2018} LMS.
-\emph{Git} was originally developed by \emph{Linus Torvalds}~\cite{git},
+\emph{Git} was originally developed by Linus Torvalds~\cite{git},
 creator and principal developer of the \emph{Linux} operating system
 kernel~\cite{lTorvalds}.
 An open-source \emph{Git}-repository manager, \emph{GitLab}~\cite{Agitlab},
@@ -352,7 +352,7 @@ Figure~\ref{fig:COURSE_ER} and Table~\ref{tab:COURSE_ATTR}. \bigskip
                         \texttt{year},
                         \texttt{semester} must be unique
                 \item role of the \texttt{instructor} must be \emph{Instructor}
-                \item role of the each of the \texttt{students} must be
+                \item role of each of the \texttt{students} must be
                         \emph{Student}
             \end{enumerate} \vspace{-9mm}\\
         \hline
@@ -436,7 +436,7 @@ Figure~\ref{fig:COURSE_ER} and Table~\ref{tab:COURSE_ATTR}. \bigskip
 \label{sec:ASM_MAN}
 
 \subsubsection{Data model}
-The data model of the assignment module module is shown in
+The data model of the assignment module is shown in
 Figure~\ref{fig:ASM_ER}, Table~\ref{tab:ASM_ATTR},
 and Table~\ref{tab:COMMIT_ATTR}. \bigskip
 
@@ -594,8 +594,8 @@ and Table~\ref{tab:COMMIT_ATTR}. \bigskip
             management \\
         \hline
         \texttt{auto\_run\_status} & if automated test is enabled for the
-            assignment 
-            run status  is updated every time a user access the test result \\
+            assignment,
+            \texttt{auto\_run\_status} is updated every time a user access the test result \\
         \hline
         \hline
 
@@ -1173,7 +1173,7 @@ implementation.
         \item Instructor Chen tries to update the course, Chen fills the course
             management form with some invalid data, then clicks \emph{Save}. \\
         {\bf Expected behavior:} For each field in the form with invalid input,
-            Chen receives an error messages indicating the input was
+            Chen receives an error message indicating the input was
             invalid.
     \end{enumerate}
 
@@ -1224,7 +1224,7 @@ implementation.
             create assignment form with data, some of which is invalid,
             then clicks \emph{Create}. \\
         {\bf Expected behavior:} For each field in the form with invalid input,
-            Chen receives an error messages indicating the problem with the
+            Chen receives an error message indicating the problem with the
             input.
     \end{enumerate}
 
